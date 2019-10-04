@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_ACCESS_PREFERENCES">Zugriffsberechtigung für Einstellungen</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_ACCESS_PREFERENCES_DESC">Hier kann man, zusätzlich zur Rolle "Administrator", weitere Rollen für den Zugriff auf das Modul "Einstellungen" berechtigen.</string>     
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_DEINST_ACTORGONLY">Nur Daten der aktuellen Organisation löschen.</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_DEINST_ALLORG">Daten in allen Organisationen löschen.</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_DEINST_DATA_DELETE_ERROR">- Beim Löschen der Daten ist ein Fehler aufgetreten.\n</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_DEINST_DATA_DELETE_SUCCESS">- Die vom Plugin angelegten Daten wurden gelöscht.\n</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_DEINST_ENDMESSAGE">\nUm das Plugin vollständig zu entfernen, müssen noch die Programmdateien und der Menü-Eintrag gelöscht werden.</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_DEINST_LINK_TO">Zur Deinstallation wechseln</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_DEINST_STARTMESSAGE">Folgende Löschvorgänge wurden durchgeführt:\n\n</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_DEINST_TABLE_DELETE_ERROR">- Die Tabelle "adm_plugin_preferences" konnte nicht gelöscht werden, da sich darin noch Daten eines anderen Plugins befinden.\n</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_DEINST_TABLE_DELETE_SUCCESS">- Die vom Plugin angelegte Tabelle "adm_plugin_preferences" wurde gelöscht.\n</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_DEINSTALLATION">Deinstallation</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_DEINSTALLATION_DESC">Über die Deinstallation können vom Plugin erzeugte Einträge in der Datenbank gelöscht werden.</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_DEINSTALLATION_FORM_DESC">Wähle den Installationsumfang aus:\n\n***ACHTUNG: Diese Routine löscht nur Einträge in der Admidio-Datenbank. Programmdateien und der Link im Menü werden nicht gelöscht! ***</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_DISPLAYED_FIELDS">Anzeigefelder</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_DISPLAYED_FIELDS_DESC">Hier können die in der Beitrittserklärung angezeigten Profilfelder definiert werden. Zusätzlich besteht die Möglichkeit einen Einleitungs- und einen Schlusstext für das gesamte Formular zu definieren. Weitere Infotexte können im Menüpunkt "Pflichtfelder und Infotexte" definiert werden.</string>    
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_DOCUMENTATION">Dokumentation</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_DOCUMENTATION_OPEN">Dokumentation öffnen</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_FIELDTEXT">Infotext</string>    
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_HEADLINE">ONLINE - Beitrittserklärung</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_OPTIONS">Optionen</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_ORG_CHOICE">Organisationswahl</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_ORGANIZATION_DESC">Für diese Organisation wird die Beitrittserklärung durchgeführt.</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_PLUGIN_DATE">Stand</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_PLUGIN_INFORMATION">Plugininformationen</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_PLUGIN_NAME">Name des Plugins</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_PLUGIN_VERSION">Version</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_POSTTEXT">Schlusstext</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_PRE_AND_POST_TEXT_DESC">Folgende Parameter sind bei allen Einleitungs- und Schlusstexten möglich:\n\nLink: ##URL (z.B. https://...)#Text##\n\nFettschrift an: $$\nFettschrift aus: %%\n\nZeilenumbruch: §§</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_PRETEXT">Einleitungstext</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_REQUIRED_FIELDS">Pflichtfelder und Infotexte</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_REQUIRED_FIELDS_DESC">Hier können die angezeigten Profilfelder als Pflichtfelder markiert werden. Diese Felder müssen in der Beitrittserklärung befüllt sein. Zusätzlich besteht die Möglichkeit Informationstexte zu definieren.</string>    
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_SAVED">Deine Daten wurden gespeichert.\n\nNach der Bearbeitung und Übernahme wirst du per E-Mail benachrichtigt.\n\nWähle aus:\n\nJa - Die Online-Beitrittserklärung soll beendet werden\nNein - Die Online-Beitrittserklärung nicht beenden, sondern die Daten eines weiteren Mitglieds eingeben.</string>
+</resources>
