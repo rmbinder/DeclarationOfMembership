@@ -81,19 +81,19 @@ switch ($getMode)
                
                 foreach($gProfileFields->getProfileFields() as $field)
                 {
-                    if(isset($_POST['rqd-'.$field->getValue('usf_id')]))
+                    if (isset($_POST['rqd-'.$field->getValue('usf_id')]))
                     {
                         $pPreferences->config['fields']['required_fields'][] = $field->getValue('usf_id');
                     }
-                    if ($_POST[$field->getValue('cat_id'). '_pretext'] <> '')
+                    if (isset($_POST[$field->getValue('cat_id'). '_pretext']))
                     {
                         $pPreferences->config['cat_texts'][$field->getValue('cat_id'). '_pretext'] = $_POST[$field->getValue('cat_id'). '_pretext'];
                     }
-                    if ($_POST[$field->getValue('cat_id'). '_posttext'] <> '')
+                    if (isset($_POST[$field->getValue('cat_id'). '_posttext']))
                     {
                         $pPreferences->config['cat_texts'][$field->getValue('cat_id'). '_posttext'] = $_POST[$field->getValue('cat_id'). '_posttext'];
                     }
-                    if ($_POST[$field->getValue('usf_id'). '_fieldtext'] <> '')
+                    if (isset($_POST[$field->getValue('usf_id'). '_fieldtext']))
                     {
                         $pPreferences->config['field_texts'][$field->getValue('usf_id'). '_fieldtext'] = $_POST[$field->getValue('usf_id'). '_fieldtext'];
                     }
@@ -133,18 +133,14 @@ break;
         // add current url to navigation stack
         $gNavigation->addUrl(CURRENT_URL, $headline);
         
-        // create module menu with back link
-        $organizationNewMenu = new HtmlNavbar('menu_deinstallation', $headline, $page);
-        $organizationNewMenu->addItem('menu_item_back', $gNavigation->getPreviousUrl(), $gL10n->get('SYS_BACK'), 'back.png');
-        $page->addHtml($organizationNewMenu->show(false));
-        
+        $page->setUrlPreviousPage($gNavigation->getPreviousUrl());
         $page->addHtml('<p class="lead">'.$gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_DEINSTALLATION_FORM_DESC').'</p>');
         
         // show form
-        $form = new HtmlForm('deinstallation_form', safeUrl(ADMIDIO_URL . FOLDER_PLUGINS . PLUGIN_FOLDER .'/preferences_function.php', array('mode' => 3)), $page);
+        $form = new HtmlForm('deinstallation_form', SecurityUtils::encodeUrl(ADMIDIO_URL . FOLDER_PLUGINS . PLUGIN_FOLDER .'/preferences_function.php', array('mode' => 3)), $page);
         $radioButtonEntries = array('0' => $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_DEINST_ACTORGONLY'), '1' => $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_DEINST_ALLORG') );
         $form->addRadioButton('deinst_org_select',$gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_ORG_CHOICE'),$radioButtonEntries);
-        $form->addSubmitButton('btn_deinstall', $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_DEINSTALLATION'), array('icon' => THEME_URL .'/icons/delete.png', 'class' => ' col-sm-offset-3'));
+        $form->addSubmitButton('btn_deinstall', $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_DEINSTALLATION'), array('icon' => 'fa-trash-alt', 'class' => ' col-sm-offset-3'));
         
         // add form to html page and show page
         $page->addHtml($form->show(false));

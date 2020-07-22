@@ -3,7 +3,7 @@
  ***********************************************************************************************
  * DeclarationOfMembership (ONLINE-Beitrittserklärung)
  *
- * Version 1.0.0
+ * Version 2.0.0-Beta1
  *
  * This plugin creates a online - declaration of membership.
  * 
@@ -11,7 +11,7 @@
  *
  * Author: rmb
  *
- * Compatible with Admidio version 3.3
+ * Compatible with Admidio version 4
  *
  * @copyright 2004-2019 The Admidio Team
  * @see https://www.admidio.org/
@@ -64,25 +64,30 @@ if(isset($_SESSION['profile_request']) && strpos($gNavigation->getUrl(), 'declar
 }
 
 $gNavigation->clear();
-$gNavigation->addUrl(CURRENT_URL, $headline.' '.$html);
+
+// save this url to navigation stack
+if (!StringUtils::strContains($gNavigation->getUrl(), 'declaration_of_membership.php'))
+{
+    $gNavigation->addUrl(CURRENT_URL);
+}
 
 // create html page object
 $page = new HtmlPage($headline);
-$page->enableModal();
-$page->addHtml('<p align="right"><a  align="right" data-toggle="modal" data-target="#admidio_modal" href="'. ADMIDIO_URL . FOLDER_PLUGINS . PLUGIN_FOLDER .'/declaration_popup_info.php" ><img src="'. THEME_URL . '/icons/info.png" alt="'.$gL10n->get('SYS_HELP').'" /></a></p>');
-$page->addJavascriptFile(ADMIDIO_URL . FOLDER_LIBS_CLIENT . '/zxcvbn/dist/zxcvbn.js');
 
-// add back link to module menu
-$preferencesMenu = $page->getMenu();
+$html = '<p align="right"> <a class="admidio-icon-link openPopup" href="javascript:void(0);"
+                data-href="'.SecurityUtils::encodeUrl(ADMIDIO_URL.FOLDER_PLUGINS . PLUGIN_FOLDER .'/declaration_popup_info.php').'">'.
+                '<i class="fas fa-info" data-toggle="tooltip" title="' . $gL10n->get('SYS_INFORMATIONS') . '"></i></a></p>';
+$page->addHtml($html);
+$page->addJavascriptFile(ADMIDIO_URL . FOLDER_LIBS_CLIENT . '/zxcvbn/dist/zxcvbn.js');
 
 if (isUserAuthorizedForPreferences())
 {
     // show link to pluginpreferences
-    $preferencesMenu->addItem('admMenuItemPreferences', safeUrl(ADMIDIO_URL . FOLDER_PLUGINS . PLUGIN_FOLDER .'/preferences.php'), $gL10n->get('SYS_SETTINGS'), 'options.png', 'right');
+    $page->addPageFunctionsMenuItem('admMenuItemPreferencesLists', $gL10n->get('PLG_KATEGORIEREPORT_SETTINGS'), SecurityUtils::encodeUrl(ADMIDIO_URL . FOLDER_PLUGINS . PLUGIN_FOLDER .'/preferences.php'),  'fa-cog');
 }
 
 // create html form
-$form = new HtmlForm('edit_profile_form', safeUrl(ADMIDIO_URL . FOLDER_PLUGINS . PLUGIN_FOLDER .'/declaration_save.php'), $page);
+$form = new HtmlForm('edit_profile_form', SecurityUtils::encodeUrl(ADMIDIO_URL . FOLDER_PLUGINS . PLUGIN_FOLDER .'/declaration_save.php'), $page);
 
 if (strlen($pPreferences->config['registration_org']['org_id']) == 0)
 {
@@ -153,7 +158,7 @@ foreach($gProfileFields->getProfileFields() as $field)
         
         if(strlen($gProfileFields->getProperty($usfNameIntern, 'usf_description')) > 0)
         {
-            $helpId = array('user_field_description', $gProfileFields->getProperty($usfNameIntern, 'usf_name_intern'));
+            $helpId = $gProfileFields->getProperty($gProfileFields->getProperty($usfNameIntern, 'usf_name_intern'), 'usf_description');
         }
         
         // code for different field types
@@ -319,7 +324,7 @@ if ($findFields)
     }
     
     // Daten senden
-    $form->addSubmitButton('btn_save', $gL10n->get('SYS_SEND'), array('icon' => THEME_URL.'/icons/email.png'));
+    $form->addSubmitButton('btn_save', $gL10n->get('SYS_SEND'), array('icon' => 'fa-paper-plane'));
 }
 
 $page->addHtml($form->show(false));
