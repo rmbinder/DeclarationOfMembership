@@ -82,7 +82,7 @@ $page->addJavascript('
                     formAlert.animate({opacity: 1.0}, 2500);
                     formAlert.fadeOut("slow");
                     if(data === "refresh") {
-                        window.location.replace("'. ADMIDIO_URL . FOLDER_PLUGINS . PLUGIN_FOLDER .'/preferences.php?show_option=refresh");
+                        window.location.replace("'. SecurityUtils::encodeUrl(ADMIDIO_URL . FOLDER_PLUGINS . PLUGIN_FOLDER .'/preferences.php', array('show_option' => 'refresh')).'");
                     } 
                 } else {
                     formAlert.attr("class", "alert alert-danger form-alert");
@@ -222,7 +222,7 @@ $sql = 'SELECT org_id, org_longname
       ORDER BY org_longname ASC, org_shortname ASC';
 $formOptions->addSelectBoxFromSql('org_id', $gL10n->get('SYS_ORGANIZATION'), $gDb, $sql, array('defaultValue' => $pPreferences->config['registration_org']['org_id'], 'helpTextIdInline' => 'PLG_DECLARATION_OF_MEMBERSHIP_ORGANIZATION_DESC'));
 
-$html = '<a id="deinstallation" class="icon-text-link" href="'. ADMIDIO_URL . FOLDER_PLUGINS . PLUGIN_FOLDER .'/preferences_function.php?mode=2">
+$html = '<a id="deinstallation" class="icon-text-link" href="'. SecurityUtils::encodeUrl(ADMIDIO_URL . FOLDER_PLUGINS . PLUGIN_FOLDER .'/preferences_function.php', array('mode' => 2)).'">
     <i class="fas fa-trash-alt"></i> '.$gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_DEINST_LINK_TO').'</a>';
 $formOptions->addCustomContent($gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_DEINSTALLATION'), $html, array('helpTextIdInline' => 'PLG_DECLARATION_OF_MEMBERSHIP_DEINSTALLATION_DESC'));
 $formOptions->addSubmitButton('btn_save_configurations', $gL10n->get('SYS_SAVE'), array('icon' => 'fa-check', 'class' => ' offset-sm-3'));
