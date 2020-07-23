@@ -5,7 +5,7 @@
  *
  * Version 2.0.0-Beta1
  *
- * This plugin creates a online - declaration of membership.
+ * This plugin creates an online - declaration of membership.
  * 
  * It is a modified profile_new.php
  *
@@ -13,7 +13,7 @@
  *
  * Compatible with Admidio version 4
  *
- * @copyright 2004-2019 The Admidio Team
+ * @copyright 2004-2020 The Admidio Team
  * @see https://www.admidio.org/
  * @license https://www.gnu.org/licenses/gpl-2.0.html GNU General Public License v2.0 only
  ***********************************************************************************************
