@@ -32,7 +32,7 @@ if (!isUserAuthorizedForPreferences())
 
 $headline = $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_HEADLINE');
 
-if ( !StringUtils::strContains($gNavigation->getUrl(), 'preferences.php'))
+if (!StringUtils::strContains($gNavigation->getUrl(), 'preferences.php'))
 {
     $gNavigation->addUrl(CURRENT_URL);
 }
@@ -142,16 +142,16 @@ $formDisplayedFields->addLine();
 $formDisplayedFields->addDescription('<div style="width:100%; height:550px; overflow:auto; border:20px;">');
 
 $category = '';
-foreach($gProfileFields->getProfileFields() as $field)
+foreach ($gProfileFields->getProfileFields() as $field)
 {
     $usf_id     = $field->getValue('usf_id');
     $cat_id     = $field->getValue('cat_id');
     $cat_name   = $field->getValue('cat_name');
     
     // bei Kategorienwechsel den Kategorienheader anzeigen
-    if($category !== $cat_name)
+    if ($category !== $cat_name)
     {
-        if($category !== '')
+        if ($category !== '')
         {
             $formDisplayedFields->closeGroupBox();
         }
@@ -176,20 +176,20 @@ $formRequiredFields->addDescription($gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_R
 
 $category = '';
 $findFields = false;
-foreach($gProfileFields->getProfileFields() as $field)
+foreach ($gProfileFields->getProfileFields() as $field)
 {
     $usf_id     = $field->getValue('usf_id');
     $cat_id     = $field->getValue('cat_id');
     $cat_name   = $field->getValue('cat_name');
     
-    if(in_array($usf_id, $pPreferences->config['fields']['profile_fields']))
+    if (in_array($usf_id, $pPreferences->config['fields']['profile_fields']))
     {
         $findFields = true;
         
         // bei Kategorienwechsel den Kategorienheader anzeigen
-        if($category !== $field->getValue('cat_name'))
+        if ($category !== $field->getValue('cat_name'))
         {
-            if($category !== '')
+            if ($category !== '')
             {
                 $formRequiredFields->addMultilineTextInput($cat_id.'_posttext', $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_POSTTEXT'), (isset($pPreferences->config['cat_texts'][$cat_id.'_posttext']) ? $pPreferences->config['cat_texts'][$cat_id.'_posttext'] : '' ), 3);
                 $formRequiredFields->closeGroupBox();
@@ -234,10 +234,10 @@ $page->addHtml(getPreferencePanel('common', 'options', $gL10n->get('PLG_DECLARAT
 $formAccessPreferences = new HtmlForm('access_preferences_form', SecurityUtils::encodeUrl(ADMIDIO_URL . FOLDER_PLUGINS . PLUGIN_FOLDER .'/preferences_function.php', array('form' => 'access_preferences')), $page, array('class' => 'form-preferences'));
 
 $sql = 'SELECT rol.rol_id, rol.rol_name, cat.cat_name
-        FROM '.TBL_CATEGORIES.' AS cat, '.TBL_ROLES.' AS rol
-        WHERE cat.cat_id = rol.rol_cat_id
-        AND (  cat.cat_org_id = '.$gCurrentOrganization->getValue('org_id').'
-        OR cat.cat_org_id IS NULL )';
+          FROM '.TBL_CATEGORIES.' AS cat, '.TBL_ROLES.' AS rol
+         WHERE cat.cat_id = rol.rol_cat_id
+           AND ( cat.cat_org_id = '.ORG_ID.'
+            OR cat.cat_org_id IS NULL )';
 $formAccessPreferences->addSelectBoxFromSql('access_preferences', '', $gDb, $sql, array('defaultValue' => $pPreferences->config['access']['preferences'], 'helpTextIdInline' => 'PLG_DECLARATION_OF_MEMBERSHIP_ACCESS_PREFERENCES_DESC', 'multiselect' => true, 'property' => HtmlForm::FIELD_REQUIRED));
 $formAccessPreferences->addSubmitButton('btn_save_access_preferences', $gL10n->get('SYS_SAVE'), array('icon' => 'fa-check', 'class' => ' offset-sm-3'));
 

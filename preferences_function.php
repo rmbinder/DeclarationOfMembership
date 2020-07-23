@@ -49,15 +49,15 @@ switch ($getMode)
         
     try
     {
-        switch($getForm)
+        switch ($getForm)
         {
             case 'displayed_fields':
                 unset($pPreferences->config['main_texts']);
                 unset($pPreferences->config['fields']['profile_fields']);
 
-                foreach($gProfileFields->getProfileFields() as $field)
+                foreach ($gProfileFields->getProfileFields() as $field)
                 {
-                    if(isset($_POST[$field->getValue('usf_id')]))
+                    if (isset($_POST[$field->getValue('usf_id')]))
                     {
                         $pPreferences->config['fields']['profile_fields'][] = $field->getValue('usf_id');  
                     }
@@ -79,7 +79,7 @@ switch ($getMode)
                 unset($pPreferences->config['field_texts']);
                 unset($pPreferences->config['fields']['required_fields']);
                
-                foreach($gProfileFields->getProfileFields() as $field)
+                foreach ($gProfileFields->getProfileFields() as $field)
                 {
                     if (isset($_POST['rqd-'.$field->getValue('usf_id')]))
                     {

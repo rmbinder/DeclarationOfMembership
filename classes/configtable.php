@@ -48,15 +48,15 @@ class ConfigTablePDM
 
         $this->table_name = $g_tbl_praefix.'_plugin_preferences';
 
-        if(isset($plugin_version))
+        if (isset($plugin_version))
         {
             self::$version = $plugin_version;
         }
-        if(isset($plugin_stand))
+        if (isset($plugin_stand))
         {
             self::$stand = $plugin_stand;
         }
-        if(isset($dbtoken))
+        if (isset($dbtoken))
         {
             self::$dbtoken = $dbtoken;
         }
@@ -101,9 +101,9 @@ class ConfigTablePDM
         $config_ist = $this->config;
 
         // die Default-config durchlaufen
-        foreach($this->config_default as $section => $sectiondata)
+        foreach ($this->config_default as $section => $sectiondata)
         {
-            foreach($sectiondata as $key => $value)
+            foreach ($sectiondata as $key => $value)
             {
                 // gibt es diese Sektion bereits in der config?
                 if (isset($config_ist[$section][$key]))
@@ -128,14 +128,14 @@ class ConfigTablePDM
         // jetzt befinden sich hier nur noch die DB-Eintraege, die nicht verwendet werden und deshalb:
         // 1. in der DB geloescht werden koennen
         // 2. in der normalen config geloescht werden koennen
-        foreach($config_ist as $section => $sectiondata)
+        foreach ($config_ist as $section => $sectiondata)
         {
-            foreach($sectiondata as $key => $value)
+            foreach ($sectiondata as $key => $value)
             {
                 $plp_name = self::$shortcut.'__'.$section.'__'.$key;
                 $sql = 'DELETE FROM '.$this->table_name.'
-                        WHERE plp_name = ?
-                        AND plp_org_id = ? ';
+                              WHERE plp_name = ?
+                                AND plp_org_id = ? ';
                 $gDb->queryPrepared($sql, array($plp_name, ORG_ID));
                 
                 unset($this->config[$section][$key]);
@@ -161,14 +161,15 @@ class ConfigTablePDM
 
         // die aktuellen Konfigurationsdaten aus der DB lesen und in ein Arbeitsarray kopieren
         $this->config_work = array();
+        
         $sql = ' SELECT plp_id, plp_name, plp_value
-                FROM '.$this->table_name.'
-                WHERE plp_name LIKE ?
-                AND (  plp_org_id = ?
-                    OR plp_org_id IS NULL ) ';
+                   FROM '.$this->table_name.'
+                  WHERE plp_name LIKE ?
+                    AND ( plp_org_id = ?
+                     OR plp_org_id IS NULL ) ';
         $statement = $gDb->queryPrepared($sql, array(self::$shortcut.'__%', ORG_ID));	
         
-        while($row = $statement->fetch())
+        while ($row = $statement->fetch())
         {
             $array = explode('__', $row['plp_name']);
             
@@ -184,9 +185,9 @@ class ConfigTablePDM
             }
         }
         
-        foreach($this->config as $section => $sectiondata)
+        foreach ($this->config as $section => $sectiondata)
         {
-            foreach($sectiondata as $key => $value)
+            foreach ($sectiondata as $key => $value)
             {
                 if (is_array($value))
                 {
@@ -197,20 +198,20 @@ class ConfigTablePDM
                 $plp_name = self::$shortcut.'__'.$section.'__'.$key;
 
                 $sql = ' SELECT plp_id
-                        FROM '.$this->table_name.'
-                        WHERE plp_name = ?
-                        AND (  plp_org_id = ?
-                        OR plp_org_id IS NULL ) ';
+                           FROM '.$this->table_name.'
+                          WHERE plp_name = ?
+                            AND ( plp_org_id = ?
+                             OR plp_org_id IS NULL ) ';
                 $statement = $gDb->queryPrepared($sql, array($plp_name, ORG_ID));	
                 $row = $statement->fetchObject();
 
                 // Gibt es den Datensatz bereits?
                 // wenn ja: UPDATE des bestehende Datensatzes
-                if(isset($row->plp_id) && strlen($row->plp_id) > 0)
+                if (isset($row->plp_id) && strlen($row->plp_id) > 0)
                 {
                     $sql = 'UPDATE '.$this->table_name.'
-                            SET plp_value = ?
-                            WHERE plp_id = ? ';
+                               SET plp_value = ?
+                             WHERE plp_id = ? ';
                     $gDb->queryPrepared($sql, array($value, $row->plp_id));
                 }
                 // wenn nicht: INSERT eines neuen Datensatzes
@@ -233,7 +234,7 @@ class ConfigTablePDM
             $sql = 'DELETE FROM '.$this->table_name.'
         			      WHERE plp_name = ?
         			        AND plp_org_id = ? ';
-           $gDb->queryPrepared($sql, array(self::$shortcut.'__cat_texts__'.$section, ORG_ID));
+            $gDb->queryPrepared($sql, array(self::$shortcut.'__cat_texts__'.$section, ORG_ID));
         }
         foreach ($this->config_work['main_texts'] as $section => $dummy)
         {
@@ -253,13 +254,13 @@ class ConfigTablePDM
         global $gDb;
 
         $sql = ' SELECT plp_id, plp_name, plp_value
-                FROM '.$this->table_name.'
-                WHERE plp_name LIKE ?
-                AND (  plp_org_id = ?
-                    OR plp_org_id IS NULL ) ';
+                   FROM '.$this->table_name.'
+                  WHERE plp_name LIKE ?
+                    AND ( plp_org_id = ?
+                     OR plp_org_id IS NULL ) ';
         $statement = $gDb->queryPrepared($sql, array(self::$shortcut.'__%', ORG_ID));
 
-        while($row = $statement->fetch())
+        while ($row = $statement->fetch())
         {
             $array = explode('__', $row['plp_name']);
 

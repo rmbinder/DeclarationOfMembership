@@ -44,19 +44,19 @@ $user = new User($gDb, $gProfileFields);
 $headline = $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_HEADLINE');
 
 // Formular wurde ueber "Nein"-Button aufgerufen, also alle Felder mit den vorherigen Werten fuellen
-if(isset($_SESSION['profile_request']) && strpos($gNavigation->getUrl(), 'declaration_save.php') > 0)
+if (isset($_SESSION['profile_request']) && strpos($gNavigation->getUrl(), 'declaration_save.php') > 0)
 {
     $user->noValueCheck();
     
     foreach($gProfileFields->getProfileFields() as $field)
     {
         $fieldName = 'usf-'. $field->getValue('usf_id');
-        if(isset($_SESSION['profile_request'][$fieldName]))
+        if (isset($_SESSION['profile_request'][$fieldName]))
         {
             $user->setProfileFieldsValue($field->getValue('usf_name_intern'), stripslashes($_SESSION['profile_request'][$fieldName]));
         }
     }
-    if(isset($_SESSION['profile_request']['reg_org_id']))
+    if (isset($_SESSION['profile_request']['reg_org_id']))
     {
         $registrationOrgId = $_SESSION['profile_request']['reg_org_id'];
     }
@@ -110,20 +110,20 @@ if (isset($pPreferences->config['main_texts']['main_pretext']))
 $category = '';
 $findFields = false;
 
-foreach($gProfileFields->getProfileFields() as $field)
+foreach ($gProfileFields->getProfileFields() as $field)
 {
     $showField = false;
       
-    if(in_array($field->getValue('usf_id'), $pPreferences->config['fields']['profile_fields']))       
+    if (in_array($field->getValue('usf_id'), $pPreferences->config['fields']['profile_fields']))       
     {
         $showField = true;
         $findFields = true;
     }
     
     // Kategorienwechsel den Kategorienheader anzeigen
-    if($category !== $field->getValue('cat_name') && $showField)
+    if ($category !== $field->getValue('cat_name') && $showField)
     {
-        if($category !== '')
+        if ($category !== '')
         {
             if (isset($pPreferences->config['cat_texts'][$field->getValue('cat_id').'_posttext']))
             {
@@ -144,25 +144,25 @@ foreach($gProfileFields->getProfileFields() as $field)
         }
     }
     
-    if($showField)
+    if ($showField)
     {
         // add profile fields to form
         $fieldProperty = HtmlForm::FIELD_DEFAULT;
         $helpId        = '';
         $usfNameIntern = $field->getValue('usf_name_intern');
        
-        if(in_array($field->getValue('usf_id'), $pPreferences->config['fields']['required_fields']))
+        if (in_array($field->getValue('usf_id'), $pPreferences->config['fields']['required_fields']))
         {
             $fieldProperty = HtmlForm::FIELD_REQUIRED;
         }
         
-        if(strlen($gProfileFields->getProperty($usfNameIntern, 'usf_description')) > 0)
+        if (strlen($gProfileFields->getProperty($usfNameIntern, 'usf_description')) > 0)
         {
             $helpId = $gProfileFields->getProperty($gProfileFields->getProperty($usfNameIntern, 'usf_name_intern'), 'usf_description');
         }
         
         // code for different field types
-        if($gProfileFields->getProperty($usfNameIntern, 'usf_type') === 'CHECKBOX')
+        if ($gProfileFields->getProperty($usfNameIntern, 'usf_type') === 'CHECKBOX')
         {
             $form->addCheckbox(
                 'usf-'. $gProfileFields->getProperty($usfNameIntern, 'usf_id'),
@@ -173,21 +173,21 @@ foreach($gProfileFields->getProfileFields() as $field)
                     'helpTextIdLabel' => $helpId,
                     'icon'            => $gProfileFields->getProperty($usfNameIntern, 'usf_icon', 'database')
                 )
-                );
+            );
         }
-        elseif($gProfileFields->getProperty($usfNameIntern, 'usf_type') === 'DROPDOWN' || $usfNameIntern === 'COUNTRY')
+        elseif ($gProfileFields->getProperty($usfNameIntern, 'usf_type') === 'DROPDOWN' || $usfNameIntern === 'COUNTRY')
         {
             // set array with values and set default value
-            if($usfNameIntern === 'COUNTRY')
+            if ($usfNameIntern === 'COUNTRY')
             {
                 $arrListValues = $gL10n->getCountries();
                 $defaultValue  = null;
                 
-                if((int) $user->getValue('usr_id') === 0 && strlen($gSettingsManager->getString('default_country')) > 0)
+                if ((int) $user->getValue('usr_id') === 0 && strlen($gSettingsManager->getString('default_country')) > 0)
                 {
                     $defaultValue = $gSettingsManager->getString('default_country');
                 }
-                elseif($user->getValue('usr_id') > 0 && strlen($user->getValue($usfNameIntern)) > 0)
+                elseif ($user->getValue('usr_id') > 0 && strlen($user->getValue($usfNameIntern)) > 0)
                 {
                     $defaultValue = $user->getValue($usfNameIntern, 'database');
                 }
@@ -208,12 +208,12 @@ foreach($gProfileFields->getProfileFields() as $field)
                     'helpTextIdLabel' => $helpId,
                     'icon'            => $gProfileFields->getProperty($usfNameIntern, 'usf_icon', 'database')
                 )
-                );
+            );
         }
-        elseif($gProfileFields->getProperty($usfNameIntern, 'usf_type') === 'RADIO_BUTTON')
+        elseif ($gProfileFields->getProperty($usfNameIntern, 'usf_type') === 'RADIO_BUTTON')
         {
             $showDummyRadioButton = false;
-            if($gProfileFields->getProperty($usfNameIntern, 'usf_mandatory') == 0)
+            if ($gProfileFields->getProperty($usfNameIntern, 'usf_mandatory') == 0)
             {
                 $showDummyRadioButton = true;
             }
@@ -229,9 +229,9 @@ foreach($gProfileFields->getProfileFields() as $field)
                     'helpTextIdLabel'   => $helpId,
                     'icon'              => $gProfileFields->getProperty($usfNameIntern, 'usf_icon', 'database')
                 )
-                );
+            );
         }
-        elseif($gProfileFields->getProperty($usfNameIntern, 'usf_type') === 'TEXT_BIG')
+        elseif ($gProfileFields->getProperty($usfNameIntern, 'usf_type') === 'TEXT_BIG')
         {
             $form->addMultilineTextInput(
                 'usf-'. $gProfileFields->getProperty($usfNameIntern, 'usf_id'),
@@ -244,15 +244,15 @@ foreach($gProfileFields->getProfileFields() as $field)
                     'helpTextIdLabel' => $helpId,
                     'icon'            => $gProfileFields->getProperty($usfNameIntern, 'usf_icon', 'database')
                 )
-                );
+            );
         }
         else
         {
             $fieldType = 'text';
             
-            if($gProfileFields->getProperty($usfNameIntern, 'usf_type') === 'DATE')
+            if ($gProfileFields->getProperty($usfNameIntern, 'usf_type') === 'DATE')
             {
-                if($usfNameIntern === 'BIRTHDAY')
+                if ($usfNameIntern === 'BIRTHDAY')
                 {
                     $fieldType = 'birthday';
                 }
@@ -262,23 +262,23 @@ foreach($gProfileFields->getProfileFields() as $field)
                 }
                 $maxlength = '10';
             }
-            elseif($gProfileFields->getProperty($usfNameIntern, 'usf_type') === 'EMAIL')
+            elseif ($gProfileFields->getProperty($usfNameIntern, 'usf_type') === 'EMAIL')
             {
                 // email could not be longer than 254 characters
                 $fieldType = 'email';
                 $maxlength = '254';
             }
-            elseif($gProfileFields->getProperty($usfNameIntern, 'usf_type') === 'URL')
+            elseif ($gProfileFields->getProperty($usfNameIntern, 'usf_type') === 'URL')
             {
                 // maximal browser compatible url length will be 2000 characters
                 $maxlength = '2000';
             }
-            elseif($gProfileFields->getProperty($usfNameIntern, 'usf_type') === 'NUMBER')
+            elseif ($gProfileFields->getProperty($usfNameIntern, 'usf_type') === 'NUMBER')
             {
                 $fieldType = 'number';
                 $maxlength = array(0, 9999999999, 1);
             }
-            elseif($gProfileFields->getProperty($usfNameIntern, 'cat_name_intern') === 'SOCIAL_NETWORKS')
+            elseif ($gProfileFields->getProperty($usfNameIntern, 'cat_name_intern') === 'SOCIAL_NETWORKS')
             {
                 $maxlength = '255';
             }
@@ -288,7 +288,9 @@ foreach($gProfileFields->getProfileFields() as $field)
             }
             
             $form->addInput(
-                'usf-'. $gProfileFields->getProperty($usfNameIntern, 'usf_id'), $gProfileFields->getProperty($usfNameIntern, 'usf_name'), $user->getValue($usfNameIntern),
+                'usf-'. $gProfileFields->getProperty($usfNameIntern, 'usf_id'), 
+                $gProfileFields->getProperty($usfNameIntern, 'usf_name'), 
+                $user->getValue($usfNameIntern),
                 array(
                     'type'            => $fieldType,
                     'maxLength'       => $maxlength,
@@ -311,7 +313,7 @@ if ($findFields)
     $form->closeGroupBox();
 
     // if captchas are enabled then visitors of the website must resolve this
-    if($gSettingsManager->getBool('enable_registration_captcha'))
+    if ($gSettingsManager->getBool('enable_registration_captcha'))
     {
         $form->openGroupBox('gb_confirmation_of_input', $gL10n->get('SYS_CONFIRMATION_OF_INPUT'));
         $form->addCaptcha('captcha_code');

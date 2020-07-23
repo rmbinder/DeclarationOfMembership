@@ -13,8 +13,8 @@
 global $gL10n, $gCurrentOrganization;
 
 //Standardwerte einer Neuinstallation
-$config_default['main_texts'] = array();
-$config_default['cat_texts'] = array();
+$config_default['main_texts']  = array();
+$config_default['cat_texts']   = array();
 $config_default['field_texts'] = array();
 
 $config_default['fields'] = array('profile_fields'  => array(''),

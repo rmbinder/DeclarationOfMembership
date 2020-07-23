@@ -24,7 +24,7 @@ $pPreferences->read();
 // save form data in session for back navigation
 $_SESSION['profile_request'] = $_POST;
 
-if(!isset($_POST['reg_org_id']))
+if (!isset($_POST['reg_org_id']))
 {
     $_POST['reg_org_id'] = $gCurrentOrganization->getValue('org_id');
 }
@@ -36,40 +36,40 @@ $user = new UserRegistration($gDb, $gProfileFields);
 $user->setOrganization((int) $_POST['reg_org_id']);
 
 // now check all profile fields
-foreach($gProfileFields->getProfileFields() as $field)
+foreach ($gProfileFields->getProfileFields() as $field)
 {
     $postId    = 'usf-'. $field->getValue('usf_id');
     $showField = false;
 
     // at registration, check if the field is enabled for registration
-    if(in_array($field->getValue('usf_id'), $pPreferences->config['fields']['profile_fields']) )    
+    if (in_array($field->getValue('usf_id'), $pPreferences->config['fields']['profile_fields']) )    
     {
         $showField = true;
     }
        
     if ($showField)
     {
-        if(isset($_POST[$postId]))
+        if (isset($_POST[$postId]))
         {
             // if social network then extract username from url
-            if(in_array($field->getValue('usf_name_intern'), array('FACEBOOK', 'GOOGLE_PLUS', 'TWITTER', 'XING'), true))
+            if (in_array($field->getValue('usf_name_intern'), array('FACEBOOK', 'GOOGLE_PLUS', 'TWITTER', 'XING'), true))
             {
-                if(strValidCharacters($_POST[$postId], 'url') && admStrContains($_POST[$postId], '/'))
+                if (strValidCharacters($_POST[$postId], 'url') && admStrContains($_POST[$postId], '/'))
                 {
-                    if(strrpos($_POST[$postId], '/profile.php?id=') > 0)
+                    if (strrpos($_POST[$postId], '/profile.php?id=') > 0)
                     {
                         // extract facebook id (not facebook unique name) from url
                         $_POST[$postId] = substr($_POST[$postId], strrpos($_POST[$postId], '/profile.php?id=') + 16);
                     }
                     else
                     {
-                        if(strrpos($_POST[$postId], '/posts') > 0)
+                        if (strrpos($_POST[$postId], '/posts') > 0)
                         {
                             $_POST[$postId] = substr($_POST[$postId], 0, strrpos($_POST[$postId], '/posts'));
                         }
 
                         $_POST[$postId] = substr($_POST[$postId], strrpos($_POST[$postId], '/') + 1);
-                        if(strrpos($_POST[$postId], '?') > 0)
+                        if (strrpos($_POST[$postId], '?') > 0)
                         {
                             $_POST[$postId] = substr($_POST[$postId], 0, strrpos($_POST[$postId], '?'));
                         }
@@ -81,7 +81,7 @@ foreach($gProfileFields->getProfileFields() as $field)
             $returnCode = $user->setValue($field->getValue('usf_name_intern'), $_POST[$postId]);
 
             // Ausgabe der Fehlermeldung je nach Datentyp
-            if(!$returnCode)
+            if (!$returnCode)
             {
                 switch ($field->getValue('usf_type'))
                 {
@@ -116,11 +116,11 @@ foreach($gProfileFields->getProfileFields() as $field)
         else
         {
             // Checkboxen uebergeben bei 0 keinen Wert, deshalb diesen hier setzen
-            if($field->getValue('usf_type') === 'CHECKBOX')
+            if ($field->getValue('usf_type') === 'CHECKBOX')
             {
                 $user->setValue($field->getValue('usf_name_intern'), '0');
             }
-            elseif($field->getValue('usf_mandatory') == 1)
+            elseif ($field->getValue('usf_mandatory') == 1)
             {
                 $gMessage->show($gL10n->get('SYS_FIELD_EMPTY', array($field->getValue('usf_name'))));
                 // => EXIT
