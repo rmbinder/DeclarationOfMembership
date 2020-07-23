@@ -118,7 +118,7 @@ class ConfigTablePDM
                 }
             }
             // leere Abschnitte (=leere Arrays) loeschen
-            if ((isset($config_ist[$section]) && count($config_ist[$section]) === 0) || (isset($config_ist[$section]) && count($config_default[$section]) === 0) )
+            if ((isset($config_ist[$section]) && count($config_ist[$section]) === 0) || (isset($config_ist[$section]) && count($this->config_default[$section]) === 0) )
             {
                 unset($config_ist[$section]);
             }
