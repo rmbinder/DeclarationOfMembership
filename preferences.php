@@ -38,7 +38,7 @@ if (!StringUtils::strContains($gNavigation->getUrl(), 'preferences.php'))
 }
 
 // create html page object
-$page = new HtmlPage($headline);
+$page = new HtmlPage('plg-declaration-of-membership-preferences', $headline);
 $page->setUrlPreviousPage($gNavigation->getPreviousUrl());
 
 if ($showOption == 'refresh')

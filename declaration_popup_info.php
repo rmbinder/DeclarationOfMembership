@@ -23,7 +23,7 @@ $pPreferences->read();
 $headline = $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_PLUGIN_INFORMATION');
 
 // create html page object
-$page = new HtmlPage($headline);
+$page = new HtmlPage('plg-declaration-of-membership-info', $headline);
 
 header('Content-type: text/html; charset=utf-8');
 

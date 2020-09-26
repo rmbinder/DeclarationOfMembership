@@ -72,7 +72,7 @@ if (!StringUtils::strContains($gNavigation->getUrl(), 'declaration_of_membership
 }
 
 // create html page object
-$page = new HtmlPage($headline);
+$page = new HtmlPage('plg-declaration-of-membership', $headline);
 
 $html = '<p align="right"> <a class="admidio-icon-link openPopup" href="javascript:void(0);"
                 data-href="'.SecurityUtils::encodeUrl(ADMIDIO_URL.FOLDER_PLUGINS . PLUGIN_FOLDER .'/declaration_popup_info.php').'">'.
