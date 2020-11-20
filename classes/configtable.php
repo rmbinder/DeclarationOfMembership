@@ -229,19 +229,25 @@ class ConfigTablePDM
         
         //jetzt befinden sich im Arbeitsarray nur noch NICHT verwendete Einträge
         //die Abschnitte cat_texts und main_texts durchlaufen und nicht verwendete Einträge in der DB löschen
-        foreach ($this->config_work['cat_texts'] as $section => $dummy)
+        if (isset($this->config_work['cat_texts']))                //Sicherheitsüberprüfung: hat das beteffende Array überhaupt noch Einträge?
         {
-            $sql = 'DELETE FROM '.$this->table_name.'
-        			      WHERE plp_name = ?
-        			        AND plp_org_id = ? ';
-            $gDb->queryPrepared($sql, array(self::$shortcut.'__cat_texts__'.$section, ORG_ID));
+            foreach ($this->config_work['cat_texts'] as $section => $dummy)
+            {
+                $sql = 'DELETE FROM '.$this->table_name.'
+        			          WHERE plp_name = ?
+        			           AND plp_org_id = ? ';
+                $gDb->queryPrepared($sql, array(self::$shortcut.'__cat_texts__'.$section, ORG_ID));
+            }
         }
-        foreach ($this->config_work['main_texts'] as $section => $dummy)
+        if (isset($this->config_work['main_texts']))                //Sicherheitsüberprüfung: hat das beteffende Array überhaupt noch Einträge?
         {
-            $sql = 'DELETE FROM '.$this->table_name.'
-        			      WHERE plp_name = ?
-        			        AND plp_org_id = ? ';
-            $gDb->queryPrepared($sql, array(self::$shortcut.'__main_texts__'.$section, ORG_ID));
+            foreach ($this->config_work['main_texts'] as $section => $dummy)
+            {
+                $sql = 'DELETE FROM '.$this->table_name.'
+        			          WHERE plp_name = ?
+        			            AND plp_org_id = ? ';
+                $gDb->queryPrepared($sql, array(self::$shortcut.'__main_texts__'.$section, ORG_ID));
+            }
         }
     }
 

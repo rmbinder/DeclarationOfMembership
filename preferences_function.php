@@ -133,7 +133,6 @@ break;
         // add current url to navigation stack
         $gNavigation->addUrl(CURRENT_URL, $headline);
         
-        $page->setUrlPreviousPage($gNavigation->getPreviousUrl());
         $page->addHtml('<p class="lead">'.$gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_DEINSTALLATION_FORM_DESC').'</p>');
         
         // show form
@@ -149,7 +148,7 @@ break;
         
     case 3:
         
-        $gNavigation->addUrl(CURRENT_URL);
+        $gNavigation->clear();
         $gMessage->setForwardUrl($gHomepage);
         
         $gMessage->show($gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_DEINST_STARTMESSAGE').$pPreferences->delete($_POST['deinst_org_select']) );

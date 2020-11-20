@@ -162,6 +162,9 @@ catch(AdmException $e)
 
 $gDb->endTransaction();
 
+$gNavigation->clear();
+$_SESSION['pDeclarationOfMembership']['saved'] = true;
+
 $gMessage->setForwardYesNo($gHomepage);
 $gMessage->show($gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_SAVED'));
 

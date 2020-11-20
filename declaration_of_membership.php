@@ -44,7 +44,7 @@ $user = new User($gDb, $gProfileFields);
 $headline = $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_HEADLINE');
 
 // Formular wurde ueber "Nein"-Button aufgerufen, also alle Felder mit den vorherigen Werten fuellen
-if (isset($_SESSION['profile_request']) && strpos($gNavigation->getUrl(), 'declaration_save.php') > 0)
+if (isset($_SESSION['profile_request']) && isset($_SESSION['pDeclarationOfMembership']['saved']))
 {
     $user->noValueCheck();
     
@@ -61,23 +61,17 @@ if (isset($_SESSION['profile_request']) && strpos($gNavigation->getUrl(), 'decla
         $registrationOrgId = $_SESSION['profile_request']['reg_org_id'];
     }
     unset($_SESSION['profile_request']);
+    unset($_SESSION['pDeclarationOfMembership']['saved']);
 }
 
-$gNavigation->clear();
-
-// save this url to navigation stack
 if (!StringUtils::strContains($gNavigation->getUrl(), 'declaration_of_membership.php'))
 {
-    $gNavigation->addUrl(CURRENT_URL);
+    $gNavigation->addStartUrl(CURRENT_URL, $headline);
 }
 
 // create html page object
 $page = new HtmlPage('plg-declaration-of-membership', $headline);
 
-$html = '<p align="right"> <a class="admidio-icon-link openPopup" href="javascript:void(0);"
-                data-href="'.SecurityUtils::encodeUrl(ADMIDIO_URL.FOLDER_PLUGINS . PLUGIN_FOLDER .'/declaration_popup_info.php').'">'.
-                '<i class="fas fa-info" data-toggle="tooltip" title="' . $gL10n->get('SYS_INFORMATIONS') . '"></i></a></p>';
-$page->addHtml($html);
 $page->addJavascriptFile(ADMIDIO_URL . FOLDER_LIBS_CLIENT . '/zxcvbn/dist/zxcvbn.js');
 
 if (isUserAuthorizedForPreferences())
@@ -88,6 +82,14 @@ if (isUserAuthorizedForPreferences())
 
 // create html form
 $form = new HtmlForm('edit_profile_form', SecurityUtils::encodeUrl(ADMIDIO_URL . FOLDER_PLUGINS . PLUGIN_FOLDER .'/declaration_save.php'), $page);
+
+// icon-link to info
+$html = '<p align="right">
+            <a class="admidio-icon-link openPopup" href="javascript:void(0);" data-href="'.SecurityUtils::encodeUrl(ADMIDIO_URL.FOLDER_PLUGINS . PLUGIN_FOLDER .'/declaration_popup_info.php').'">'.'
+                <i class="fas fa-info-circle" data-toggle="tooltip" title="' . $gL10n->get('SYS_INFORMATIONS') . '"></i>
+            </a>
+        </p>';
+$form->addDescription($html);
 
 if (strlen($pPreferences->config['registration_org']['org_id']) == 0)
 {

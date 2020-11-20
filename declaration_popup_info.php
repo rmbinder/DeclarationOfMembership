@@ -35,7 +35,7 @@ $form->addHtml('
     </div>
     <div class="modal-body">
     ');
-$form->addStaticControl('plg_name', $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_PLUGIN_NAME'), $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_HEADLINE'));
+$form->addStaticControl('plg_name', $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_PLUGIN_NAME'), $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_HEADLINE').' (DeclarationOfMembership)');
 $form->addStaticControl('plg_version', $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_PLUGIN_VERSION'), $pPreferences->config['Plugininformationen']['version']);
 $form->addStaticControl('plg_date', $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_PLUGIN_DATE'), $pPreferences->config['Plugininformationen']['stand']);
 $html = '<a class="icon-text-link" href="documentation.pdf" target="_blank"><i class="fas fa-file-pdf"></i> '.$gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_DOCUMENTATION_OPEN').'</a>';
