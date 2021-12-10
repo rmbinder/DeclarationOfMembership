@@ -10,8 +10,6 @@
  ***********************************************************************************************
  */
 
-global $gL10n, $gCurrentOrganization;
-
 //Standardwerte einer Neuinstallation
 $config_default['main_texts']  = array();
 $config_default['cat_texts']   = array();
@@ -20,14 +18,14 @@ $config_default['field_texts'] = array();
 $config_default['fields'] = array('profile_fields'  => array(''),
                                   'required_fields' => array(''));
 
-$config_default['registration_org']['org_id'] = $gCurrentOrganization->getValue('org_id');
+$config_default['registration_org']['org_id'] = $GLOBALS['gCurrentOrganization']->getValue('org_id');
 
 // Plugininformationen
 $config_default['Plugininformationen']['version'] = '';
 $config_default['Plugininformationen']['stand'] = '';
 
 //Zugriffsberechtigung für das Modul preferences
-$config_default['access']['preferences'] = array(getRole_IDPDM($gL10n->get('SYS_ADMINISTRATOR')));
+$config_default['access']['preferences'] = array(getRole_IDPDM($GLOBALS['gL10n']->get('SYS_ADMINISTRATOR')));
 
 /*
  *  Mittels dieser Zeichenkombination werden Konfigurationsdaten, die zur Laufzeit als Array verwaltet werden,

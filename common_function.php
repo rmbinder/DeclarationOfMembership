@@ -17,11 +17,6 @@ if(!defined('PLUGIN_FOLDER'))
 	define('PLUGIN_FOLDER', '/'.substr(__DIR__,strrpos(__DIR__,DIRECTORY_SEPARATOR)+1));
 }
 
-if(!defined('ORG_ID'))
-{
-	define('ORG_ID', (int) $gCurrentOrganization->getValue('org_id'));
-}
-
 /**
  * Funktion prueft, ob der Nutzer berechtigt ist, das Modul Preferences aufzurufen.
  * @param   none
@@ -29,11 +24,11 @@ if(!defined('ORG_ID'))
  */
 function isUserAuthorizedForPreferences()
 {
-    global $gCurrentUser, $pPreferences;
+    global $pPreferences;
     
     $userIsAuthorized = false;
     
-    if ($gCurrentUser->isAdministrator())                   // Mitglieder der Rolle Administrator dürfen "Preferences" immer aufrufen
+    if ($GLOBALS['gCurrentUser']->isAdministrator())                   // Mitglieder der Rolle Administrator dürfen "Preferences" immer aufrufen
     {
         $userIsAuthorized = true;
     }
@@ -41,7 +36,7 @@ function isUserAuthorizedForPreferences()
     {
         foreach ($pPreferences->config['access']['preferences'] as $roleId)
         {
-            if ($gCurrentUser->isMemberOfRole((int) $roleId))
+            if ($GLOBALS['gCurrentUser']->isMemberOfRole((int) $roleId))
             {
                 $userIsAuthorized = true;
                 continue;
@@ -59,8 +54,6 @@ function isUserAuthorizedForPreferences()
  */
 function getRole_IDPDM($role_name)
 {
-    global $gDb;
-    
     $sql    = 'SELECT rol_id
                  FROM '. TBL_ROLES. ', '. TBL_CATEGORIES. '
                 WHERE rol_name   = \''.$role_name.'\'
@@ -69,7 +62,7 @@ function getRole_IDPDM($role_name)
                   AND ( cat_org_id = ?
                    OR cat_org_id IS NULL ) ';
     
-    $statement = $gDb->queryPrepared($sql, array(ORG_ID));
+    $statement = $GLOBALS['gDb']->queryPrepared($sql, array($GLOBALS['gCurrentOrgId']));
     $row = $statement->fetchObject();
     
     if (isset($row->rol_id) && strlen($row->rol_id) > 0)
