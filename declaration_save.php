@@ -5,7 +5,7 @@
  *
  * This is a modified profile_save.php
  *
- * @copyright 2004-2020 The Admidio Team
+ * @copyright 2004-2021 The Admidio Team
  * @see https://www.admidio.org/
  * @license https://www.gnu.org/licenses/gpl-2.0.html GNU General Public License v2.0 only
  *
@@ -162,10 +162,15 @@ catch(AdmException $e)
 
 $gDb->endTransaction();
 
-$gNavigation->clear();
-$_SESSION['pDeclarationOfMembership']['saved'] = true;
-
-$gMessage->setForwardYesNo($gHomepage);
-$gMessage->show($gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_SAVED'));
-
-
+if ($pPreferences->config['options']['kiosk_mode'])
+{
+    unset($_SESSION['profile_request']);
+    $gMessage->setForwardUrl($gNavigation->getPreviousUrl(), 2000);
+    $gMessage->show($gL10n->get('SYS_SAVE_DATA'));   
+}
+else
+{
+    $_SESSION['pDeclarationOfMembership']['saved'] = true;
+    $gMessage->setForwardYesNo($gHomepage);
+    $gMessage->show($gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_SAVED'));   
+}

@@ -3,7 +3,7 @@
  ***********************************************************************************************
  * Erzeugt das Einstellungen-Menue fuer das Admidio-Plugin DeclarationOfMembership
  *
- * @copyright 2004-2020 The Admidio Team
+ * @copyright 2004-2021 The Admidio Team
  * @see https://www.admidio.org/
  * @license https://www.gnu.org/licenses/gpl-2.0.html GNU General Public License v2.0 only
  *
@@ -220,6 +220,18 @@ $sql = 'SELECT org_id, org_longname
           FROM '.TBL_ORGANIZATIONS.'
       ORDER BY org_longname ASC, org_shortname ASC';
 $formOptions->addSelectBoxFromSql('org_id', $gL10n->get('SYS_ORGANIZATION'), $gDb, $sql, array('defaultValue' => $pPreferences->config['registration_org']['org_id'], 'helpTextIdInline' => 'PLG_DECLARATION_OF_MEMBERSHIP_ORGANIZATION_DESC'));
+
+$formOptions->addRadioButton(
+    'kiosk_mode',
+    $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_KIOSK_MODE'),
+    array(
+        0 => $gL10n->get('SYS_NO'),
+        1 => $gL10n->get('SYS_YES')
+    ),
+    array(
+        'defaultValue'     => $pPreferences->config['options']['kiosk_mode'], 
+        'helpTextIdInline' => 'PLG_DECLARATION_OF_MEMBERSHIP_KIOSK_MODE_DESC')
+    );
 
 $html = '<a id="deinstallation" class="icon-text-link" href="'. SecurityUtils::encodeUrl(ADMIDIO_URL . FOLDER_PLUGINS . PLUGIN_FOLDER .'/preferences_function.php', array('mode' => 2)).'">
     <i class="fas fa-trash-alt"></i> '.$gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_DEINST_LINK_TO').'</a>';
