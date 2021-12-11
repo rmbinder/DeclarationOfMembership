@@ -170,7 +170,6 @@ if ($pPreferences->config['options']['kiosk_mode'])
 }
 else
 {
-    $_SESSION['pDeclarationOfMembership']['saved'] = true;
     $gMessage->setForwardYesNo($gHomepage);
     $gMessage->show($gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_SAVED'));   
 }

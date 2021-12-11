@@ -44,7 +44,7 @@ $user = new User($gDb, $gProfileFields);
 $headline = $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_HEADLINE');
 
 // Formular wurde ueber "Nein"-Button aufgerufen, also alle Felder mit den vorherigen Werten fuellen
-if (isset($_SESSION['profile_request']) && isset($_SESSION['pDeclarationOfMembership']['saved']))
+if (isset($_SESSION['profile_request']) && StringUtils::strContains($gNavigation->getUrl(), 'declaration_save.php'))
 {
     $user->noValueCheck();
     
@@ -61,7 +61,6 @@ if (isset($_SESSION['profile_request']) && isset($_SESSION['pDeclarationOfMember
         $registrationOrgId = $_SESSION['profile_request']['reg_org_id'];
     }
     unset($_SESSION['profile_request']);
-    unset($_SESSION['pDeclarationOfMembership']['saved']);
 }
 
 if (!StringUtils::strContains($gNavigation->getUrl(), 'declaration_of_membership.php'))
