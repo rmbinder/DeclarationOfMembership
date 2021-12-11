@@ -121,7 +121,7 @@ foreach ($gProfileFields->getProfileFields() as $field)
         $findFields = true;
     }
     
-    // Kategorienwechsel den Kategorienheader anzeigen
+    // bei Kategorienwechsel den Kategorienheader anzeigen
     if ($category !== $field->getValue('cat_name') && $showField)
     {
         if ($category !== '')

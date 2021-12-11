@@ -18,7 +18,7 @@ $config_default['field_texts'] = array();
 $config_default['fields'] = array('profile_fields'  => array(''),
                                   'required_fields' => array(''));
 
-$config_default['registration_org']['org_id'] = $GLOBALS['gCurrentOrganization']->getValue('org_id');
+$config_default['registration_org']['org_id'] = $GLOBALS['gCurrentOrgId'];
 
 // Plugininformationen
 $config_default['Plugininformationen']['version'] = '';

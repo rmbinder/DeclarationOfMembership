@@ -26,7 +26,7 @@ $_SESSION['profile_request'] = $_POST;
 
 if (!isset($_POST['reg_org_id']))
 {
-    $_POST['reg_org_id'] = $gCurrentOrganization->getValue('org_id');
+    $_POST['reg_org_id'] = $gCurrentOrgId;
 }
 
 // add current url to navigation stack

@@ -225,7 +225,7 @@ class ConfigTablePDM
         
         //jetzt befinden sich im Arbeitsarray nur noch NICHT verwendete Einträge
         //die Abschnitte cat_texts und main_texts durchlaufen und nicht verwendete Einträge in der DB löschen
-        if (isset($this->config_work['cat_texts']))                //Sicherheitsüberprüfung: hat das beteffende Array überhaupt noch Einträge?
+        if (isset($this->config_work['cat_texts']))                //Sicherheitsüberprüfung: hat das betreffende Array überhaupt noch Einträge?
         {
             foreach ($this->config_work['cat_texts'] as $section => $dummy)
             {
@@ -235,7 +235,7 @@ class ConfigTablePDM
                 $GLOBALS['gDb']->queryPrepared($sql, array(self::$shortcut.'__cat_texts__'.$section, $GLOBALS['gCurrentOrgId']));
             }
         }
-        if (isset($this->config_work['main_texts']))                //Sicherheitsüberprüfung: hat das beteffende Array überhaupt noch Einträge?
+        if (isset($this->config_work['main_texts']))                //Sicherheitsüberprüfung: hat das betreffende Array überhaupt noch Einträge?
         {
             foreach ($this->config_work['main_texts'] as $section => $dummy)
             {

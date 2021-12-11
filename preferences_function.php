@@ -9,7 +9,7 @@
  *
  * Parameters:
  *
- * form         : The name of the form preferences that were submitted.
+ * form     : The name of the form preferences that were submitted.
  * 
  * mode     : 1 - Save preferences
  *            2 - show dialog for deinstallation
