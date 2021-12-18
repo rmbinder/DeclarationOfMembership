@@ -22,14 +22,14 @@ require_once(__DIR__ . '/../../adm_program/system/common.php');
 require_once(__DIR__ . '/common_function.php');
 require_once(__DIR__ . '/classes/configtable.php');
 
+$pPreferences = new ConfigTablePDM();
+$pPreferences->read();
+
 // only authorized user are allowed to start this module
-if (!$gCurrentUser->isAdministrator())
+if (!isUserAuthorizedForPreferences())
 {
     $gMessage->show($gL10n->get('SYS_NO_RIGHTS'));
 }
-
-$pPreferences = new ConfigTablePDM();
-$pPreferences->read();
 
 // Initialize and check the parameters
 $getMode = admFuncVariableIsValid($_GET, 'mode', 'numeric', array('defaultValue' => 1));
