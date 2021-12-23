@@ -233,12 +233,17 @@ $formOptions->addRadioButton(
         'helpTextIdInline' => 'PLG_DECLARATION_OF_MEMBERSHIP_KIOSK_MODE_DESC')
     );
 
-$html = '<a id="deinstallation" class="icon-text-link" href="'. SecurityUtils::encodeUrl(ADMIDIO_URL . FOLDER_PLUGINS . PLUGIN_FOLDER .'/preferences_function.php', array('mode' => 2)).'">
-    <i class="fas fa-trash-alt"></i> '.$gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_DEINST_LINK_TO').'</a>';
-$formOptions->addCustomContent($gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_DEINSTALLATION'), $html, array('helpTextIdInline' => 'PLG_DECLARATION_OF_MEMBERSHIP_DEINSTALLATION_DESC'));
 $formOptions->addSubmitButton('btn_save_configurations', $gL10n->get('SYS_SAVE'), array('icon' => 'fa-check', 'class' => ' offset-sm-3'));
 
 $page->addHtml(getPreferencePanel('common', 'options', $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_OPTIONS'), 'fas fa-cog', $formOptions->show()));
+
+// PANEL: DEINSTALLATION
+                             
+$formDeinstallation = new HtmlForm('deinstallation_form', SecurityUtils::encodeUrl(ADMIDIO_URL.FOLDER_PLUGINS . PLUGIN_FOLDER .'/preferences_function.php', array('mode' => 2)), $page);                     
+$formDeinstallation->addSubmitButton('btn_save_deinstallation', $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_DEINSTALLATION'), array('icon' => 'fa-trash-alt', 'class' => 'offset-sm-3'));
+$formDeinstallation->addCustomContent('', ''.$gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_DEINSTALLATION_DESC'));
+                   
+$page->addHtml(getPreferencePanel('common', 'deinstallation', $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_DEINSTALLATION'), 'fas fa-trash-alt', $formDeinstallation->show()));
                         
 // PANEL: ACCESS_PREFERENCES
                         
