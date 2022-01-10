@@ -48,38 +48,6 @@ function isUserAuthorizedForPreferences()
 }
 
 /**
- * Funktion liest die Role-ID einer Rolle aus
- * @param   string  $role_name Name der zu pruefenden Rolle
- * @return  int     rol_id  Rol_id der Rolle, 0, wenn nicht gefunden
- */
-function getRoleId($role_name)
-{
-    $sql = 'SELECT rol_id
-              FROM '. TBL_ROLES. ', '. TBL_CATEGORIES. '
-             WHERE rol_name  = ? -- $role_name
-               AND rol_valid  = 1
-               AND rol_cat_id = cat_id
-               AND ( cat_org_id = ? -- $$GLOBALS[\'gCurrentOrgId\']
-                OR cat_org_id IS NULL ) ';
-
-    $queryParams = array(
-	   $role_name,
-       $GLOBALS['gCurrentOrgId']);
-       
-    $statement = $GLOBALS['gDb']->queryPrepared($sql, $queryParams);
-                    
-    $row = $statement->fetchObject();
-    if (isset($row->rol_id) && strlen($row->rol_id) > 0)
-    {
-        return $row->rol_id;
-    }
-    else
-    {
-        return 0;
-    }
-}
-
-/**
  * Funktion sucht für html definierte Zeichen im übergebenen String und ersetzt sie
  * @param   string  $string Der übergebene String
  * @return  string  $ret String mit ersetzten Zeichen
