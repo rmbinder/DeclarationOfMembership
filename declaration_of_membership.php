@@ -62,10 +62,7 @@ if (isset($_SESSION['profile_request']) && StringUtils::strContains($gNavigation
     unset($_SESSION['profile_request']);
 }
 
-if (!StringUtils::strContains($gNavigation->getUrl(), 'declaration_of_membership.php'))
-{
-    $gNavigation->addStartUrl(CURRENT_URL, $headline);
-}
+$gNavigation->addStartUrl(CURRENT_URL, $headline, 'fa-user-plus');
 
 // create html page object
 $page = new HtmlPage('plg-declaration-of-membership', $headline);
