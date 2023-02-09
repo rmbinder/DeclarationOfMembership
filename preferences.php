@@ -30,11 +30,11 @@ if (!isUserAuthorizedForPreferences())
     $gMessage->show($gL10n->get('SYS_NO_RIGHTS'));
 }
 
-$headline = $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_HEADLINE');
+$headline = $gL10n->get('SYS_SETTINGS');
 
 if (!StringUtils::strContains($gNavigation->getUrl(), 'preferences.php'))
 {
-    $gNavigation->addUrl(CURRENT_URL);
+    $gNavigation->addUrl(CURRENT_URL, $headline);
 }
 
 // create html page object

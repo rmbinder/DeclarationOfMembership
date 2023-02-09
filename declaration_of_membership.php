@@ -3,14 +3,14 @@
  ***********************************************************************************************
  * DeclarationOfMembership (ONLINE-Beitrittserklärung)
  *
- * Version 2.1.0
+ * Version 2.2.0-Beta 1
  *
  * This plugin creates an online - declaration of membership.
  * 
  *
  * Author: rmb
  *
- * Compatible with Admidio version 4.1
+ * Compatible with Admidio version 4.2
  *
  * @copyright 2004-2023 The Admidio Team
  * @see https://www.admidio.org/
