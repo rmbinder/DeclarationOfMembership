@@ -29,8 +29,10 @@ if (!isset($_POST['reg_org_id']))
     $_POST['reg_org_id'] = $gCurrentOrgId;
 }
 
+$headline = $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_COMPLETE_ENTRY');
+
 // add current url to navigation stack
-$gNavigation->addUrl(CURRENT_URL);
+$gNavigation->addUrl(CURRENT_URL, $headline);
 
 $user = new UserRegistration($gDb, $gProfileFields);
 $user->setOrganization((int) $_POST['reg_org_id']);

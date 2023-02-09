@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_ACCESS_PREFERENCES">Access permission for preferences</string>
-    <string name="PLG_DECLARATION_OF_MEMBERSHIP_ACCESS_PREFERENCES_DESC">Here, in addition to the role "Administrator", you can authorize additional roles for access to the "Preferences" module.</string>       
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_ACCESS_PREFERENCES_DESC">Here, in addition to the role "Administrator", you can authorize additional roles for access to the "Preferences" module.</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_COMPLETE_ENTRY">Complete entry</string>       
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_DEINST_ACTORGONLY">Delete only data of the current organization.</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_DEINST_ALLORG">Delete data in all organizations.</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_DEINST_DATA_DELETE_ERROR">- When you delete the data, an error has occurred.\n</string>

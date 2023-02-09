@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_ACCESS_PREFERENCES">Zugriffsberechtigung für Einstellungen</string>
-    <string name="PLG_DECLARATION_OF_MEMBERSHIP_ACCESS_PREFERENCES_DESC">Hier kann man, zusätzlich zur Rolle "Administrator", weitere Rollen für den Zugriff auf das Modul "Einstellungen" berechtigen.</string>     
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_ACCESS_PREFERENCES_DESC">Hier kann man, zusätzlich zur Rolle "Administrator", weitere Rollen für den Zugriff auf das Modul "Einstellungen" berechtigen.</string> 
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_COMPLETE_ENTRY">Eingabe abschließen</string>       
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_DEINST_ACTORGONLY">Nur Daten der aktuellen Organisation löschen.</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_DEINST_ALLORG">Daten in allen Organisationen löschen.</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_DEINST_DATA_DELETE_ERROR">- Beim Löschen der Daten ist ein Fehler aufgetreten.\n</string>
