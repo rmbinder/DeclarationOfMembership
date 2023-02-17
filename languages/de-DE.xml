@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_ACCESS_PREFERENCES">Zugriffsberechtigung für Einstellungen</string>
-    <string name="PLG_DECLARATION_OF_MEMBERSHIP_ACCESS_PREFERENCES_DESC">Hier kann man, zusätzlich zur Rolle "Administrator", weitere Rollen für den Zugriff auf das Modul "Einstellungen" berechtigen.</string> 
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_ACCESS_PREFERENCES_DESC">Hier kann man, zusätzlich zur Rolle "Administrator", weitere Rollen für den Zugriff auf das Modul "Einstellungen" berechtigen.</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_ACCESS_TO_MODULE_AUTOREPLYMAIL">Zugriff auf das Modul "Automatische Antwortmail"</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_ACCESS_TO_MODULE_AUTOREPLYMAIL_DESC">Das Modul kann über diese Einstellung komplett deaktiviert werden (Standard: Deaktiviert).</string>    
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_AUTOREPLYMAIL">Automatische Antwortmail</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_AUTOREPLYMAIL_DESC">Wenn das Modul "Automatische Antwortmail" aktiviert ist, wird bei jeder eingegangenen Beitrittserklärung die nachfolgende E-Mail an das neue Mitglied versendet. Folgende Variablen werden dabei ersetzt: #user_first_name#, #user_last_name#, #organization_name# und #organization_shortname#.</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_AUTOREPLYMAIL_INFO">Für eine "Automatische Antwortmail" müssen sowohl Sendeadresse ("Absender E-Mail" und/oder "Administrator E-Mail"), als und Empfangsadresse (E-Mail des neu registrierten Mitglieds) vorhanden sein.</string> 
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_COMPLETE_ENTRY">Eingabe abschließen</string>      
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_DEINST_ACTORGONLY">Nur Daten der aktuellen Organisation löschen.</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_DEINST_ALLORG">Daten in allen Organisationen löschen.</string>

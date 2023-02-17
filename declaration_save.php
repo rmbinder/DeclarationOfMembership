@@ -153,6 +153,38 @@ $gDb->startTransaction();
 try
 {
     $user->save();
+    
+    //eine automatische Antwortmail nur senden, wenn
+    // 1. das emtsprechende Modul aktiviert ist
+    // und 2., wenn entwender eine "Absender E-Mail" oder eine "Administrator E-Mail" definiert ist
+    if ($pPreferences->config['emailnotification']['access_to_module']
+        && ((strlen($gSettingsManager->getString('mail_sendmail_address')) > 0) || (strlen($gSettingsManager->getString('email_administrator')) > 0)))
+    {
+        $senderEmail = $gSettingsManager->getString('email_administrator');
+        $senderName = $gCurrentOrganization->getValue('org_longname');
+        $receiverEmail = $user->getValue('EMAIL');
+        $receiverName = $user->getValue('FIRST_NAME').' '.$user->getValue('LAST_NAME');
+        $msg_subject = $pPreferences->config['emailnotification']['msg_subject'];
+        $msg_body = $pPreferences->config['emailnotification']['msg_body'];
+        
+        $email = new Email();
+        $email->setSender($senderEmail, $senderName);
+        $email->addRecipient($receiverEmail, $receiverName);
+        $email->setSubject($msg_subject);
+        
+        // replace parameters in email text
+        $replaces = array(
+            '#user_first_name#'         => $user->getValue('FIRST_NAME'),
+            '#user_last_name#'          => $user->getValue('LAST_NAME'),
+            '#organization_name#'       => $gCurrentOrganization->getValue('org_longname'),
+            '#organization_shortname#'  => $gCurrentOrganization->getValue('org_shortname')
+        );
+        $msg_body = StringUtils::strMultiReplace($msg_body, $replaces);
+        
+        $email->setText($msg_body);
+        $email->setHtmlMail();
+        $email->sendEmail();
+    }
 }
 catch(AdmException $e)
 {

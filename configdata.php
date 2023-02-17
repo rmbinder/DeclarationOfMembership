@@ -27,6 +27,12 @@ $config_default['Plugininformationen']['stand'] = '';
 //Zugriffsberechtigung für das Modul preferences
 $config_default['access']['preferences'] = array();
 
+$config_default['emailnotification'] = array(
+    'access_to_module' => '0',
+    'msg_subject'      => '',
+    'msg_body'         => ''
+);
+
 $config_default['options']['kiosk_mode'] = 0;
 
 /*

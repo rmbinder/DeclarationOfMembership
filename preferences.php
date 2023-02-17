@@ -237,6 +237,29 @@ $formOptions->addSubmitButton('btn_save_configurations', $gL10n->get('SYS_SAVE')
 
 $page->addHtml(getPreferencePanel('common', 'options', $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_OPTIONS'), 'fas fa-cog', $formOptions->show()));
 
+// PANEL: AUTO-REPLY MAIL
+
+$formEmailnotification = new HtmlForm('emailnotification_form', SecurityUtils::encodeUrl(ADMIDIO_URL . FOLDER_PLUGINS . PLUGIN_FOLDER .'/preferences_function.php', array('form' => 'emailnotification')), $page);
+
+$selectBoxEntries = array(
+    '0' => $gL10n->get('SYS_DISABLED'),
+    '1' => $gL10n->get('SYS_ENABLED'));
+$formEmailnotification->addSelectBox(
+    'enable_emailnotification', $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_ACCESS_TO_MODULE_AUTOREPLYMAIL'), $selectBoxEntries,
+    array('defaultValue' => $pPreferences->config['emailnotification']['access_to_module'], 'showContextDependentFirstEntry' => false, 'helpTextIdInline' => 'PLG_DECLARATION_OF_MEMBERSHIP_ACCESS_TO_MODULE_AUTOREPLYMAIL_DESC'));
+
+if ($pPreferences->config['emailnotification']['access_to_module'])
+{
+    $formEmailnotification->addDescription($gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_AUTOREPLYMAIL_DESC'));
+    
+    $formEmailnotification->addInput('msg_subject', $gL10n->get('SYS_SUBJECT'), $pPreferences->config['emailnotification']['msg_subject'], array('maxLength' => 77, 'helpTextIdLabel' => 'PLG_DECLARATION_OF_MEMBERSHIP_AUTOREPLYMAIL_INFO', 'property' => HtmlForm::FIELD_REQUIRED));
+    $formEmailnotification->addEditor('msg_body', '', $pPreferences->config['emailnotification']['msg_body'], array('property' => HtmlForm::FIELD_REQUIRED));
+}
+
+$formEmailnotification->addSubmitButton('btn_save_configurations', $gL10n->get('SYS_SAVE'), array('icon' => 'fa-check', 'class' => ' offset-sm-3'));
+
+$page->addHtml(getPreferencePanel('common', 'emailnotification', $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_AUTOREPLYMAIL'), 'fas fa-envelope', $formEmailnotification->show()));
+
 // PANEL: DEINSTALLATION
                              
 $formDeinstallation = new HtmlForm('deinstallation_form', SecurityUtils::encodeUrl(ADMIDIO_URL.FOLDER_PLUGINS . PLUGIN_FOLDER .'/preferences_function.php', array('mode' => 2)), $page);                     
@@ -264,5 +287,5 @@ $page->addHtml('
         </div>
     </div>
 </div>');
-                        
+
 $page->show();

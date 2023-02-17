@@ -2,6 +2,11 @@
 <resources>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_ACCESS_PREFERENCES">Access permission for preferences</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_ACCESS_PREFERENCES_DESC">Here, in addition to the role "Administrator", you can authorize additional roles for access to the "Preferences" module.</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_ACCESS_TO_MODULE_AUTOREPLYMAIL">Access to the "Auto-reply mail" module</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_ACCESS_TO_MODULE_AUTOREPLYMAIL_DESC">The module can be completely deactivated via this setting (default: deactivated).</string>    
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_AUTOREPLYMAIL">Auto-reply mail</string> 
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_AUTOREPLYMAIL_DESC">If the "Auto-reply mail" module is activated, the following e-mail will be sent to the new member for each incoming membership declaration. The following variables are replaced: #user_first_name#, #user_last_name#, #organization_name# and #organization_shortname#.</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_AUTOREPLYMAIL_INFO">For an "Auto-reply mail" both the sending address ("Sender email" and/or "Email Administrator") and the receiving address (email of the newly registered member) must be available.</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_COMPLETE_ENTRY">Complete entry</string>       
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_DEINST_ACTORGONLY">Delete only data of the current organization.</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_DEINST_ALLORG">Delete data in all organizations.</string>

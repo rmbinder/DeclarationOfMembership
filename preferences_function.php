@@ -36,7 +36,7 @@ $getMode = admFuncVariableIsValid($_GET, 'mode', 'numeric', array('defaultValue'
 $getForm = admFuncVariableIsValid($_GET, 'form', 'string');
 
 // in ajax mode only return simple text on error
-if ($getMode == 1)
+if ($getMode == 1 && $getForm != 'emailnotification')
 {
     $gMessage->showHtmlTextOnly(true);
 }
@@ -100,6 +100,23 @@ switch ($getMode)
                 }
                 break;
                 
+            case 'emailnotification':
+                $pPreferences->config['emailnotification']['access_to_module'] = $_POST['enable_emailnotification'];
+                    
+                if (isset($_POST['msg_subject']))
+                {
+                    $pPreferences->config['emailnotification']['msg_subject'] = $_POST['msg_subject'];
+                }
+                if (isset($_POST['msg_body']))
+                {
+                    $pPreferences->config['emailnotification']['msg_body'] = $_POST['msg_body'];
+                }
+                $pPreferences->save();
+                    
+                $gMessage->setForwardUrl(ADMIDIO_URL . FOLDER_PLUGINS . PLUGIN_FOLDER .'/preferences.php', 1000);
+                $gMessage->show($gL10n->get('SYS_SAVE_DATA'));
+                break;
+                
             case 'access_preferences':
                 if (isset($_POST['access_preferences']))
                 {
@@ -127,7 +144,7 @@ switch ($getMode)
 
     $pPreferences->save();
     echo $ret_message;
-break;
+    break;
 
     case 2:
         
