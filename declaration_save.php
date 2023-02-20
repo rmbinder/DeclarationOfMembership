@@ -122,7 +122,7 @@ foreach ($gProfileFields->getProfileFields() as $field)
             {
                 $user->setValue($field->getValue('usf_name_intern'), '0');
             }
-            elseif ($field->getValue('usf_mandatory') == 1)
+            elseif ($field->getValue('usf_required_input') == 1)
             {
                 $gMessage->show($gL10n->get('SYS_FIELD_EMPTY', array($field->getValue('usf_name'))));
                 // => EXIT

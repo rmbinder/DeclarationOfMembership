@@ -210,7 +210,7 @@ foreach ($gProfileFields->getProfileFields() as $field)
         elseif ($gProfileFields->getProperty($usfNameIntern, 'usf_type') === 'RADIO_BUTTON')
         {
             $showDummyRadioButton = false;
-            if ($gProfileFields->getProperty($usfNameIntern, 'usf_mandatory') == 0)
+            if ($gProfileFields->getProperty($usfNameIntern, 'usf_required_input') == 0)
             {
                 $showDummyRadioButton = true;
             }
