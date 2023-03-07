@@ -3,7 +3,7 @@
  ***********************************************************************************************
  * DeclarationOfMembership (ONLINE-Beitrittserklärung)
  *
- * Version 2.2.0-Beta 1
+ * Version 2.2.0
  *
  * This plugin creates an online - declaration of membership.
  * 
