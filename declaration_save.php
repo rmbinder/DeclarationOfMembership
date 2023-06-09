@@ -131,19 +131,46 @@ foreach ($gProfileFields->getProfileFields() as $field)
     }
 }
 
-    // At user registration with activated captcha check the captcha input
-    if ($gSettingsManager->getBool('enable_registration_captcha'))
+//User-Login-Name nur prüfen und speichern, wenn er auch abgefragt wurde
+if ($pPreferences->config['usr_login_name']['displayed'])
+{
+    if ($_POST['usr_login_name'] !== $user->getValue('usr_login_name')) 
     {
-        try
+        if (strlen($_POST['usr_login_name']) > 0) 
         {
-            FormValidation::checkCaptcha($_POST['captcha_code']);
+            // check if the username is already assigned
+            $sql = 'SELECT usr_uuid
+                      FROM '.TBL_USERS.'
+                     WHERE usr_login_name = ?';
+            $pdoStatement = $gDb->queryPrepared($sql, array($_POST['usr_login_name']));
+            
+            if ($pdoStatement->rowCount() > 0 ) 
+            {
+                $gMessage->show($gL10n->get('PRO_LOGIN_NAME_EXIST'));
+                // => EXIT
+            }
         }
-        catch(AdmException $e)
-        {
-            $e->showHtml();
+        
+        if (!$user->setValue('usr_login_name', $_POST['usr_login_name'])) {
+            $gMessage->show($gL10n->get('SYS_FIELD_INVALID_CHAR', array($gL10n->get('SYS_USERNAME'))));
             // => EXIT
         }
     }
+}
+
+// At user registration with activated captcha check the captcha input
+if ($gSettingsManager->getBool('enable_registration_captcha'))
+{
+    try
+    {
+        FormValidation::checkCaptcha($_POST['captcha_code']);
+    }
+    catch(AdmException $e)
+    {
+        $e->showHtml();
+        // => EXIT
+    }
+}
 
 /*------------------------------------------------------------*/
 // Save user data to database

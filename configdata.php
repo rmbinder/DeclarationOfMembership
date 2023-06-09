@@ -35,6 +35,10 @@ $config_default['emailnotification'] = array(
 
 $config_default['options']['kiosk_mode'] = 0;
 
+$config_default['usr_login_name'] = array('displayed' => '0',
+                                          'required'  => '0',
+                                          'fieldtext' => '');
+
 /*
  *  Mittels dieser Zeichenkombination werden Konfigurationsdaten, die zur Laufzeit als Array verwaltet werden,
  *  zu einem String zusammengefasst und in der Admidiodatenbank gespeichert.

@@ -3,7 +3,7 @@
  ***********************************************************************************************
  * DeclarationOfMembership (ONLINE-Beitrittserklärung)
  *
- * Version 2.2.0
+ * Version 2.2.1
  *
  * This plugin creates an online - declaration of membership.
  * 
@@ -138,6 +138,27 @@ foreach ($gProfileFields->getProfileFields() as $field)
         if (isset($pPreferences->config['cat_texts'][$field->getValue('cat_id').'_pretext']))
         {
             $form->addDescription(create_html($pPreferences->config['cat_texts'][$field->getValue('cat_id').'_pretext']));        
+        }
+        
+        if ($field->getValue('cat_name') === $gL10n->get('SYS_BASIC_DATA') && $pPreferences->config['usr_login_name']['displayed'])
+        {
+            $fieldProperty = HtmlForm::FIELD_DEFAULT;
+            
+            if ($pPreferences->config['usr_login_name']['required'])
+            {
+                $fieldProperty = HtmlForm::FIELD_REQUIRED;
+            }
+            $form->addInput(
+                'usr_login_name',
+                $gL10n->get('SYS_USERNAME'),
+                '',
+                array('maxLength' => 254, 'property' => $fieldProperty, 'class' => 'form-control-small')
+                );
+            if (isset($pPreferences->config['usr_login_name']['fieldtext']))
+            {
+                $form->addCustomContent('', create_html($pPreferences->config['usr_login_name']['fieldtext']));
+            }
+            $form->addLine();
         }
     }
     

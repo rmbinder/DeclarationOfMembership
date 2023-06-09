@@ -71,6 +71,9 @@ switch ($getMode)
                 {
                     $pPreferences->config['main_texts']['main_posttext'] = $_POST['main_posttext'];
                 }
+                
+                $pPreferences->config['usr_login_name']['displayed'] = isset($_POST['usr_login_name']) ? 1 : 0;
+                
                 $ret_message = 'refresh';
                 break;
 
@@ -98,6 +101,9 @@ switch ($getMode)
                         $pPreferences->config['field_texts'][$field->getValue('usf_id'). '_fieldtext'] = $_POST[$field->getValue('usf_id'). '_fieldtext'];
                     }
                 }
+                $pPreferences->config['usr_login_name']['required'] = isset($_POST['usr_login_name_rqd']) ? 1 : 0;
+                $pPreferences->config['usr_login_name']['fieldtext'] = $_POST['usr_login_name_fieldtext'];
+                
                 break;
                 
             case 'emailnotification':

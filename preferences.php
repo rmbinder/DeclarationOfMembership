@@ -156,6 +156,12 @@ foreach ($gProfileFields->getProfileFields() as $field)
         }
         $category = $cat_name;
         $formDisplayedFields->openGroupBox($cat_id, $category);
+
+        if ($category === $gL10n->get('SYS_BASIC_DATA'))
+        {
+            $formDisplayedFields->addCheckbox('usr_login_name', $gL10n->get('SYS_USERNAME'),  $pPreferences->config['usr_login_name']['displayed']);
+            $formDisplayedFields->addLine();
+        }
     }
     $formDisplayedFields->addCheckbox($usf_id, $field->getValue('usf_name'), (in_array($usf_id, $pPreferences->config['fields']['profile_fields']) ? 1 : 0));
 }
@@ -164,7 +170,6 @@ $formDisplayedFields->addDescription('</div>');
 $formDisplayedFields->addLine();
 $formDisplayedFields->addMultilineTextInput('main_posttext', $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_POSTTEXT'), (isset($pPreferences->config['main_texts']['main_posttext']) ? $pPreferences->config['main_texts']['main_posttext'] : '' ), 3);
 $formDisplayedFields->addSubmitButton('btn_save_configurations', $gL10n->get('SYS_SAVE'), array('icon' => 'fa-check', 'class' => ' offset-sm-3'));
-
 
 $page->addHtml(getPreferencePanel('common', 'displayed_fields', $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_DISPLAYED_FIELDS'), 'fas fa-cogs', $formDisplayedFields->show()));
                         
@@ -196,6 +201,12 @@ foreach ($gProfileFields->getProfileFields() as $field)
             $category = $cat_name;
             $formRequiredFields->openGroupBox($cat_id, $category);
             $formRequiredFields->addMultilineTextInput($cat_id.'_pretext', $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_PRETEXT'), (isset($pPreferences->config['cat_texts'][$cat_id.'_pretext']) ? $pPreferences->config['cat_texts'][$cat_id.'_pretext'] : '' ), 3);  
+
+            if ($category === $gL10n->get('SYS_BASIC_DATA') && $pPreferences->config['usr_login_name']['displayed'])
+            {
+                $formRequiredFields->addCheckbox('usr_login_name_rqd', $gL10n->get('SYS_USERNAME'),  $pPreferences->config['usr_login_name']['required']);
+                $formRequiredFields->addMultilineTextInput('usr_login_name_fieldtext', $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_FIELDTEXT'), (isset($pPreferences->config['usr_login_name']['fieldtext']) ? $pPreferences->config['usr_login_name']['fieldtext'] : '' ), 1);
+            }
         }
         $formRequiredFields->addCheckbox('rqd-'.$usf_id, $field->getValue('usf_name'), (in_array($usf_id, $pPreferences->config['fields']['required_fields']) ? 1 : 0));
         $formRequiredFields->addMultilineTextInput($usf_id.'_fieldtext', $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_FIELDTEXT'), (isset($pPreferences->config['field_texts'][$usf_id.'_fieldtext']) ? $pPreferences->config['field_texts'][$usf_id.'_fieldtext'] : '' ), 1);
