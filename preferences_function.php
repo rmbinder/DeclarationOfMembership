@@ -102,8 +102,10 @@ switch ($getMode)
                     }
                 }
                 $pPreferences->config['usr_login_name']['required'] = isset($_POST['usr_login_name_rqd']) ? 1 : 0;
-                $pPreferences->config['usr_login_name']['fieldtext'] = $_POST['usr_login_name_fieldtext'];
-                
+                if (isset($_POST['usr_login_name_fieldtext']))
+                {
+                    $pPreferences->config['usr_login_name']['fieldtext'] = $_POST['usr_login_name_fieldtext'];
+                }
                 break;
                 
             case 'emailnotification':
