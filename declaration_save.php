@@ -180,6 +180,7 @@ $gDb->startTransaction();
 try
 {
     $user->save();
+    $user->notifyAuthorizedMembers();
     
     //eine automatische Antwortmail nur senden, wenn
     // 1. das emtsprechende Modul aktiviert ist
