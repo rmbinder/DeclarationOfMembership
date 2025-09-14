@@ -14,6 +14,10 @@
  ***********************************************************************************************
  */
 
+use Admidio\Infrastructure\Email;
+use Admidio\Infrastructure\Utils\StringUtils;
+use Admidio\Users\Entity\UserRegistration;
+
 require_once(__DIR__ . '/../../system/common.php');
 require_once(__DIR__ . '/common_function.php');
 require_once(__DIR__ . '/classes/configtable.php');
