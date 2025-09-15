@@ -71,7 +71,7 @@ $gNavigation->addStartUrl(CURRENT_URL, $headline, 'fa-user-plus');
 // create html page object
 $page = new HtmlPage('plg-declaration-of-membership', $headline);
 
-$page->addJavascriptFile(ADMIDIO_URL . FOLDER_LIBS_CLIENT . '/zxcvbn/dist/zxcvbn.js');
+$page->addJavascriptFile(ADMIDIO_URL . FOLDER_LIBS . '/zxcvbn/dist/zxcvbn.js');
 
 if (isUserAuthorizedForPreferences())
 {
@@ -197,8 +197,8 @@ foreach ($gProfileFields->getProfileFields() as $field)
                 )
             );
         }
-        elseif ($gProfileFields->getProperty($usfNameIntern, 'usf_type') === 'DROPDOWN' || $usfNameIntern === 'COUNTRY')
-        {
+        elseif ($gProfileFields->getProperty($usfNameIntern, 'usf_type') === 'DROPDOWN' || $gProfileFields->getProperty($usfNameIntern, 'usf_type') === 'DROPDOWN_MULTISELECT' || $usfNameIntern === 'COUNTRY')
+        {           
             // set array with values and set default value
             if ($usfNameIntern === 'COUNTRY')
             {
@@ -216,8 +216,13 @@ foreach ($gProfileFields->getProfileFields() as $field)
             }
             else
             {
-                $arrListValues = $gProfileFields->getProperty($usfNameIntern, 'usf_value_list');
-                $defaultValue  = $user->getValue($usfNameIntern, 'database');
+                $arrListValues = $gProfileFields->getProperty($usfNameIntern, 'ufo_usf_options', '', false);
+                $defaultValue = $user->getValue($usfNameIntern, 'database');
+                // if the field is a dropdown multiselect then convert the values to an array
+                if ($gProfileFields->getProperty($usfNameIntern, 'usf_type') === 'DROPDOWN_MULTISELECT') {
+                    // prevent adding an empty string to the selectbox
+                    $defaultValue = ($defaultValue !== "") ? explode(',', $defaultValue) : array();
+                }
             }
             
             $form->addSelectBox(
@@ -225,10 +230,10 @@ foreach ($gProfileFields->getProfileFields() as $field)
                 $gProfileFields->getProperty($usfNameIntern, 'usf_name'),
                 $arrListValues,
                 array(
-                    'property'        => $fieldProperty,
-                    'defaultValue'    => $defaultValue,
-                    'helpTextIdLabel' => $helpId,
-                    'icon'            => $gProfileFields->getProperty($usfNameIntern, 'usf_icon', 'database')
+                    'property'     => $fieldProperty,
+                    'defaultValue' => $defaultValue,
+                    'helpTextId'   => $helpId,
+                    'icon'         => 'bi-' . $gProfileFields->getProperty($usfNameIntern, 'usf_icon', 'database')
                 )
             );
         }
@@ -239,11 +244,11 @@ foreach ($gProfileFields->getProfileFields() as $field)
             {
                 $showDummyRadioButton = true;
             }
-            
+
             $form->addRadioButton(
                 'usf-'.$gProfileFields->getProperty($usfNameIntern, 'usf_id'),
                 $gProfileFields->getProperty($usfNameIntern, 'usf_name'),
-                $gProfileFields->getProperty($usfNameIntern, 'usf_value_list'),
+                $gProfileFields->getProperty($usfNameIntern, 'ufo_usf_options', 'html', false),
                 array(
                     'property'          => $fieldProperty,
                     'defaultValue'      => $user->getValue($usfNameIntern, 'database'),
@@ -335,7 +340,7 @@ if ($findFields)
     $form->closeGroupBox();
 
     // if captchas are enabled then visitors of the website must resolve this
-    if ($gSettingsManager->getBool('enable_registration_captcha'))
+    if ($gSettingsManager->getBool('registration_enable_captcha'))
     {
         $form->openGroupBox('gb_confirmation_of_input', $gL10n->get('SYS_CONFIRMATION_OF_INPUT'));
         $form->addCaptcha('captcha_code');

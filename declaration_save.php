@@ -163,7 +163,7 @@ if ($pPreferences->config['usr_login_name']['displayed'])
 }
 
 // At user registration with activated captcha check the captcha input
-if ($gSettingsManager->getBool('enable_registration_captcha'))
+if ($gSettingsManager->getBool('registration_enable_captcha'))
 {
     try
     {
