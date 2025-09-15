@@ -160,6 +160,9 @@ switch ($getMode)
         
         $headline = $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_DEINSTALLATION');
         
+        // add current url to navigation stack
+        $gNavigation->addUrl(CURRENT_URL, $headline);
+        
         // create html page object
         $page = new HtmlPage('plg-declaration-of-membership-deinstallation', $headline);
         
