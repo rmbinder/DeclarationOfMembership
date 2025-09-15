@@ -66,7 +66,7 @@ if (isset($_SESSION['profile_request']) && StringUtils::strContains($gNavigation
     unset($_SESSION['profile_request']);
 }
 
-$gNavigation->addStartUrl(CURRENT_URL, $headline, 'fa-user-plus');
+$gNavigation->addStartUrl(CURRENT_URL, $headline, 'bi-person-fill-add');
 
 // create html page object
 $page = new HtmlPage('plg-declaration-of-membership', $headline);
@@ -76,7 +76,7 @@ $page->addJavascriptFile(ADMIDIO_URL . FOLDER_LIBS . '/zxcvbn/dist/zxcvbn.js');
 if (isUserAuthorizedForPreferences())
 {
     // show link to pluginpreferences
-    $page->addPageFunctionsMenuItem('admMenuItemPreferencesLists', $gL10n->get('SYS_SETTINGS'), SecurityUtils::encodeUrl(ADMIDIO_URL . FOLDER_PLUGINS . PLUGIN_FOLDER .'/preferences.php'),  'fa-cog');
+    $page->addPageFunctionsMenuItem('admMenuItemPreferencesLists', $gL10n->get('SYS_SETTINGS'), SecurityUtils::encodeUrl(ADMIDIO_URL . FOLDER_PLUGINS . PLUGIN_FOLDER .'/preferences.php'),  'bi-gear-fill');
 }
 
 // create html form
@@ -85,7 +85,7 @@ $form = new HtmlForm('edit_profile_form', SecurityUtils::encodeUrl(ADMIDIO_URL .
 // icon-link to info
 $html = '<p align="right">
             <a class="admidio-icon-link openPopup" href="javascript:void(0);" data-href="'.SecurityUtils::encodeUrl(ADMIDIO_URL.FOLDER_PLUGINS . PLUGIN_FOLDER .'/declaration_popup_info.php').'">'.'
-                <i class="fas fa-info-circle" data-toggle="tooltip" title="' . $gL10n->get('SYS_INFORMATIONS') . '"></i>
+                <i class="bi bi-info-circle" data-toggle="tooltip" title="' . $gL10n->get('SYS_INFORMATIONS') . '"></i>
             </a>
         </p>';
 $form->addDescription($html);
@@ -353,7 +353,7 @@ if ($findFields)
     }
     
     // Daten senden
-    $form->addSubmitButton('btn_save', $gL10n->get('SYS_SEND'), array('icon' => 'fa-paper-plane'));
+    $form->addSubmitButton('btn_save', $gL10n->get('SYS_SEND'), array('icon' => 'bi-send'));
 }
 
 $page->addHtml($form->show(false));

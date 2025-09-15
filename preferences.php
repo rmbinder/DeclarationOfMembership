@@ -79,7 +79,7 @@ $page->addJavascript('
                 if (data === "success" || data === "refresh") {
     
                     formAlert.attr("class", "alert alert-success form-alert");
-                    formAlert.html("<i class=\"fas fa-check\"></i><strong>'.$gL10n->get('SYS_SAVE_DATA').'</strong>");
+                    formAlert.html("<i class=\"bi bi-check-lg\"></i><strong>'.$gL10n->get('SYS_SAVE_DATA').'</strong>");
                     formAlert.fadeIn("slow");
                     formAlert.animate({opacity: 1.0}, 2500);
                     formAlert.fadeOut("slow");
@@ -89,7 +89,7 @@ $page->addJavascript('
                 } else {
                     formAlert.attr("class", "alert alert-danger form-alert");
                     formAlert.fadeIn();
-                    formAlert.html("<i class=\"fas fa-exclamation-circle\"></i>" + data);
+                    formAlert.html("<i class=\"bi bi-exclamation-circle\"></i>" + data);
                 }
             }
         });
@@ -111,7 +111,7 @@ function getPreferencePanel($group, $id, $title, $icon, $body)
         <div class="card" id="panel_' . $id . '">
             <div class="card-header">
                 <a type="button" data-bs-toggle="collapse" data-bs-target="#collapse_' . $id . '">
-                    <i class="' . $icon . ' fa-fw"></i>' . $title . '
+                    <i class="' . $icon . ' bi-fw"></i>' . $title . '
                 </a>
             </div>
             <div id="collapse_' . $id . '" class="collapse" aria-labelledby="headingOne" data-bs-parent="#accordion_preferences">
@@ -172,9 +172,9 @@ $formDisplayedFields->closeGroupBox();
 $formDisplayedFields->addDescription('</div>');
 $formDisplayedFields->addLine();
 $formDisplayedFields->addMultilineTextInput('main_posttext', $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_POSTTEXT'), (isset($pPreferences->config['main_texts']['main_posttext']) ? $pPreferences->config['main_texts']['main_posttext'] : '' ), 3);
-$formDisplayedFields->addSubmitButton('btn_save_configurations', $gL10n->get('SYS_SAVE'), array('icon' => 'fa-check', 'class' => ' offset-sm-3'));
+$formDisplayedFields->addSubmitButton('btn_save_configurations', $gL10n->get('SYS_SAVE'), array('icon' => 'bi-check-lg', 'class' => ' offset-sm-3'));
 
-$page->addHtml(getPreferencePanel('common', 'displayed_fields', $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_DISPLAYED_FIELDS'), 'fas fa-cogs', $formDisplayedFields->show()));
+$page->addHtml(getPreferencePanel('common', 'displayed_fields', $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_DISPLAYED_FIELDS'), 'bi bi-sliders2', $formDisplayedFields->show()));
                         
 // PANEL: REQUIRED_FIELDS
 
@@ -222,9 +222,9 @@ if ($findFields)
     $formRequiredFields->closeGroupBox();
 }
 
-$formRequiredFields->addSubmitButton('btn_save_configurations', $gL10n->get('SYS_SAVE'), array('icon' => 'fa-check', 'class' => ' offset-sm-3'));
+$formRequiredFields->addSubmitButton('btn_save_configurations', $gL10n->get('SYS_SAVE'), array('icon' => 'bi-check-lg', 'class' => ' offset-sm-3'));
 
-$page->addHtml(getPreferencePanel('common', 'required_fields', $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_REQUIRED_FIELDS'), 'fas fa-cogs', $formRequiredFields->show()));
+$page->addHtml(getPreferencePanel('common', 'required_fields', $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_REQUIRED_FIELDS'), 'bi bi-sliders2', $formRequiredFields->show()));
                         
 // PANEL: OPTIONS
 
@@ -247,9 +247,9 @@ $formOptions->addRadioButton(
         'helpTextId' => 'PLG_DECLARATION_OF_MEMBERSHIP_KIOSK_MODE_DESC')
     );
 
-$formOptions->addSubmitButton('btn_save_configurations', $gL10n->get('SYS_SAVE'), array('icon' => 'fa-check', 'class' => ' offset-sm-3'));
+$formOptions->addSubmitButton('btn_save_configurations', $gL10n->get('SYS_SAVE'), array('icon' => 'bi-check-lg', 'class' => ' offset-sm-3'));
 
-$page->addHtml(getPreferencePanel('common', 'options', $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_OPTIONS'), 'fas fa-cog', $formOptions->show()));
+$page->addHtml(getPreferencePanel('common', 'options', $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_OPTIONS'), 'bi bi-gear-fill', $formOptions->show()));
 
 // PANEL: AUTO-REPLY MAIL
 
@@ -270,17 +270,17 @@ if ($pPreferences->config['emailnotification']['access_to_module'])
     $formEmailnotification->addEditor('msg_body', '', $pPreferences->config['emailnotification']['msg_body'], array('property' => HtmlForm::FIELD_REQUIRED));
 }
 
-$formEmailnotification->addSubmitButton('btn_save_configurations', $gL10n->get('SYS_SAVE'), array('icon' => 'fa-check', 'class' => ' offset-sm-3'));
+$formEmailnotification->addSubmitButton('btn_save_configurations', $gL10n->get('SYS_SAVE'), array('icon' => 'bi-check-lg', 'class' => ' offset-sm-3'));
 
-$page->addHtml(getPreferencePanel('common', 'emailnotification', $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_AUTOREPLYMAIL'), 'fas fa-envelope', $formEmailnotification->show()));
+$page->addHtml(getPreferencePanel('common', 'emailnotification', $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_AUTOREPLYMAIL'), 'bi bi-envelope', $formEmailnotification->show()));
 
 // PANEL: DEINSTALLATION
                              
 $formDeinstallation = new HtmlForm('deinstallation_form', SecurityUtils::encodeUrl(ADMIDIO_URL.FOLDER_PLUGINS . PLUGIN_FOLDER .'/preferences_function.php', array('mode' => 2)), $page);                     
-$formDeinstallation->addSubmitButton('btn_save_deinstallation', $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_DEINSTALLATION'), array('icon' => 'fa-trash-alt', 'class' => 'offset-sm-3'));
+$formDeinstallation->addSubmitButton('btn_save_deinstallation', $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_DEINSTALLATION'), array('icon' => 'bi-trash', 'class' => 'offset-sm-3'));
 $formDeinstallation->addCustomContent('', ''.$gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_DEINSTALLATION_DESC'));
                    
-$page->addHtml(getPreferencePanel('common', 'deinstallation', $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_DEINSTALLATION'), 'fas fa-trash-alt', $formDeinstallation->show()));
+$page->addHtml(getPreferencePanel('common', 'deinstallation', $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_DEINSTALLATION'), 'bi bi-trash', $formDeinstallation->show()));
                         
 // PANEL: ACCESS_PREFERENCES
                         
@@ -293,9 +293,9 @@ $sql = 'SELECT rol.rol_id, rol.rol_name, cat.cat_name
             OR cat.cat_org_id IS NULL )
       ORDER BY cat_sequence, rol.rol_name ASC';
 $formAccessPreferences->addSelectBoxFromSql('access_preferences', '', $gDb, $sql, array('defaultValue' => $pPreferences->config['access']['preferences'], 'helpTextId' => 'PLG_DECLARATION_OF_MEMBERSHIP_ACCESS_PREFERENCES_DESC', 'multiselect' => true));
-$formAccessPreferences->addSubmitButton('btn_save_access_preferences', $gL10n->get('SYS_SAVE'), array('icon' => 'fa-check', 'class' => ' offset-sm-3'));
+$formAccessPreferences->addSubmitButton('btn_save_access_preferences', $gL10n->get('SYS_SAVE'), array('icon' => 'bi-check-lg', 'class' => ' offset-sm-3'));
 
-$page->addHtml(getPreferencePanel('common', 'access_preferences', $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_ACCESS_PREFERENCES'), 'fas fa-unlock', $formAccessPreferences->show()));
+$page->addHtml(getPreferencePanel('common', 'access_preferences', $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_ACCESS_PREFERENCES'), 'bi bi-key', $formAccessPreferences->show()));
                         
 $page->addHtml('
         </div>

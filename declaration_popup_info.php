@@ -41,7 +41,7 @@ $form->addStaticControl('plg_date', $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_P
 
 if (!$pPreferences->config['options']['kiosk_mode'])
 {
-    $html = '<a class="icon-text-link" href="documentation.pdf" target="_blank"><i class="fas fa-file-pdf"></i> '.$gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_DOCUMENTATION_OPEN').'</a>';
+    $html = '<a class="icon-text-link" href="documentation.pdf" target="_blank"><i class="bi bi-file-earmark-pdf"></i> '.$gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_DOCUMENTATION_OPEN').'</a>';
     $form->addCustomContent($gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_DOCUMENTATION'), $html);
 }
 
