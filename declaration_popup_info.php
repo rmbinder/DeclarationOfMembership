@@ -27,7 +27,7 @@ $page = new HtmlPage('plg-declaration-of-membership-info', $headline);
 
 header('Content-type: text/html; charset=utf-8');
 
-$form = new HtmlForm('plugin_informations_form', null, $page);
+$form = new HtmlForm('plugin_informations_form', '', $page);
 $form->addHtml('
     <div class="modal-header">
         <h3 class="modal-title">'.$headline.'</h3>
