@@ -192,7 +192,7 @@ foreach ($gProfileFields->getProfileFields() as $field)
                 (bool) $user->getValue($usfNameIntern),
                 array(
                     'property'        => $fieldProperty,
-                    'helpTextIdLabel' => $helpId,
+                    'helpTextId' => $helpId,
                     'icon'            => $gProfileFields->getProperty($usfNameIntern, 'usf_icon', 'database')
                 )
             );
@@ -253,7 +253,7 @@ foreach ($gProfileFields->getProfileFields() as $field)
                     'property'          => $fieldProperty,
                     'defaultValue'      => $user->getValue($usfNameIntern, 'database'),
                     'showNoValueButton' => $showDummyRadioButton,
-                    'helpTextIdLabel'   => $helpId,
+                    'helpTextId'   => $helpId,
                     'icon'              => $gProfileFields->getProperty($usfNameIntern, 'usf_icon', 'database')
                 )
             );
@@ -268,7 +268,7 @@ foreach ($gProfileFields->getProfileFields() as $field)
                 array(
                     'maxLength'       => 4000,
                     'property'        => $fieldProperty,
-                    'helpTextIdLabel' => $helpId,
+                    'helpTextId' => $helpId,
                     'icon'            => $gProfileFields->getProperty($usfNameIntern, 'usf_icon', 'database')
                 )
             );
@@ -322,7 +322,7 @@ foreach ($gProfileFields->getProfileFields() as $field)
                     'type'            => $fieldType,
                     'maxLength'       => $maxlength,
                     'property'        => $fieldProperty,
-                    'helpTextIdLabel' => $helpId,
+                    'helpTextId' => $helpId,
                     'icon'            => $gProfileFields->getProperty($usfNameIntern, 'usf_icon', 'database')
                 )
             );

@@ -139,7 +139,7 @@ $page->addHtml('
 
 $formDisplayedFields = new HtmlForm('displayed_fields_form', SecurityUtils::encodeUrl(ADMIDIO_URL . FOLDER_PLUGINS . PLUGIN_FOLDER .'/preferences_function.php', array('form' => 'displayed_fields')), $page, array('class' => 'form-preferences'));
 $formDisplayedFields->addDescription($gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_DISPLAYED_FIELDS_DESC'));
-$formDisplayedFields->addMultilineTextInput('main_pretext',$gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_PRETEXT'), (isset($pPreferences->config['main_texts']['main_pretext']) ? $pPreferences->config['main_texts']['main_pretext'] : '' ), 3, array('helpTextIdLabel' => 'PLG_DECLARATION_OF_MEMBERSHIP_PRE_AND_POST_TEXT_DESC' ));
+$formDisplayedFields->addMultilineTextInput('main_pretext',$gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_PRETEXT'), (isset($pPreferences->config['main_texts']['main_pretext']) ? $pPreferences->config['main_texts']['main_pretext'] : '' ), 3, array('helpTextId' => 'PLG_DECLARATION_OF_MEMBERSHIP_PRE_AND_POST_TEXT_DESC' ));
 $formDisplayedFields->addLine();
 $formDisplayedFields->addDescription('<div style="width:100%; height:550px; overflow:auto; border:20px;">');
 
@@ -233,7 +233,7 @@ $formOptions = new HtmlForm('options_form', SecurityUtils::encodeUrl(ADMIDIO_URL
 $sql = 'SELECT org_id, org_longname
           FROM '.TBL_ORGANIZATIONS.'
       ORDER BY org_longname ASC, org_shortname ASC';
-$formOptions->addSelectBoxFromSql('org_id', $gL10n->get('SYS_ORGANIZATION'), $gDb, $sql, array('defaultValue' => $pPreferences->config['registration_org']['org_id'], 'helpTextIdInline' => 'PLG_DECLARATION_OF_MEMBERSHIP_ORGANIZATION_DESC'));
+$formOptions->addSelectBoxFromSql('org_id', $gL10n->get('SYS_ORGANIZATION'), $gDb, $sql, array('defaultValue' => $pPreferences->config['registration_org']['org_id'], 'helpTextId' => 'PLG_DECLARATION_OF_MEMBERSHIP_ORGANIZATION_DESC'));
 
 $formOptions->addRadioButton(
     'kiosk_mode',
@@ -244,7 +244,7 @@ $formOptions->addRadioButton(
     ),
     array(
         'defaultValue'     => $pPreferences->config['options']['kiosk_mode'], 
-        'helpTextIdInline' => 'PLG_DECLARATION_OF_MEMBERSHIP_KIOSK_MODE_DESC')
+        'helpTextId' => 'PLG_DECLARATION_OF_MEMBERSHIP_KIOSK_MODE_DESC')
     );
 
 $formOptions->addSubmitButton('btn_save_configurations', $gL10n->get('SYS_SAVE'), array('icon' => 'fa-check', 'class' => ' offset-sm-3'));
@@ -260,13 +260,13 @@ $selectBoxEntries = array(
     '1' => $gL10n->get('SYS_ENABLED'));
 $formEmailnotification->addSelectBox(
     'enable_emailnotification', $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_ACCESS_TO_MODULE_AUTOREPLYMAIL'), $selectBoxEntries,
-    array('defaultValue' => $pPreferences->config['emailnotification']['access_to_module'], 'showContextDependentFirstEntry' => false, 'helpTextIdInline' => 'PLG_DECLARATION_OF_MEMBERSHIP_ACCESS_TO_MODULE_AUTOREPLYMAIL_DESC'));
+    array('defaultValue' => $pPreferences->config['emailnotification']['access_to_module'], 'showContextDependentFirstEntry' => false, 'helpTextId' => 'PLG_DECLARATION_OF_MEMBERSHIP_ACCESS_TO_MODULE_AUTOREPLYMAIL_DESC'));
 
 if ($pPreferences->config['emailnotification']['access_to_module'])
 {
     $formEmailnotification->addDescription($gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_AUTOREPLYMAIL_DESC'));
     
-    $formEmailnotification->addInput('msg_subject', $gL10n->get('SYS_SUBJECT'), $pPreferences->config['emailnotification']['msg_subject'], array('maxLength' => 77, 'helpTextIdLabel' => 'PLG_DECLARATION_OF_MEMBERSHIP_AUTOREPLYMAIL_INFO', 'property' => HtmlForm::FIELD_REQUIRED));
+    $formEmailnotification->addInput('msg_subject', $gL10n->get('SYS_SUBJECT'), $pPreferences->config['emailnotification']['msg_subject'], array('maxLength' => 77, 'helpTextId' => 'PLG_DECLARATION_OF_MEMBERSHIP_AUTOREPLYMAIL_INFO', 'property' => HtmlForm::FIELD_REQUIRED));
     $formEmailnotification->addEditor('msg_body', '', $pPreferences->config['emailnotification']['msg_body'], array('property' => HtmlForm::FIELD_REQUIRED));
 }
 
@@ -292,7 +292,7 @@ $sql = 'SELECT rol.rol_id, rol.rol_name, cat.cat_name
            AND ( cat.cat_org_id = '.$gCurrentOrgId.'
             OR cat.cat_org_id IS NULL )
       ORDER BY cat_sequence, rol.rol_name ASC';
-$formAccessPreferences->addSelectBoxFromSql('access_preferences', '', $gDb, $sql, array('defaultValue' => $pPreferences->config['access']['preferences'], 'helpTextIdInline' => 'PLG_DECLARATION_OF_MEMBERSHIP_ACCESS_PREFERENCES_DESC', 'multiselect' => true));
+$formAccessPreferences->addSelectBoxFromSql('access_preferences', '', $gDb, $sql, array('defaultValue' => $pPreferences->config['access']['preferences'], 'helpTextId' => 'PLG_DECLARATION_OF_MEMBERSHIP_ACCESS_PREFERENCES_DESC', 'multiselect' => true));
 $formAccessPreferences->addSubmitButton('btn_save_access_preferences', $gL10n->get('SYS_SAVE'), array('icon' => 'fa-check', 'class' => ' offset-sm-3'));
 
 $page->addHtml(getPreferencePanel('common', 'access_preferences', $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_ACCESS_PREFERENCES'), 'fas fa-unlock', $formAccessPreferences->show()));
