@@ -24,7 +24,9 @@
  *
  *****************************************************************************/
 
-class ConfigTablePDM
+namespace Plugins\DeclarationOfMembership\classes\Config;
+
+class ConfigTable
 {
     public $config = array();     ///< Array mit allen Konfigurationsdaten
 
@@ -37,14 +39,14 @@ class ConfigTablePDM
     public $config_default = array();
 
     /**
-     * ConfigTablePDM constructor
+     * ConfigTable constructor
      */
     public function __construct()
     {
         global $g_tbl_praefix;
 
-        require_once(__DIR__ . '/../system/version.php');
-        include(__DIR__ . '/../system/configdata.php');
+        require_once(__DIR__ . '/../../system/version.php');
+        include(__DIR__ . '/../../system/configdata.php');
 
         $this->table_name = $g_tbl_praefix.'_plugin_preferences';
 

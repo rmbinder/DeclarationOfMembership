@@ -16,15 +16,15 @@
 
 use Admidio\Infrastructure\Utils\SecurityUtils;
 use Admidio\Infrastructure\Utils\StringUtils;
+use Plugins\DeclarationOfMembership\classes\Config\ConfigTable;
 
 require_once(__DIR__ . '/../../../system/common.php');
 require_once(__DIR__ . '/common_function.php');
-require_once(__DIR__ . '/../classes/configtable.php');
 
 // Initialize and check the parameters
 $showOption = admFuncVariableIsValid($_GET, 'show_option', 'string');
 
-$pPreferences = new ConfigTablePDM();
+$pPreferences = new ConfigTable();
 $pPreferences->read();
 
 // only authorized user are allowed to start this module

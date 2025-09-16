@@ -12,17 +12,17 @@
 use Admidio\Infrastructure\Utils\SecurityUtils;
 use Admidio\Infrastructure\Utils\StringUtils;
 use Admidio\Users\Entity\User;
+use Plugins\DeclarationOfMembership\classes\Config\ConfigTable;
 
 require_once(__DIR__ . '/../../../system/common.php');
 require_once(__DIR__ . '/common_function.php');
-require_once(__DIR__ . '/../classes/configtable.php');
 
 //script_name ist der Name wie er im Menue eingetragen werden muss, also ohne evtl. vorgelagerte Ordner wie z.B. /playground/adm_plugins/mitgliedsbeitrag...
 //$_SESSION['pDeclarationOfMembership']['script_name'] = substr($_SERVER['SCRIPT_NAME'], strpos($_SERVER['SCRIPT_NAME'], FOLDER_PLUGINS));
 
 $registrationOrgId = '';
 
-$pPreferences = new ConfigTablePDM();
+$pPreferences = new ConfigTable();
 $pPreferences->read();
 
 // read user data

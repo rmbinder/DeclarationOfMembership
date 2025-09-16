@@ -17,12 +17,12 @@
 use Admidio\Infrastructure\Email;
 use Admidio\Infrastructure\Utils\StringUtils;
 use Admidio\Users\Entity\UserRegistration;
+use Plugins\DeclarationOfMembership\classes\Config\ConfigTable;
 
 require_once(__DIR__ . '/../../../system/common.php');
 require_once(__DIR__ . '/common_function.php');
-require_once(__DIR__ . '/../classes/configtable.php');
 
-$pPreferences = new ConfigTablePDM();
+$pPreferences = new ConfigTable();
 $pPreferences->read();
 
 // save form data in session for back navigation
