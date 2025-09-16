@@ -17,9 +17,9 @@
 use Admidio\Infrastructure\Utils\SecurityUtils;
 use Admidio\Infrastructure\Utils\StringUtils;
 
-require_once(__DIR__ . '/../../system/common.php');
+require_once(__DIR__ . '/../../../system/common.php');
 require_once(__DIR__ . '/common_function.php');
-require_once(__DIR__ . '/classes/configtable.php');
+require_once(__DIR__ . '/../classes/configtable.php');
 
 // Initialize and check the parameters
 $showOption = admFuncVariableIsValid($_GET, 'show_option', 'string');
@@ -84,7 +84,7 @@ $page->addJavascript('
                     formAlert.animate({opacity: 1.0}, 2500);
                     formAlert.fadeOut("slow");
                     if(data === "refresh") {
-                        window.location.replace("'. SecurityUtils::encodeUrl(ADMIDIO_URL . FOLDER_PLUGINS . PLUGIN_FOLDER .'/preferences.php', array('show_option' => 'refresh')).'");
+                        window.location.replace("'. SecurityUtils::encodeUrl(ADMIDIO_URL . FOLDER_PLUGINS . PLUGIN_FOLDER .'/system/preferences.php', array('show_option' => 'refresh')).'");
                     } 
                 } else {
                     formAlert.attr("class", "alert alert-danger form-alert");
@@ -137,7 +137,7 @@ $page->addHtml('
 
 // PANEL: DISPLAYED_FIELDS
 
-$formDisplayedFields = new HtmlForm('displayed_fields_form', SecurityUtils::encodeUrl(ADMIDIO_URL . FOLDER_PLUGINS . PLUGIN_FOLDER .'/preferences_function.php', array('form' => 'displayed_fields')), $page, array('class' => 'form-preferences'));
+$formDisplayedFields = new HtmlForm('displayed_fields_form', SecurityUtils::encodeUrl(ADMIDIO_URL . FOLDER_PLUGINS . PLUGIN_FOLDER .'/system/preferences_function.php', array('form' => 'displayed_fields')), $page, array('class' => 'form-preferences'));
 $formDisplayedFields->addDescription($gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_DISPLAYED_FIELDS_DESC'));
 $formDisplayedFields->addMultilineTextInput('main_pretext',$gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_PRETEXT'), (isset($pPreferences->config['main_texts']['main_pretext']) ? $pPreferences->config['main_texts']['main_pretext'] : '' ), 3, array('helpTextId' => 'PLG_DECLARATION_OF_MEMBERSHIP_PRE_AND_POST_TEXT_DESC' ));
 $formDisplayedFields->addLine();
@@ -178,7 +178,7 @@ $page->addHtml(getPreferencePanel('common', 'displayed_fields', $gL10n->get('PLG
                         
 // PANEL: REQUIRED_FIELDS
 
-$formRequiredFields = new HtmlForm('required_fields_form', SecurityUtils::encodeUrl(ADMIDIO_URL . FOLDER_PLUGINS . PLUGIN_FOLDER .'/preferences_function.php', array('form' => 'required_fields')), $page, array('class' => 'form-preferences'));
+$formRequiredFields = new HtmlForm('required_fields_form', SecurityUtils::encodeUrl(ADMIDIO_URL . FOLDER_PLUGINS . PLUGIN_FOLDER .'/system/preferences_function.php', array('form' => 'required_fields')), $page, array('class' => 'form-preferences'));
 $formRequiredFields->addDescription($gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_REQUIRED_FIELDS_DESC'));
 
 $category = '';
@@ -228,7 +228,7 @@ $page->addHtml(getPreferencePanel('common', 'required_fields', $gL10n->get('PLG_
                         
 // PANEL: OPTIONS
 
-$formOptions = new HtmlForm('options_form', SecurityUtils::encodeUrl(ADMIDIO_URL . FOLDER_PLUGINS . PLUGIN_FOLDER .'/preferences_function.php', array('form' => 'options')), $page, array('class' => 'form-preferences'));
+$formOptions = new HtmlForm('options_form', SecurityUtils::encodeUrl(ADMIDIO_URL . FOLDER_PLUGINS . PLUGIN_FOLDER .'/system/preferences_function.php', array('form' => 'options')), $page, array('class' => 'form-preferences'));
     
 $sql = 'SELECT org_id, org_longname
           FROM '.TBL_ORGANIZATIONS.'
@@ -253,7 +253,7 @@ $page->addHtml(getPreferencePanel('common', 'options', $gL10n->get('PLG_DECLARAT
 
 // PANEL: AUTO-REPLY MAIL
 
-$formEmailnotification = new HtmlForm('emailnotification_form', SecurityUtils::encodeUrl(ADMIDIO_URL . FOLDER_PLUGINS . PLUGIN_FOLDER .'/preferences_function.php', array('form' => 'emailnotification')), $page);
+$formEmailnotification = new HtmlForm('emailnotification_form', SecurityUtils::encodeUrl(ADMIDIO_URL . FOLDER_PLUGINS . PLUGIN_FOLDER .'/system/preferences_function.php', array('form' => 'emailnotification')), $page);
 
 $selectBoxEntries = array(
     '0' => $gL10n->get('SYS_DISABLED'),
@@ -276,7 +276,7 @@ $page->addHtml(getPreferencePanel('common', 'emailnotification', $gL10n->get('PL
 
 // PANEL: DEINSTALLATION
                              
-$formDeinstallation = new HtmlForm('deinstallation_form', SecurityUtils::encodeUrl(ADMIDIO_URL.FOLDER_PLUGINS . PLUGIN_FOLDER .'/preferences_function.php', array('mode' => 2)), $page);                     
+$formDeinstallation = new HtmlForm('deinstallation_form', SecurityUtils::encodeUrl(ADMIDIO_URL.FOLDER_PLUGINS . PLUGIN_FOLDER .'/system/preferences_function.php', array('mode' => 2)), $page);                     
 $formDeinstallation->addSubmitButton('btn_save_deinstallation', $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_DEINSTALLATION'), array('icon' => 'bi-trash', 'class' => 'offset-sm-3'));
 $formDeinstallation->addCustomContent('', ''.$gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_DEINSTALLATION_DESC'));
                    
@@ -284,7 +284,7 @@ $page->addHtml(getPreferencePanel('common', 'deinstallation', $gL10n->get('PLG_D
                         
 // PANEL: ACCESS_PREFERENCES
                         
-$formAccessPreferences = new HtmlForm('access_preferences_form', SecurityUtils::encodeUrl(ADMIDIO_URL . FOLDER_PLUGINS . PLUGIN_FOLDER .'/preferences_function.php', array('form' => 'access_preferences')), $page, array('class' => 'form-preferences'));
+$formAccessPreferences = new HtmlForm('access_preferences_form', SecurityUtils::encodeUrl(ADMIDIO_URL . FOLDER_PLUGINS . PLUGIN_FOLDER .'/system/preferences_function.php', array('form' => 'access_preferences')), $page, array('class' => 'form-preferences'));
 
 $sql = 'SELECT rol.rol_id, rol.rol_name, cat.cat_name
           FROM '.TBL_CATEGORIES.' AS cat, '.TBL_ROLES.' AS rol

@@ -12,9 +12,9 @@
  * Parameters:      none
  *****************************************************************************/
 
-require_once(__DIR__ . '/../../system/common.php');
+require_once(__DIR__ . '/../../../system/common.php');
 require_once(__DIR__ . '/common_function.php');
-require_once(__DIR__ . '/classes/configtable.php');
+require_once(__DIR__ . '/../classes/configtable.php');
 
 $pPreferences = new ConfigTablePDM();
 $pPreferences->read();
@@ -31,7 +31,7 @@ $form = new HtmlForm('plugin_informations_form', '', $page);
 $form->addHtml('
     <div class="modal-header">
         <h3 class="modal-title">'.$headline.'</h3>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
     </div>
     <div class="modal-body">
     ');

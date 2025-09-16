@@ -1,16 +1,7 @@
 <?php
 /**
  ***********************************************************************************************
- * DeclarationOfMembership (ONLINE-Beitrittserklärung)
- *
- * Version 2.3.0
- *
- * This plugin creates an online - declaration of membership.
- * 
- *
- * Author: rmb
- *
- * Compatible with Admidio from version 4.3
+ * Creates the main view for the plugin DeclarationOfMembertship
  *
  * @copyright The Admidio Team
  * @see https://www.admidio.org/
@@ -22,24 +13,17 @@ use Admidio\Infrastructure\Utils\SecurityUtils;
 use Admidio\Infrastructure\Utils\StringUtils;
 use Admidio\Users\Entity\User;
 
-require_once(__DIR__ . '/../../system/common.php');
+require_once(__DIR__ . '/../../../system/common.php');
 require_once(__DIR__ . '/common_function.php');
-require_once(__DIR__ . '/classes/configtable.php');
+require_once(__DIR__ . '/../classes/configtable.php');
 
 //script_name ist der Name wie er im Menue eingetragen werden muss, also ohne evtl. vorgelagerte Ordner wie z.B. /playground/adm_plugins/mitgliedsbeitrag...
-$_SESSION['pDeclarationOfMembership']['script_name'] = substr($_SERVER['SCRIPT_NAME'], strpos($_SERVER['SCRIPT_NAME'], FOLDER_PLUGINS));
+//$_SESSION['pDeclarationOfMembership']['script_name'] = substr($_SERVER['SCRIPT_NAME'], strpos($_SERVER['SCRIPT_NAME'], FOLDER_PLUGINS));
 
 $registrationOrgId = '';
 
 $pPreferences = new ConfigTablePDM();
-if ($pPreferences->checkforupdate())
-{
-    $pPreferences->init();
-}
-else
-{
-    $pPreferences->read();
-}
+$pPreferences->read();
 
 // read user data
 $user = new User($gDb, $gProfileFields);
@@ -76,15 +60,15 @@ $page->addJavascriptFile(ADMIDIO_URL . FOLDER_LIBS . '/zxcvbn/dist/zxcvbn.js');
 if (isUserAuthorizedForPreferences())
 {
     // show link to pluginpreferences
-    $page->addPageFunctionsMenuItem('admMenuItemPreferencesLists', $gL10n->get('SYS_SETTINGS'), SecurityUtils::encodeUrl(ADMIDIO_URL . FOLDER_PLUGINS . PLUGIN_FOLDER .'/preferences.php'),  'bi-gear-fill');
+    $page->addPageFunctionsMenuItem('admMenuItemPreferencesLists', $gL10n->get('SYS_SETTINGS'), SecurityUtils::encodeUrl(ADMIDIO_URL . FOLDER_PLUGINS . PLUGIN_FOLDER .'/system/preferences.php'),  'bi-gear-fill');
 }
 
 // create html form
-$form = new HtmlForm('edit_profile_form', SecurityUtils::encodeUrl(ADMIDIO_URL . FOLDER_PLUGINS . PLUGIN_FOLDER .'/declaration_save.php'), $page);
+$form = new HtmlForm('edit_profile_form', SecurityUtils::encodeUrl(ADMIDIO_URL . FOLDER_PLUGINS . PLUGIN_FOLDER .'/system/declaration_save.php'), $page);
 
 // icon-link to info
 $html = '<p align="right">
-            <a class="admidio-icon-link openPopup" href="javascript:void(0);" data-href="'.SecurityUtils::encodeUrl(ADMIDIO_URL.FOLDER_PLUGINS . PLUGIN_FOLDER .'/declaration_popup_info.php').'">'.'
+            <a class="admidio-icon-link openPopup" href="javascript:void(0);" data-href="'.SecurityUtils::encodeUrl(ADMIDIO_URL.FOLDER_PLUGINS . PLUGIN_FOLDER .'/system/declaration_popup_info.php').'">'.'
                 <i class="bi bi-info-circle" data-toggle="tooltip" title="' . $gL10n->get('SYS_INFORMATIONS') . '"></i>
             </a>
         </p>';
