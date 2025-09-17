@@ -23,17 +23,11 @@ try {
     require_once(__DIR__ . '/../../system/common.php');
     require_once(__DIR__ . '/system/common_function.php');
     
-    //script_name ist der Name wie er im Menue eingetragen werden muss, also ohne evtl. vorgelagerte Ordner wie z.B. /playground/adm_plugins/mitgliedsbeitrag...
-    $_SESSION['pDeclarationOfMembership']['script_name'] = substr($_SERVER['SCRIPT_NAME'], strpos($_SERVER['SCRIPT_NAME'], FOLDER_PLUGINS));
-    
+    //Konfiguration initialisieren
     $pPreferences = new ConfigTable();
     if ($pPreferences->checkforupdate())
     {
         $pPreferences->init();
-    }
-    else
-    {
-        $pPreferences->read();
     }
    
    admRedirect(ADMIDIO_URL . FOLDER_PLUGINS. PLUGIN_FOLDER . '/system/declaration_of_membership.php'); 

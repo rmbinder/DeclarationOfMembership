@@ -24,9 +24,10 @@
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_DOCUMENTATION">Dokumentation</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_DOCUMENTATION_OPEN">Dokumentation öffnen</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_FIELDTEXT">Infotext</string>    
-    <string name="PLG_DECLARATION_OF_MEMBERSHIP_HEADLINE">ONLINE - Beitrittserklärung</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_KIOSK_MODE">Kiosk-Modus</string> 
-    <string name="PLG_DECLARATION_OF_MEMBERSHIP_KIOSK_MODE_DESC">Im Kiosk-Modus entfällt die Abfrage zum Beenden des Plugins. Die Beitrittserklärung wird mit leeren Daten erneut aufgerufen.</string>   
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_KIOSK_MODE_DESC">Im Kiosk-Modus entfällt die Abfrage zum Beenden des Plugins. Die Beitrittserklärung wird mit leeren Daten erneut aufgerufen.</string> 
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_NAME">ONLINE - Beitrittserklärung</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_NAME_DESC">Das Plugin ONLINE - Beitrittserklärung</string>      
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_OPTIONS">Optionen</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_ORG_CHOICE">Organisationswahl</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_ORGANIZATION_DESC">Für diese Organisation wird die Beitrittserklärung durchgeführt.</string>

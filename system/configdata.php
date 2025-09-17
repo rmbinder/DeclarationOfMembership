@@ -39,6 +39,9 @@ $config_default['usr_login_name'] = array('displayed' => '0',
                                           'required'  => '0',
                                           'fieldtext' => '');
 
+//Infos für Uninstall
+$config_default['install']['menu_item_id'] = 0;
+
 /*
  *  Mittels dieser Zeichenkombination werden Konfigurationsdaten, die zur Laufzeit als Array verwaltet werden,
  *  zu einem String zusammengefasst und in der Admidiodatenbank gespeichert.

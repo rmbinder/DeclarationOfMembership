@@ -17,9 +17,6 @@ use Plugins\DeclarationOfMembership\classes\Config\ConfigTable;
 require_once(__DIR__ . '/../../../system/common.php');
 require_once(__DIR__ . '/common_function.php');
 
-//script_name ist der Name wie er im Menue eingetragen werden muss, also ohne evtl. vorgelagerte Ordner wie z.B. /playground/adm_plugins/mitgliedsbeitrag...
-//$_SESSION['pDeclarationOfMembership']['script_name'] = substr($_SERVER['SCRIPT_NAME'], strpos($_SERVER['SCRIPT_NAME'], FOLDER_PLUGINS));
-
 $registrationOrgId = '';
 
 $pPreferences = new ConfigTable();
@@ -28,7 +25,7 @@ $pPreferences->read();
 // read user data
 $user = new User($gDb, $gProfileFields);
 
-$headline = $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_HEADLINE');
+$headline = $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_NAME');
 
 // Formular wurde ueber "Nein"-Button aufgerufen, also alle Felder mit den vorherigen Werten fuellen
 if (isset($_SESSION['profile_request']) && StringUtils::strContains($gNavigation->getUrl(), 'declaration_save.php'))

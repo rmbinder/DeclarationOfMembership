@@ -24,9 +24,10 @@
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_DOCUMENTATION">Documentation</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_DOCUMENTATION_OPEN">Open documentation</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_FIELDTEXT">Info text</string>    
-    <string name="PLG_DECLARATION_OF_MEMBERSHIP_HEADLINE">ONLINE - declaration of membership</string>
-     <string name="PLG_DECLARATION_OF_MEMBERSHIP_KIOSK_MODE">Kiosk mode</string> 
-    <string name="PLG_DECLARATION_OF_MEMBERSHIP_KIOSK_MODE_DESC">In kiosk mode, there is no query to exit the plug-in. The declaration of membership is called up again with empty data.</string>   
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_KIOSK_MODE">Kiosk mode</string> 
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_KIOSK_MODE_DESC">In kiosk mode, there is no query to exit the plug-in. The declaration of membership is called up again with empty data.</string> 
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_NAME">ONLINE - Declaration of Membership</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_NAME_DESC">The ONLINE - Declaration of Membership plugin</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_OPTIONS">Options</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_ORG_CHOICE">Organization choice</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_ORGANIZATION_DESC">For this organization, the membership declaration will be made.</string>
