@@ -35,6 +35,7 @@ class ConfigTable
     protected static $version;
     protected static $stand;
     protected static $dbtoken;
+    protected $config_work = array();
 
     public $config_default = array();
 
@@ -158,7 +159,6 @@ class ConfigTable
     public function save()
     {
         // die aktuellen Konfigurationsdaten aus der DB lesen und in ein Arbeitsarray kopieren
-        $this->config_work = array();
         
         $sql = ' SELECT plp_id, plp_name, plp_value
                    FROM '.$this->table_name.'
