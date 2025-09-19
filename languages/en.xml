@@ -8,6 +8,8 @@
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_AUTOREPLYMAIL_DESC">If the "Auto-reply mail" module is activated, the following e-mail will be sent to the new member for each incoming membership declaration. The following variables are replaced: #user_first_name#, #user_last_name#, #organization_name# and #organization_shortname#.</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_AUTOREPLYMAIL_INFO">For an "Auto-reply mail" both the sending address ("Sender email" and/or "Email Administrator") and the receiving address (email of the newly registered member) must be available.</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_COMPLETE_ENTRY">Complete entry</string>       
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_CONTINUE">Enter another member</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_CONTINUE_DESC">Do not finish the online declaration of membership, but enter the data of another member</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_DEINST_ACTORGONLY">Delete only data of the current organization.</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_DEINST_ALLORG">Delete data in all organizations.</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_DEINST_DATA_DELETE_ERROR">- When you delete the data, an error has occurred.\n</string>
@@ -23,6 +25,8 @@
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_DISPLAYED_FIELDS_DESC">Here, the profile fields displayed in the membership declaration can be defined. In addition, it is possible to define an introductory and a final text for the entire form. Further info texts can be defined in the menu item "Mandatory fields and info texts".</string>    
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_DOCUMENTATION">Documentation</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_DOCUMENTATION_OPEN">Open documentation</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_EXIT">Close</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_EXIT_DESC">The declaration of membership will be closed</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_FIELDTEXT">Info text</string>    
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_KIOSK_MODE">Kiosk mode</string> 
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_KIOSK_MODE_DESC">In kiosk mode, there is no query to exit the plug-in. The declaration of membership is called up again with empty data.</string> 
@@ -40,5 +44,5 @@
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_PRETEXT">Introduction text</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_REQUIRED_FIELDS">Mandatory fields and info texts</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_REQUIRED_FIELDS_DESC">Here the displayed profile fields can be marked as mandatory fields. These fields must be filled in the declaration of membership. In addition, it is possible to define information texts.</string>    
-    <string name="PLG_DECLARATION_OF_MEMBERSHIP_SAVED">Your data has been saved.\n\nAfter processing and takeover, you will be notified by e-mail.\n\nChoose:\n\nYes - The online declaration of membership should be closed\nNo - Do not finish the online declaration of membership, but enter the data of another member.</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_SAVED">Your data has been saved.\n\nAfter processing and takeover, you will be notified by e-mail.\n\nChoose:</string>
 </resources>

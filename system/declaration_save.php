@@ -15,6 +15,7 @@
  */
 
 use Admidio\Infrastructure\Email;
+use Admidio\Infrastructure\Utils\SecurityUtils;
 use Admidio\Infrastructure\Utils\StringUtils;
 use Admidio\Users\Entity\UserRegistration;
 use Plugins\DeclarationOfMembership\classes\Config\ConfigTable;
@@ -187,7 +188,7 @@ try
     $user->notifyAuthorizedMembers();
     
     //eine automatische Antwortmail nur senden, wenn
-    // 1. das emtsprechende Modul aktiviert ist
+    // 1. das entsprechende Modul aktiviert ist
     // und 2., wenn entwender eine "Absender E-Mail" oder eine "Administrator E-Mail" definiert ist
     if ($pPreferences->config['emailnotification']['access_to_module']
         && ((strlen($gSettingsManager->getString('mail_sendmail_address')) > 0) || (strlen($gSettingsManager->getString('email_administrator')) > 0)))
@@ -236,6 +237,22 @@ if ($pPreferences->config['options']['kiosk_mode'])
 }
 else
 {
-    $gMessage->setForwardYesNo($gHomepage);
-    $gMessage->show($gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_SAVED'));   
+    // $gMessage->setForwardYesNo($gHomepage);
+    // $gMessage->show($gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_SAVED')); 
+    
+    // @deprecated 5.0.0:5.1.0 Method "setYesNoButton" is deprecated, use modal "admidio-messagebox" instead.
+    
+    // ich habe es nicht geschafft, die JA/Nein-Abfrage über ein Modal-Fenster (ohne einen Button zu betätigen) zu realisieren
+    // deshalb die Abfrage über HtmlForm und zwei einzelne Buttons 
+    // toDo: beim Umbau auf die Presenter-Klassen nochmal überarbeiten
+    
+    $page = new HtmlPage('plg-declaration-of-membership-exit-or-continue', $headline);
+    $form = new HtmlForm('exit-or-continue-form', '', $page);
+    $form->addDescription($gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_SAVED'));
+    $form->addButton('btn_exit', $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_EXIT'), array('icon' => 'bi-x-square', 'link' => $gHomepage, 'class' => 'btn-primary'));
+    $form->addDescription($gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_EXIT_DESC'));
+    $form->addButton('btn_continue', $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_CONTINUE'), array('icon' => 'bi-pencil-square', 'link' => $gNavigation->getPreviousUrl(), 'class' => 'btn-primary'));
+    $form->addDescription($gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_CONTINUE_DESC'));
+    $page->addHtml($form->show(false));
+    $page->show();  
 }

@@ -8,6 +8,8 @@
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_AUTOREPLYMAIL_DESC">Wenn das Modul "Automatische Antwortmail" aktiviert ist, wird bei jeder eingegangenen Beitrittserklärung die nachfolgende E-Mail an das neue Mitglied versendet. Folgende Variablen werden dabei ersetzt: #user_first_name#, #user_last_name#, #organization_name# und #organization_shortname#.</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_AUTOREPLYMAIL_INFO">Für eine "Automatische Antwortmail" müssen sowohl Sendeadresse ("Absender E-Mail" und/oder "Administrator E-Mail"), als und Empfangsadresse (E-Mail des neu registrierten Mitglieds) vorhanden sein.</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_COMPLETE_ENTRY">Eingabe abschließen</string>       
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_CONTINUE">Ein weiteres Mitglied eingeben</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_CONTINUE_DESC">Die Online-Beitrittserklärung nicht beenden, sondern die Daten eines weiteren Mitglieds eingeben</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_DEINST_ACTORGONLY">Nur Daten der aktuellen Organisation löschen.</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_DEINST_ALLORG">Daten in allen Organisationen löschen.</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_DEINST_DATA_DELETE_ERROR">- Beim Löschen der Daten ist ein Fehler aufgetreten.\n</string>
@@ -23,6 +25,8 @@
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_DISPLAYED_FIELDS_DESC">Hier können die in der Beitrittserklärung angezeigten Profilfelder definiert werden. Zusätzlich besteht die Möglichkeit einen Einleitungs- und einen Schlusstext für das gesamte Formular zu definieren. Weitere Infotexte können im Menüpunkt "Pflichtfelder und Infotexte" definiert werden.</string>    
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_DOCUMENTATION">Dokumentation</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_DOCUMENTATION_OPEN">Dokumentation öffnen</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_EXIT">Beenden</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_EXIT_DESC">Die Online-Beitrittserklärung beenden</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_FIELDTEXT">Infotext</string>    
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_KIOSK_MODE">Kiosk-Modus</string> 
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_KIOSK_MODE_DESC">Im Kiosk-Modus entfällt die Abfrage zum Beenden des Plugins. Die Beitrittserklärung wird mit leeren Daten erneut aufgerufen.</string> 
@@ -40,5 +44,5 @@
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_PRETEXT">Einleitungstext</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_REQUIRED_FIELDS">Pflichtfelder und Infotexte</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_REQUIRED_FIELDS_DESC">Hier können die angezeigten Profilfelder als Pflichtfelder markiert werden. Diese Felder müssen in der Beitrittserklärung befüllt sein. Zusätzlich besteht die Möglichkeit Informationstexte zu definieren.</string>    
-    <string name="PLG_DECLARATION_OF_MEMBERSHIP_SAVED">Deine Daten wurden gespeichert.\n\nNach der Bearbeitung und Übernahme wirst du per E-Mail benachrichtigt.\n\nWähle aus:\n\nJa - Die Online-Beitrittserklärung soll beendet werden\nNein - Die Online-Beitrittserklärung nicht beenden, sondern die Daten eines weiteren Mitglieds eingeben.</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_SAVED">Deine Daten wurden gespeichert.\n\nNach der Bearbeitung und Übernahme wirst du per E-Mail benachrichtigt.\n\nWähle aus:</string>
 </resources>
