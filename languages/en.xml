@@ -2,25 +2,18 @@
 <resources>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_ACCESS_PREFERENCES">Access permission for preferences</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_ACCESS_PREFERENCES_DESC">Here, in addition to the role "Administrator", you can authorize additional roles for access to the "Preferences" module.</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_ACCESS_ROLES_STILL_PRESENT">- For your information: The menu item contained roles listed under "Visible for" that were not created by the plugin. These roles have not been removed.\n</string>   
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_ACCESS_TO_MODULE_AUTOREPLYMAIL">Access to the "Auto-reply mail" module</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_ACCESS_TO_MODULE_AUTOREPLYMAIL_DESC">The module can be completely deactivated via this setting (default: deactivated).</string>    
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_ACTORGONLY">only in the current organization</string>  
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_ALLORG">in all organizations</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_AUTOREPLYMAIL">Auto-reply mail</string> 
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_AUTOREPLYMAIL_DESC">If the "Auto-reply mail" module is activated, the following e-mail will be sent to the new member for each incoming membership declaration. The following variables are replaced: #user_first_name#, #user_last_name#, #organization_name# and #organization_shortname#.</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_AUTOREPLYMAIL_INFO">For an "Auto-reply mail" both the sending address ("Sender email" and/or "Email Administrator") and the receiving address (email of the newly registered member) must be available.</string>
-    <string name="PLG_DECLARATION_OF_MEMBERSHIP_COMPLETE_ENTRY">Complete entry</string>       
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_COMPLETE_ENTRY">Complete entry</string> 
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_CONFIG_DATA">Configuration data</string>      
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_CONTINUE">Enter another member</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_CONTINUE_DESC">Do not finish the online declaration of membership, but enter the data of another member</string>
-    <string name="PLG_DECLARATION_OF_MEMBERSHIP_DEINST_ACTORGONLY">Delete only data of the current organization.</string>
-    <string name="PLG_DECLARATION_OF_MEMBERSHIP_DEINST_ALLORG">Delete data in all organizations.</string>
-    <string name="PLG_DECLARATION_OF_MEMBERSHIP_DEINST_DATA_DELETE_ERROR">- When you delete the data, an error has occurred.\n</string>
-    <string name="PLG_DECLARATION_OF_MEMBERSHIP_DEINST_DATA_DELETE_SUCCESS">- The created data has been cleared.\n</string>
-    <string name="PLG_DECLARATION_OF_MEMBERSHIP_DEINST_ENDMESSAGE">\nTo completely remove the plugin the program files and the menu entry must be removed.</string>
-    <string name="PLG_DECLARATION_OF_MEMBERSHIP_DEINST_STARTMESSAGE">The following deletions were performed:\n\n</string>
-    <string name="PLG_DECLARATION_OF_MEMBERSHIP_DEINST_TABLE_DELETE_ERROR">- The table "adm_plugin_preferences" could not be deleted because it houses more data from other plugins.\n</string>
-    <string name="PLG_DECLARATION_OF_MEMBERSHIP_DEINST_TABLE_DELETE_SUCCESS">- The created table "adm_plugin_preferences" was deleted.\n</string>
-    <string name="PLG_DECLARATION_OF_MEMBERSHIP_DEINSTALLATION">Uninstall</string>
-    <string name="PLG_DECLARATION_OF_MEMBERSHIP_DEINSTALLATION_DESC">By uninstalling, entries created by the plugin can be deleted in the database.</string>
-    <string name="PLG_DECLARATION_OF_MEMBERSHIP_DEINSTALLATION_FORM_DESC">Select the uninstall scope:\n\n***Attention: This routine deletes only the entries in the Admidio database. Program files and the link in the menu will not be deleted! ***</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_DISPLAYED_FIELDS">Display fields</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_DISPLAYED_FIELDS_DESC">Here, the profile fields displayed in the membership declaration can be defined. In addition, it is possible to define an introductory and a final text for the entire form. Further info texts can be defined in the menu item "Mandatory fields and info texts".</string>    
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_DOCUMENTATION">Documentation</string>
@@ -30,6 +23,7 @@
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_FIELDTEXT">Info text</string>    
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_KIOSK_MODE">Kiosk mode</string> 
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_KIOSK_MODE_DESC">In kiosk mode, there is no query to exit the plug-in. The declaration of membership is called up again with empty data.</string> 
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_MENU_ITEM">Menu item</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_NAME">ONLINE - Declaration of Membership</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_NAME_DESC">The ONLINE - Declaration of Membership plugin</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_OPTIONS">Options</string>
@@ -42,7 +36,18 @@
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_POSTTEXT">Final text</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_PRE_AND_POST_TEXT_DESC">The following parameters are possible for all introductory and final texts:\n\nLink: ##URL (e.g. https://...)#Text##\n\nBoldface on: $$\nBoldface off: %%\n\New line: §§</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_PRETEXT">Introduction text</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_REMOVE_CONFIG_DATA">Remove configuration data</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_REMOVE_MENU_ITEM">Remove menu item</string> 
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_REQUIRED_FIELDS">Mandatory fields and info texts</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_REQUIRED_FIELDS_DESC">Here the displayed profile fields can be marked as mandatory fields. These fields must be filled in the declaration of membership. In addition, it is possible to define information texts.</string>    
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_SAVED">Your data has been saved.\n\nAfter processing and takeover, you will be notified by e-mail.\n\nChoose:</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_UNINST_DATA_DELETE_ERROR">- An error occurred while deleting the configuration data.\n</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_UNINST_DATA_DELETE_SUCCESS">- The configuration data created by the plugin has been deleted.\n</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_UNINST_MENU_ITEM_ERROR">- An error occurred while deleting the menu item.\n</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_UNINST_MENU_ITEM_SUCCESS">- The menu item created by the plugin has been deleted.\n</string> 
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_UNINST_STARTMESSAGE">The following deletions were performed:\n\n</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_UNINST_TABLE_DELETE_ERROR">- The table "adm_plugin_preferences" could not be deleted because it houses more data from other plugins.\n</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_UNINST_TABLE_DELETE_SUCCESS">- The created table "adm_plugin_preferences" was deleted.\n</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_UNINSTALLATION">Uninstall</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_UNINSTALLATION_DESC">Entries created by the plugin can be deleted via uninstallation.</string>    
 </resources>

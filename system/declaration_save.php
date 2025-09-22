@@ -15,7 +15,6 @@
  */
 
 use Admidio\Infrastructure\Email;
-use Admidio\Infrastructure\Utils\SecurityUtils;
 use Admidio\Infrastructure\Utils\StringUtils;
 use Admidio\Users\Entity\UserRegistration;
 use Plugins\DeclarationOfMembership\classes\Config\ConfigTable;

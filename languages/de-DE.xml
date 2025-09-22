@@ -1,26 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_ACCESS_PREFERENCES">Zugriffsberechtigung für Einstellungen</string>
-    <string name="PLG_DECLARATION_OF_MEMBERSHIP_ACCESS_PREFERENCES_DESC">Hier kann man, zusätzlich zur Rolle "Administrator", weitere Rollen für den Zugriff auf das Modul "Einstellungen" berechtigen.</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_ACCESS_PREFERENCES_DESC">Hier können, zusätzlich zur Rolle "Administrator", weitere Rollen für den Zugriff auf das Modul "Einstellungen" berechtigt werden.</string> 
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_ACCESS_ROLES_STILL_PRESENT">- Zur Information: Beim Menüpunkt waren unter "Sichtbar für" Rollen eingetragen, die nicht vom Plugin angelegt worden sind. Diese Rollen wurden nicht entfernt.\n</string>   
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_ACCESS_TO_MODULE_AUTOREPLYMAIL">Zugriff auf das Modul "Automatische Antwortmail"</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_ACCESS_TO_MODULE_AUTOREPLYMAIL_DESC">Das Modul kann über diese Einstellung komplett deaktiviert werden (Standard: Deaktiviert).</string>    
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_ACTORGONLY">nur in der aktuellen Organisation</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_ALLORG">in allen Organisationen</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_AUTOREPLYMAIL">Automatische Antwortmail</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_AUTOREPLYMAIL_DESC">Wenn das Modul "Automatische Antwortmail" aktiviert ist, wird bei jeder eingegangenen Beitrittserklärung die nachfolgende E-Mail an das neue Mitglied versendet. Folgende Variablen werden dabei ersetzt: #user_first_name#, #user_last_name#, #organization_name# und #organization_shortname#.</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_AUTOREPLYMAIL_INFO">Für eine "Automatische Antwortmail" müssen sowohl Sendeadresse ("Absender E-Mail" und/oder "Administrator E-Mail"), als und Empfangsadresse (E-Mail des neu registrierten Mitglieds) vorhanden sein.</string> 
-    <string name="PLG_DECLARATION_OF_MEMBERSHIP_COMPLETE_ENTRY">Eingabe abschließen</string>      
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_COMPLETE_ENTRY">Eingabe abschließen</string>  
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_CONFIG_DATA">Konfigurationsdaten</string>      
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_CONTINUE">Ein weiteres Mitglied eingeben</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_CONTINUE_DESC">Die Online-Beitrittserklärung nicht beenden, sondern die Daten eines weiteren Mitglieds eingeben</string>   
-    <string name="PLG_DECLARATION_OF_MEMBERSHIP_DEINST_ACTORGONLY">Nur Daten der aktuellen Organisation löschen.</string>
-    <string name="PLG_DECLARATION_OF_MEMBERSHIP_DEINST_ALLORG">Daten in allen Organisationen löschen.</string>
-    <string name="PLG_DECLARATION_OF_MEMBERSHIP_DEINST_DATA_DELETE_ERROR">- Beim Löschen der Daten ist ein Fehler aufgetreten.\n</string>
-    <string name="PLG_DECLARATION_OF_MEMBERSHIP_DEINST_DATA_DELETE_SUCCESS">- Die vom Plugin angelegten Daten wurden gelöscht.\n</string>
-    <string name="PLG_DECLARATION_OF_MEMBERSHIP_DEINST_ENDMESSAGE">\nUm das Plugin vollständig zu entfernen, müssen noch die Programmdateien und der Menü-Eintrag gelöscht werden.</string>
-    <string name="PLG_DECLARATION_OF_MEMBERSHIP_DEINST_STARTMESSAGE">Folgende Löschvorgänge wurden durchgeführt:\n\n</string>
-    <string name="PLG_DECLARATION_OF_MEMBERSHIP_DEINST_TABLE_DELETE_ERROR">- Die Tabelle "adm_plugin_preferences" konnte nicht gelöscht werden, da sich darin noch Daten eines anderen Plugins befinden.\n</string>
-    <string name="PLG_DECLARATION_OF_MEMBERSHIP_DEINST_TABLE_DELETE_SUCCESS">- Die vom Plugin angelegte Tabelle "adm_plugin_preferences" wurde gelöscht.\n</string>
-    <string name="PLG_DECLARATION_OF_MEMBERSHIP_DEINSTALLATION">Deinstallation</string>
-    <string name="PLG_DECLARATION_OF_MEMBERSHIP_DEINSTALLATION_DESC">Über die Deinstallation können vom Plugin erzeugte Einträge in der Datenbank gelöscht werden.</string>
-    <string name="PLG_DECLARATION_OF_MEMBERSHIP_DEINSTALLATION_FORM_DESC">Wählen Sie den Installationsumfang aus:\n\n***ACHTUNG: Diese Routine löscht nur Einträge in der Admidio-Datenbank. Programmdateien und der Link im Menü werden nicht gelöscht! ***</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_DISPLAYED_FIELDS">Anzeigefelder</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_DISPLAYED_FIELDS_DESC">Hier können die in der Beitrittserklärung angezeigten Profilfelder definiert werden. Zusätzlich besteht die Möglichkeit einen Einleitungs- und einen Schlusstext für das gesamte Formular zu definieren. Weitere Infotexte können im Menüpunkt "Pflichtfelder und Infotexte" definiert werden.</string>    
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_DOCUMENTATION">Dokumentation</string>
@@ -30,6 +23,7 @@
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_FIELDTEXT">Infotext</string>    
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_KIOSK_MODE">Kiosk-Modus</string> 
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_KIOSK_MODE_DESC">Im Kiosk-Modus entfällt die Abfrage zum Beenden des Plugins. Die Beitrittserklärung wird mit leeren Daten erneut aufgerufen.</string> 
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_MENU_ITEM">Menüpunkt</string> 
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_NAME">ONLINE - Beitrittserklärung</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_NAME_DESC">Das Plugin ONLINE - Beitrittserklärung</string>   
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_OPTIONS">Optionen</string>
@@ -42,7 +36,18 @@
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_POSTTEXT">Schlusstext</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_PRE_AND_POST_TEXT_DESC">Folgende Parameter sind bei allen Einleitungs- und Schlusstexten möglich:\n\nLink: ##URL (z.B. https://...)#Text##\n\nFettschrift an: $$\nFettschrift aus: %%\n\nZeilenumbruch: §§</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_PRETEXT">Einleitungstext</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_REMOVE_CONFIG_DATA">Entferne Konfigurationsdaten</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_REMOVE_MENU_ITEM">Entferne Menüpunkt</string> 
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_REQUIRED_FIELDS">Pflichtfelder und Infotexte</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_REQUIRED_FIELDS_DESC">Hier können die angezeigten Profilfelder als Pflichtfelder markiert werden. Diese Felder müssen in der Beitrittserklärung befüllt sein. Zusätzlich besteht die Möglichkeit Informationstexte zu definieren.</string>    
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_SAVED">Ihre Daten wurden gespeichert.\n\nNach der Bearbeitung und Übernahme werden Sie per E-Mail benachrichtigt.\n\nWählen Sie aus:</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_UNINST_DATA_DELETE_ERROR">- Beim Löschen der Konfigurationsdaten ist ein Fehler aufgetreten.\n</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_UNINST_DATA_DELETE_SUCCESS">- Die vom Plugin angelegten Konfigurationsdaten wurden gelöscht.\n</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_UNINST_MENU_ITEM_ERROR">- Beim Löschen des Menüpunktes ist ein Fehler aufgetreten.\n</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_UNINST_MENU_ITEM_SUCCESS">- Der vom Plugin angelegte Menüpunkt wurde gelöscht.\n</string>               
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_UNINST_STARTMESSAGE">Folgende Löschvorgänge wurden durchgeführt:\n\n</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_UNINST_TABLE_DELETE_ERROR">- Die Tabelle "adm_plugin_preferences" konnte nicht gelöscht werden, da sich darin noch Daten eines anderen Plugins befinden.\n</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_UNINST_TABLE_DELETE_SUCCESS">- Die vom Plugin angelegte Tabelle "adm_plugin_preferences" wurde gelöscht.\n</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_UNINSTALLATION">Deinstallation</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_UNINSTALLATION_DESC">Über die Deinstallation können vom Plugin erzeugte Einträge gelöscht werden.</string> 
 </resources>

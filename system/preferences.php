@@ -273,15 +273,15 @@ if ($pPreferences->config['emailnotification']['access_to_module'])
 $formEmailnotification->addSubmitButton('btn_save_configurations', $gL10n->get('SYS_SAVE'), array('icon' => 'bi-check-lg', 'class' => ' offset-sm-3'));
 
 $page->addHtml(getPreferencePanel('common', 'emailnotification', $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_AUTOREPLYMAIL'), 'bi bi-envelope', $formEmailnotification->show()));
+                     
+// PANEL: UNINSTALLATION
 
-// PANEL: DEINSTALLATION
-                             
-$formDeinstallation = new HtmlForm('deinstallation_form', SecurityUtils::encodeUrl(ADMIDIO_URL.FOLDER_PLUGINS . PLUGIN_FOLDER .'/system/preferences_function.php', array('mode' => 2)), $page);                     
-$formDeinstallation->addSubmitButton('btn_save_deinstallation', $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_DEINSTALLATION'), array('icon' => 'bi-trash', 'class' => 'offset-sm-3'));
-$formDeinstallation->addCustomContent('', ''.$gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_DEINSTALLATION_DESC'));
-                   
-$page->addHtml(getPreferencePanel('common', 'deinstallation', $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_DEINSTALLATION'), 'bi bi-trash', $formDeinstallation->show()));
-                        
+$formUninstallation = new HtmlForm('uninstallation_form', SecurityUtils::encodeUrl(ADMIDIO_URL.FOLDER_PLUGINS . PLUGIN_FOLDER .'/system/uninstallation.php'), $page);
+$formUninstallation->addSubmitButton('btn_save_uninstallation', $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_UNINSTALLATION'), array('icon' => 'bi-trash', 'class' => 'offset-sm-3'));
+$formUninstallation->addCustomContent('', ''.$gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_UNINSTALLATION_DESC'));
+
+$page->addHtml(getPreferencePanel('common', 'uninstallation', $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_UNINSTALLATION'), 'bi bi-trash', $formUninstallation->show()));
+
 // PANEL: ACCESS_PREFERENCES
                         
 $formAccessPreferences = new HtmlForm('access_preferences_form', SecurityUtils::encodeUrl(ADMIDIO_URL . FOLDER_PLUGINS . PLUGIN_FOLDER .'/system/preferences_function.php', array('form' => 'access_preferences')), $page, array('class' => 'form-preferences'));

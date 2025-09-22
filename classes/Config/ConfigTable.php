@@ -20,7 +20,6 @@
  * read()                       :   liest die Konfigurationsdaten aus der Datenbank
  * checkforupdate()             :   vergleicht die Angaben in der Datei version.php
  *                                  mit den Daten in der DB
- * delete()                     :   loescht Konfigurationsdaten in der Datenbank
  *
  *****************************************************************************/
 
@@ -97,7 +96,9 @@ class ConfigTable
 
         $this->config['Plugininformationen']['version'] = self::$version;
         $this->config['Plugininformationen']['stand'] = self::$stand;
-
+        $this->config['Plugininformationen']['table_name'] = $this->table_name;
+        $this->config['Plugininformationen']['shortcut'] = self::$shortcut;
+        
         // die eingelesenen Konfigurationsdaten in ein Arbeitsarray kopieren
         $config_ist = $this->config;
 
@@ -333,47 +334,5 @@ class ConfigTable
         }
 
         return $ret;
-    }
-
-    /**
-     * Loescht die Konfigurationsdaten in der Datenbank
-     * @param   int     $deinst_org_select  0 = Daten nur in aktueller Org loeschen, 1 = Daten in allen Org loeschen
-     * @return  string  $result             Meldung
-     */
-    public function delete($deinst_org_select)
-    {
-        $result = '';
-        $result_data = false;
-        $result_db = false;
-        
-        if ($deinst_org_select == 0)                    //0 = Daten nur in aktueller Org loeschen
-        {
-            $sql = 'DELETE FROM '.$this->table_name.'
-        			      WHERE plp_name LIKE ?
-        			        AND plp_org_id = ? ';
-            $result_data = $GLOBALS['gDb']->queryPrepared($sql, array(self::$shortcut.'__%', $GLOBALS['gCurrentOrgId']));
-        }
-        elseif ($deinst_org_select == 1)              //1 = Daten in allen Orgs loeschen
-        {
-            $sql = 'DELETE FROM '.$this->table_name.'
-        			      WHERE plp_name LIKE ? ';
-            $result_data = $GLOBALS['gDb']->queryPrepared($sql, array(self::$shortcut.'__%'));
-        }
-        
-        // wenn die Tabelle nur Eintraege dieses Plugins hatte, sollte sie jetzt leer sein und kann geloescht werden
-        $sql = 'SELECT * FROM '.$this->table_name.' ';
-        $statement = $GLOBALS['gDb']->queryPrepared($sql);
-        
-        if ($statement->rowCount() == 0)
-        {
-            $sql = 'DROP TABLE '.$this->table_name.' ';
-            $result_db = $GLOBALS['gDb']->queryPrepared($sql);
-        }
-        
-        $result  = ($result_data ? $GLOBALS['gL10n']->get('PLG_DECLARATION_OF_MEMBERSHIP_DEINST_DATA_DELETE_SUCCESS') : $GLOBALS['gL10n']->get('PLG_DECLARATION_OF_MEMBERSHIP_DEINST_DATA_DELETE_ERROR') );
-        $result .= ($result_db ? $GLOBALS['gL10n']->get('PLG_DECLARATION_OF_MEMBERSHIP_DEINST_TABLE_DELETE_SUCCESS') : $GLOBALS['gL10n']->get('PLG_DECLARATION_OF_MEMBERSHIP_DEINST_TABLE_DELETE_ERROR') );
-        $result .= ($result_data ? $GLOBALS['gL10n']->get('PLG_DECLARATION_OF_MEMBERSHIP_DEINST_ENDMESSAGE') : '' );
-        
-        return $result;
     }
 }
