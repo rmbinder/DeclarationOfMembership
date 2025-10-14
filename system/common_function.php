@@ -10,6 +10,12 @@
  ***********************************************************************************************
  */
 
+use Plugins\DeclarationOfMembership\classes\Config\ConfigTable;
+
+if (basename($_SERVER['SCRIPT_FILENAME']) === 'common_function.php') {
+    exit('This page may not be called directly!');
+}
+
 require_once(__DIR__ . '/../../../system/common.php');
 
 if(!defined('PLUGIN_FOLDER'))
@@ -60,7 +66,9 @@ function myAutoloader($className) {
  */
 function isUserAuthorizedForPreferences()
 {
-    global $pPreferences;
+    // Konfiguration einlesen
+    $pPreferences = new ConfigTable();
+    $pPreferences->read();
     
     $userIsAuthorized = false;
     

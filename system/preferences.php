@@ -14,6 +14,7 @@
  ***********************************************************************************************
  */
 
+use Admidio\Infrastructure\Exception;
 use Admidio\Infrastructure\Utils\SecurityUtils;
 use Admidio\Infrastructure\Utils\StringUtils;
 use Plugins\DeclarationOfMembership\classes\Config\ConfigTable;
@@ -21,17 +22,18 @@ use Plugins\DeclarationOfMembership\classes\Config\ConfigTable;
 require_once(__DIR__ . '/../../../system/common.php');
 require_once(__DIR__ . '/common_function.php');
 
+// only authorized user are allowed to start this module
+if (!isUserAuthorizedForPreferences())
+{
+	$gMessage->show($gL10n->get('SYS_NO_RIGHTS'));
+    //throw new Exception('SYS_NO_RIGHTS');
+}
+    
 // Initialize and check the parameters
 $showOption = admFuncVariableIsValid($_GET, 'show_option', 'string');
 
 $pPreferences = new ConfigTable();
 $pPreferences->read();
-
-// only authorized user are allowed to start this module
-if (!isUserAuthorizedForPreferences())
-{
-    $gMessage->show($gL10n->get('SYS_NO_RIGHTS'));
-}
 
 $headline = $gL10n->get('SYS_SETTINGS');
 
