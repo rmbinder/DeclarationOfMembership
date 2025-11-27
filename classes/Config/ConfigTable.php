@@ -96,8 +96,8 @@ class ConfigTable
 
         $this->config['Plugininformationen']['version'] = self::$version;
         $this->config['Plugininformationen']['stand'] = self::$stand;
-        $this->config['Plugininformationen']['table_name'] = $this->table_name;
-        $this->config['Plugininformationen']['shortcut'] = self::$shortcut;
+  //      $this->config['Plugininformationen']['table_name'] = $this->table_name;
+  //      $this->config['Plugininformationen']['shortcut'] = self::$shortcut;
         
         // die eingelesenen Konfigurationsdaten in ein Arbeitsarray kopieren
         $config_ist = $this->config;
@@ -285,7 +285,6 @@ class ConfigTable
     * Vergleicht die Daten in der version.php mit den Daten in der DB    
     * @return bool   
     */
-    
     public function checkforupdate()
     {   
         $ret = false;
@@ -335,4 +334,39 @@ class ConfigTable
 
         return $ret;
     }
+    
+    /**
+	* Returns the shortcut of the plugin.
+	* @return string $shortcut.
+	*/
+	public function getShortcut()
+	{
+	    return self::$shortcut;
+	}
+	
+	/**
+	* Returns the table name of the plugin.
+	* @return string $table_name.
+	*/
+	public function getTableName()
+	{
+	    return $this->table_name;
+	}
+    
+    /**
+	* Ermittelt die Anzahl der Installationen dieses Plugins
+	* @return  int Anzahl
+	*/
+	public function getAllPluginInstallations()
+	{
+	    global $gDb;
+	    
+	 //   $data = array();
+	    
+	    $sql =  'SELECT COUNT(*) AS count FROM '.$this->table_name.'
+                 WHERE plp_name = ? ';
+	    $countStatement = $gDb->queryPrepared($sql, array(self::$shortcut.'__Plugininformationen__version'));
+	    
+	    return (int) $countStatement->fetchColumn();
+	}
 }

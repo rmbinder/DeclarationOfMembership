@@ -25,14 +25,18 @@ require_once(__DIR__ . '/common_function.php');
 // only authorized user are allowed to start this module
 if (!isUserAuthorizedForPreferences())
 {
-	$gMessage->show($gL10n->get('SYS_NO_RIGHTS'));
-    //throw new Exception('SYS_NO_RIGHTS');
+	//$gMessage->show($gL10n->get('SYS_NO_RIGHTS'));
+    throw new Exception('SYS_NO_RIGHTS');
 }
     
 // Initialize and check the parameters
 $showOption = admFuncVariableIsValid($_GET, 'show_option', 'string');
 
 $pPreferences = new ConfigTable();
+//if ($pPreferences->checkforupdate())
+//{
+//    $pPreferences->init();
+//}
 $pPreferences->read();
 
 $headline = $gL10n->get('SYS_SETTINGS');
@@ -278,7 +282,7 @@ $page->addHtml(getPreferencePanel('common', 'emailnotification', $gL10n->get('PL
                      
 // PANEL: UNINSTALLATION
 
-$formUninstallation = new HtmlForm('uninstallation_form', SecurityUtils::encodeUrl(ADMIDIO_URL.FOLDER_PLUGINS . PLUGIN_FOLDER .'/system/uninstallation.php'), $page);
+$formUninstallation = new HtmlForm('uninstallation_form', SecurityUtils::encodeUrl(ADMIDIO_URL.FOLDER_PLUGINS . PLUGIN_FOLDER .'/system/uninstall.php'), $page);
 $formUninstallation->addSubmitButton('btn_save_uninstallation', $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_UNINSTALLATION'), array('icon' => 'bi-trash', 'class' => 'offset-sm-3'));
 $formUninstallation->addCustomContent('', ''.$gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_UNINSTALLATION_DESC'));
 
