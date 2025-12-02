@@ -17,8 +17,6 @@ use Plugins\DeclarationOfMembership\classes\Config\ConfigTable;
 require_once(__DIR__ . '/../../../system/common.php');
 require_once(__DIR__ . '/common_function.php');
 
-$registrationOrgId = '';
-
 $pPreferences = new ConfigTable();
 $pPreferences->read();
 
@@ -39,10 +37,6 @@ if (isset($_SESSION['profile_request']) && StringUtils::strContains($gNavigation
         {
             $user->setProfileFieldsValue($field->getValue('usf_name_intern'), stripslashes($_SESSION['profile_request'][$fieldName]));
         }
-    }
-    if (isset($_SESSION['profile_request']['reg_org_id']))
-    {
-        $registrationOrgId = $_SESSION['profile_request']['reg_org_id'];
     }
     unset($_SESSION['profile_request']);
 }
@@ -70,15 +64,6 @@ $html = '<p align="right">
             </a>
         </p>';
 $form->addDescription($html);
-
-if (strlen($pPreferences->config['registration_org']['org_id']) == 0)
-{
-    $sql = 'SELECT org_id, org_longname
-              FROM '.TBL_ORGANIZATIONS.'
-          ORDER BY org_longname ASC, org_shortname ASC';
-    $form->addSelectBoxFromSql('reg_org_id', $gL10n->get('SYS_ORGANIZATION'), $gDb, $sql, array('property' => HtmlForm::FIELD_REQUIRED, 'defaultValue' => $registrationOrgId));
-    $form->addLine();
-}
 
 // *******************************************************************************
 // Loop over all categories and profile fields

@@ -19,6 +19,7 @@
  */
 
 use Admidio\Infrastructure\Utils\SecurityUtils;
+use Admidio\Infrastructure\Exception;
 use Plugins\DeclarationOfMembership\classes\Config\ConfigTable;
 
 require_once(__DIR__ . '/../../../system/common.php');
@@ -30,7 +31,7 @@ $pPreferences->read();
 // only authorized user are allowed to start this module
 if (!isUserAuthorizedForPreferences())
 {
-    $gMessage->show($gL10n->get('SYS_NO_RIGHTS'));
+    throw new Exception('SYS_NO_RIGHTS');
 }
 
 // Initialize and check the parameters
@@ -135,6 +136,7 @@ try
         case 'options':
             $pPreferences->config['registration_org']['org_id'] = $_POST['org_id'];
             $pPreferences->config['options']['kiosk_mode'] = $_POST['kiosk_mode'];
+            $pPreferences->updateOrgId();
             break;
         
         default:

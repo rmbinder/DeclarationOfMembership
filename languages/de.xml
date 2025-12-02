@@ -5,13 +5,10 @@
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_ACCESS_ROLES_STILL_PRESENT">- Zur Information: Beim Menüpunkt waren unter "Sichtbar für" Rollen eingetragen, die nicht vom Plugin angelegt worden sind. Diese Rollen wurden nicht entfernt.\n</string>   
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_ACCESS_TO_MODULE_AUTOREPLYMAIL">Zugriff auf das Modul "Automatische Antwortmail"</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_ACCESS_TO_MODULE_AUTOREPLYMAIL_DESC">Das Modul kann über diese Einstellung komplett deaktiviert werden (Standard: Deaktiviert).</string> 
-    <string name="PLG_DECLARATION_OF_MEMBERSHIP_ACTORGONLY">nur in der aktuellen Organisation</string>
-    <string name="PLG_DECLARATION_OF_MEMBERSHIP_ALLORG">in allen Organisationen</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_AUTOREPLYMAIL">Automatische Antwortmail</string> 
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_AUTOREPLYMAIL_DESC">Wenn das Modul "Automatische Antwortmail" aktiviert ist, wird bei jeder eingegangenen Beitrittserklärung die nachfolgende E-Mail an das neue Mitglied versendet. Folgende Variablen werden dabei ersetzt: #user_first_name#, #user_last_name#, #organization_name# und #organization_shortname#.</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_AUTOREPLYMAIL_INFO">Für eine "Automatische Antwortmail" müssen sowohl Sendeadresse ("Absender E-Mail" und/oder "Administrator E-Mail"), als und Empfangsadresse (E-Mail des neu registrierten Mitglieds) vorhanden sein.</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_COMPLETE_ENTRY">Eingabe abschließen</string> 
-    <string name="PLG_DECLARATION_OF_MEMBERSHIP_CONFIG_DATA">Konfigurationsdaten</string>      
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_CONTINUE">Ein weiteres Mitglied eingeben</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_CONTINUE_DESC">Die Online-Beitrittserklärung nicht beenden, sondern die Daten eines weiteren Mitglieds eingeben</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_DISPLAYED_FIELDS">Anzeigefelder</string>
@@ -21,9 +18,9 @@
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_EXIT">Beenden</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_EXIT_DESC">Die Online-Beitrittserklärung beenden</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_FIELDTEXT">Infotext</string>    
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_INSTALL_UPDATE_REQUIRED">Die vorhandene Installation ist unvollständig. Es ist notwendig, die Installationsroutine erneut zu durchlaufen.\n\nZur Installation folgendes Script ausführen: #VAR1#</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_KIOSK_MODE">Kiosk-Modus</string> 
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_KIOSK_MODE_DESC">Im Kiosk-Modus entfällt die Abfrage zum Beenden des Plugins. Die Beitrittserklärung wird mit leeren Daten erneut aufgerufen.</string>
-    <string name="PLG_DECLARATION_OF_MEMBERSHIP_MENU_ITEM">Menüpunkt</string> 
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_NAME">ONLINE - Beitrittserklärung</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_NAME_DESC">Das Plugin ONLINE - Beitrittserklärung</string>      
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_OPTIONS">Optionen</string>
@@ -36,8 +33,6 @@
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_POSTTEXT">Schlusstext</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_PRE_AND_POST_TEXT_DESC">Folgende Parameter sind bei allen Einleitungs- und Schlusstexten möglich:\n\nLink: ##URL (z.B. https://...)#Text##\n\nFettschrift an: $$\nFettschrift aus: %%\n\nZeilenumbruch: §§</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_PRETEXT">Einleitungstext</string>
-    <string name="PLG_DECLARATION_OF_MEMBERSHIP_REMOVE_CONFIG_DATA">Entferne Konfigurationsdaten</string>
-    <string name="PLG_DECLARATION_OF_MEMBERSHIP_REMOVE_MENU_ITEM">Entferne Menüpunkt</string> 
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_REQUIRED_FIELDS">Pflichtfelder und Infotexte</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_REQUIRED_FIELDS_DESC">Hier können die angezeigten Profilfelder als Pflichtfelder markiert werden. Diese Felder müssen in der Beitrittserklärung befüllt sein. Zusätzlich besteht die Möglichkeit Informationstexte zu definieren.</string>    
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_SAVED">Deine Daten wurden gespeichert.\n\nNach der Bearbeitung und Übernahme wirst du per E-Mail benachrichtigt.\n\nWähle aus:</string>
@@ -45,6 +40,8 @@
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_UNINST_DATA_DELETE_SUCCESS">- Die vom Plugin angelegten Konfigurationsdaten wurden gelöscht.\n</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_UNINST_MENU_ITEM_ERROR">- Beim Löschen des Menüpunktes ist ein Fehler aufgetreten.\n</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_UNINST_MENU_ITEM_SUCCESS">- Der vom Plugin erzeugte Menüpunkt wurde gelöscht.\n</string>               
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_UNINST_NO_INST_ID_FOUND">- Es konnte kein Menüpunkt ermittelt werden. Du musst den Menüpunkt von Hand löschen.\n</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_UNINST_SECURITY_CHECK">Möchtest du wirklich das Plugin deinstallieren?</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_UNINST_STARTMESSAGE">Folgende Löschvorgänge wurden durchgeführt:\n\n</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_UNINST_TABLE_DELETE_ERROR">- Die Tabelle "adm_plugin_preferences" konnte nicht gelöscht werden, da sich darin noch Daten eines anderen Plugins befinden.\n</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_UNINST_TABLE_DELETE_SUCCESS">- Die vom Plugin angelegte Tabelle "adm_plugin_preferences" wurde gelöscht.\n</string>

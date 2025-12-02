@@ -27,8 +27,7 @@ try {
     require_once (__DIR__ . '/common_function.php');
 
     // only administrators are allowed to start this module
-    if (!$gCurrentUser->isAdministrator()) 
-    {
+    if (! $gCurrentUser->isAdministrator()) {
         throw new Exception('SYS_NO_RIGHTS');
     }
 
@@ -98,29 +97,20 @@ try {
                 $result .= $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_UNINST_NO_INST_ID_FOUND');
             } else {
                 $result_menu = false;
-
-                // der Menüpunkt wird nur entfernt, wenn in der Konfigurationstabelle nur eine einzige Installation gespeichert ist
-                if ($pPreferences->getAllPluginInstallations() === 1) {
-                    $menu = new MenuEntry($gDb, (int) $pPreferences->config['install']['menu_item_id']);
-                    $result_menu = $menu->delete();
-                    $result .= ($result_menu ? $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_UNINST_MENU_ITEM_SUCCESS') : $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_UNINST_MENU_ITEM_ERROR'));
-                } else {
-                    // Menüpunkt nicht entfernen, wenn er noch für eine andere Organisation verwendet wird
-                    $result .= $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_UNINST_MENU_ITEM_NOT_DELETED');
-                }
+                $menu = new MenuEntry($gDb, (int) $pPreferences->config['install']['menu_item_id']);
+                $result_menu = $menu->delete();
+                $result .= ($result_menu ? $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_UNINST_MENU_ITEM_SUCCESS') : $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_UNINST_MENU_ITEM_ERROR'));
             }
 
-            // Konfigurationsdaten löschen (nur in aktueller Organisation)
+            // Konfigurationsdaten löschen
             $result_data = false;
             $result_db = false;
 
             $sql = 'DELETE FROM ' . $pPreferences->getTableName() . '
-        		          WHERE plp_name LIKE ?
-        			        AND plp_org_id = ? ';
+        		          WHERE plp_name LIKE ?  ';
 
             $result_data = $gDb->queryPrepared($sql, array(
-                $pPreferences->getShortcut() . '__%',
-                $gCurrentOrgId
+                $pPreferences->getShortcut() . '__%'
             ));
 
             // wenn die Tabelle nur Eintraege dieses Plugins hatte, sollte sie jetzt leer sein und kann geloescht werden
