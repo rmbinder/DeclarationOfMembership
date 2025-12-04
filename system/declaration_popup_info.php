@@ -42,7 +42,11 @@ $form->addStaticControl('plg_date', $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_P
 
 if (!$pPreferences->config['options']['kiosk_mode'])
 {
-    $html = '<a class="icon-text-link" href="documentation.pdf" target="_blank"><i class="bi bi-file-earmark-pdf"></i> '.$gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_DOCUMENTATION_OPEN').'</a>';
+    $docfile = 'documentation-en.pdf';
+    if ($gSettingsManager->getString('system_language') === 'de' || $gSettingsManager->getString('system_language') === 'de-DE') {
+        $docfile = 'documentation-de.pdf';
+    }
+    $html = '<a class="icon-text-link" href="' . ADMIDIO_URL . FOLDER_PLUGINS . PLUGIN_FOLDER. '/docs/' . $docfile . '" target="_blank"><i class="bi bi-file-earmark-pdf"></i> ' . $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_DOCUMENTATION_OPEN') . '</a>';
     $form->addCustomContent($gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_DOCUMENTATION'), $html);
 }
 
