@@ -166,7 +166,7 @@ class ConfigTable
                   WHERE plp_name LIKE ?
                     AND ( plp_org_id = ?
                      OR plp_org_id IS NULL ) ';
-        $statement =$gDb->queryPrepared($sql, array(
+        $statement = $gDb->queryPrepared($sql, array(
             self::$shortcut . '__%',
             $GLOBALS['gCurrentOrgId']
         ));
@@ -422,10 +422,35 @@ class ConfigTable
         $sql = 'UPDATE ' . $this->table_name . '
                    SET plp_value = ?
                  WHERE plp_name = ? ';
-        
+
         $gDb->queryPrepared($sql, array(
             $this->config['registration_org']['org_id'],
             'PDM__registration_org__org_id'
         ));
+    }
+
+    /**
+     * Liest die Registration-Org-Id aus
+     *
+     * @return mixed Returns the value of the RegistrationOrgId or false.
+     */
+    public function getRegOrgId()
+    {
+        global $gDb;
+
+        $sql = 'SELECT plp_value
+             	  FROM ' . $this->table_name . '
+             	WHERE plp_name = ?
+             LIMIT 1 ';
+
+        $statement = $gDb->queryPrepared($sql, array(
+            'PDM__registration_org__org_id'
+        ));
+
+        if ($row = $statement->fetch()) {
+            return (int) $row['plp_value'];
+        } else {
+            return false;
+        }
     }
 }

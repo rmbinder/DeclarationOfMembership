@@ -18,6 +18,7 @@ $config_default['field_texts'] = array();
 $config_default['fields'] = array('profile_fields'  => array(''),
                                   'required_fields' => array(''));
 
+// die Id der Organisation an der die Beitrittserklärung durchgeführt wird, wenn kein Nutzer angemeldet ist
 $config_default['registration_org']['org_id'] = $GLOBALS['gCurrentOrgId'];
 
 // Plugininformationen

@@ -26,6 +26,23 @@ try {
     $gNavigation->addStartUrl(CURRENT_URL);
 
     $pPreferences = new ConfigTable();
+
+    if (! $gValidLogin) {
+        // wenn kein Nutzer angemeldet ist, prüfen, dann die Registrierungs-Org-Id sich von der Org-Id der aktuellen Session unterscheidet
+        if ($gCurrentOrgId !== $pPreferences->getRegOrgId()) {
+            // die Registrierungs-Org-Id unterscheidet sich von der aktuellen Organisation --> Session umschalten
+            $gCurrentOrganization->readDataById($pPreferences->getRegOrgId());
+            $gCurrentOrgId = $gCurrentOrganization->getValue('org_id');
+
+            $gProfileFields->readProfileFields($gCurrentOrgId);
+
+            $gCurrentSession->setValue('ses_org_id', $gCurrentOrgId);
+            $gCurrentSession->save();
+
+            $gSettingsManager = new SettingsManager($gDb, $gCurrentOrgId);
+        }
+    }
+
     if ($pPreferences->checkforupdate()) {
         $pPreferences->init();
     }
@@ -40,20 +57,6 @@ try {
         $gMessage->show($gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_INSTALL_UPDATE_REQUIRED', array(
             '<a href="' . $urlInst . '">' . $urlInst . '</a>'
         )));
-    }
-
-    // wenn kein User angemeldet ist, dann die in der Konfiguration eingestellte Organisation auswählen
-    if (! $gValidLogin && in_array($pPreferences->config['registration_org']['org_id'], $pPreferences->getAllOrgIds())) {
-
-        $gCurrentOrganization->readDataById((int) $pPreferences->config['registration_org']['org_id']);
-        $gCurrentOrgId = $gCurrentOrganization->getValue('org_id');
-
-        $gProfileFields->readProfileFields($gCurrentOrgId);
-
-        $gCurrentSession->setValue('ses_org_id', $gCurrentOrgId);
-        $gCurrentSession->save();
-
-        $gSettingsManager = new SettingsManager($gDb, $gCurrentOrgId);
     }
 
     admRedirect(ADMIDIO_URL . FOLDER_PLUGINS . PLUGIN_FOLDER . '/system/declaration_of_membership.php');

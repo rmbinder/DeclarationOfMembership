@@ -33,7 +33,6 @@ $headline = $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_COMPLETE_ENTRY');
 $gNavigation->addUrl(CURRENT_URL, $headline);
 
 $user = new UserRegistration($gDb, $gProfileFields);
-// $user->setOrganization((int) $_POST['reg_org_id']);
 
 // now check all profile fields
 foreach ($gProfileFields->getProfileFields() as $field) {
