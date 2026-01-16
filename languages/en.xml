@@ -7,7 +7,7 @@
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_ACCESS_TO_MODULE_AUTOREPLYMAIL_DESC">The module can be completely deactivated via this setting (default: deactivated).</string>    
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_AUTOREPLYMAIL">Auto-reply mail</string> 
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_AUTOREPLYMAIL_DESC">If the "Auto-reply mail" module is activated, the following e-mail will be sent to the new member for each incoming membership declaration. The following variables are replaced: #user_first_name#, #user_last_name#, #organization_name# and #organization_shortname#.</string>
-    <string name="PLG_DECLARATION_OF_MEMBERSHIP_AUTOREPLYMAIL_INFO">For an "Auto-reply mail" both the sending address ("Sender email" and/or "Email Administrator") and the receiving address (email of the newly registered member) must be available.</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_AUTOREPLYMAIL_INFO">For an "Auto-reply mail" both the sending address ("Sender email" or "Email Administrator") and the receiving address (email of the newly registered member) must be available.</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_COMPLETE_ENTRY">Complete entry</string> 
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_CONTINUE">Enter another member</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_CONTINUE_DESC">Do not finish the online declaration of membership, but enter the data of another member</string>

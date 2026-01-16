@@ -177,8 +177,14 @@ try {
     // eine automatische Antwortmail nur senden, wenn
     // 1. das entsprechende Modul aktiviert ist
     // und 2., wenn entwender eine "Absender E-Mail" oder eine "Administrator E-Mail" definiert ist
-    if ($pPreferences->config['emailnotification']['access_to_module'] && ((strlen($gSettingsManager->getString('mail_sendmail_address')) > 0) || (strlen($gSettingsManager->getString('email_administrator')) > 0))) {
-        $senderEmail = $gSettingsManager->getString('email_administrator');
+    if ($pPreferences->config['emailnotification']['access_to_module'] && ((strlen($gSettingsManager->getString('mail_sendmail_address')) > 0) || (strlen($gCurrentOrganization->getValue('org_email_administrator')) > 0))) {
+
+        if (strlen($gSettingsManager->getString('mail_sendmail_address')) > 0) {
+            $senderEmail = $gSettingsManager->getString('mail_sendmail_address');
+        } else {
+            $senderEmail = $gCurrentOrganization->getValue('org_email_administrator');
+        }
+
         $senderName = $gCurrentOrganization->getValue('org_longname');
         $receiverEmail = $user->getValue('EMAIL');
         $receiverName = $user->getValue('FIRST_NAME') . ' ' . $user->getValue('LAST_NAME');
