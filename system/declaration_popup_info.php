@@ -8,49 +8,56 @@
  ***********************************************************************************************
  */
 
-/******************************************************************************
- * Parameters:      none
- *****************************************************************************/
-
+/**
+ * ****************************************************************************
+ * Parameters: none
+ * ***************************************************************************
+ */
+use Admidio\Infrastructure\Exception;
 use Plugins\DeclarationOfMembership\classes\Config\ConfigTable;
 
-require_once(__DIR__ . '/../../../system/common.php');
-require_once(__DIR__ . '/common_function.php');
+try {
+    require_once (__DIR__ . '/../../../system/common.php');
+    require_once (__DIR__ . '/common_function.php');
 
-$pPreferences = new ConfigTable();
-$pPreferences->read();
+    $pPreferences = new ConfigTable();
+    $pPreferences->read();
 
-// set headline of the script
-$headline = $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_PLUGIN_INFORMATION');
+    // set headline of the script
+    $headline = $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_PLUGIN_INFORMATION');
 
-// create html page object
-$page = new HtmlPage('plg-declaration-of-membership-info', $headline);
+    $infoText = '
+        <div class="row">
+            <div class="col-4"><strong>' . $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_PLUGIN_NAME') . ':</strong></div>
+            <div class="col-8">' . $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_NAME') . ' (DeclarationOfMembership)' . '</div>
+        </div>
+        <div class="row">
+            <div class="col-4"><strong>' . $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_PLUGIN_VERSION') . ':</strong></div>
+            <div class="col-8">' . $pPreferences->config['Plugininformationen']['version'] . '</div>
+        </div>
+        <div class="row">
+            <div class="col-4"><strong>' . $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_PLUGIN_DATE') . ':</strong></div>
+            <div class="col-8">' . $pPreferences->config['Plugininformationen']['stand'] . '</div>
+        </div>';
 
-header('Content-type: text/html; charset=utf-8');
+    if (! $pPreferences->config['options']['kiosk_mode']) {
+        $docFile = 'documentation-en.pdf';
+        if ($gSettingsManager->getString('system_language') === 'de' || $gSettingsManager->getString('system_language') === 'de-DE') {
+            $docFile = 'documentation-de.pdf';
+        }
+        $docUrl = '<a class="icon-text-link" href="' . ADMIDIO_URL . FOLDER_PLUGINS . PLUGIN_FOLDER . '/docs/' . $docFile . '" target="_blank"><i class="bi bi-file-earmark-pdf"></i> ' . $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_DOCUMENTATION_OPEN') . '</a>';
 
-$form = new HtmlForm('plugin_informations_form', '', $page);
-$form->addHtml('
-    <div class="modal-header">
-        <h3 class="modal-title">'.$headline.'</h3>
-        <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
-    </div>
-    <div class="modal-body">
-    ');
-$form->addStaticControl('plg_name', $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_PLUGIN_NAME'), $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_NAME').' (DeclarationOfMembership)');
-$form->addStaticControl('plg_version', $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_PLUGIN_VERSION'), $pPreferences->config['Plugininformationen']['version']);
-$form->addStaticControl('plg_date', $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_PLUGIN_DATE'), $pPreferences->config['Plugininformationen']['stand']);
-
-if (!$pPreferences->config['options']['kiosk_mode'])
-{
-    $docfile = 'documentation-en.pdf';
-    if ($gSettingsManager->getString('system_language') === 'de' || $gSettingsManager->getString('system_language') === 'de-DE') {
-        $docfile = 'documentation-de.pdf';
+        $infoText .= '
+        <div class="row">
+            <div class="col-4"><strong>' . $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_DOCUMENTATION') . ':</strong></div>
+            <div class="col-8">' . $docUrl . '</div>
+        </div>
+        ';
     }
-    $html = '<a class="icon-text-link" href="' . ADMIDIO_URL . FOLDER_PLUGINS . PLUGIN_FOLDER. '/docs/' . $docfile . '" target="_blank"><i class="bi bi-file-earmark-pdf"></i> ' . $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_DOCUMENTATION_OPEN') . '</a>';
-    $form->addCustomContent($gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_DOCUMENTATION'), $html);
+
+    $gMessage->showInModalWindow();
+    $gMessage->show($infoText, $headline);
+} catch (Exception $e) {
+    $gMessage->show($e->getMessage());
 }
-
-$form->addHtml('</div>');
-echo $form->show();
-
 

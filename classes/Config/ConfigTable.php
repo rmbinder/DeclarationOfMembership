@@ -453,4 +453,50 @@ class ConfigTable
             return false;
         }
     }
+
+
+
+/**
+ * Funktion sucht für html definierte Zeichen im übergebenen String und ersetzt sie
+ *
+ * @param string $string
+ *            Der übergebene String
+ * @return string $ret String mit ersetzten Zeichen
+ */
+    public function create_html($str)
+{
+    $defaultLink = '<a href="URL" target="_blank">TEXT</a>';
+    
+    preg_match_all("=##[^>](.*)##=siU", $str, $foundAll);
+    
+    // preg_match_all gibt als Rückgabe immer $foundAll[0] zurück. Wenn nichts gefunden wurde, ist es einfach leer
+    foreach ($foundAll[0] as $found) {
+        // Text zwischen den ersten ## und letzten ## extrahieren
+        $foundCut = substr($found, 2, - 2);
+        
+        // das # suchen, das ist das Trennzeichen zwischen URL und Text
+        $cutPos = strpos($foundCut, '#');
+        
+        $stringURL = substr($foundCut, 0, $cutPos);
+        $stringTEXT = substr($foundCut, $cutPos + 1);
+        
+        // "URL" und "TEXT" ersetzen
+        $tempLink = str_replace('URL', $stringURL, $defaultLink);
+        $tempLink = str_replace('TEXT', $stringTEXT, $tempLink);
+        
+        // jetzt im übergebenen String den Bereich zwischen den ## mit dem neuen Link ersetzen
+        $str = str_replace($found, $tempLink, $str);
+    }
+    
+    // jetzt noch die Sonderzeichen für "Fett" und "Zeilenvorschub" suchen und ersetzen
+    $str = str_replace('$$', '<strong>', $str);
+    $str = str_replace('%%', '</strong>', $str);
+    $str = str_replace('§§', '</br>', $str);
+    
+ 
+    
+    
+    return $str;
+}
+
 }
