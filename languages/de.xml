@@ -36,6 +36,8 @@
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_REQUIRED_FIELDS">Pflichtfelder und Infotexte</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_REQUIRED_FIELDS_DESC">Hier können die angezeigten Profilfelder als Pflichtfelder markiert werden. Diese Felder müssen in der Beitrittserklärung befüllt sein. Zusätzlich besteht die Möglichkeit Informationstexte zu definieren.</string>    
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_SAVED">Deine Daten wurden gespeichert.\n\nNach der Bearbeitung und Übernahme wirst du per E-Mail benachrichtigt.\n\nWähle aus:</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_SWITCH_TO_AUTOREPLYMAIL_KONFIGURATION">Wechsel zur "Automatische Antwortmail" Konfiguration.</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_SWITCH_TO_AUTOREPLYMAIL_KONFIGURATION_DESC">Hier können Betreff und Inhalt der Antwortmail angelegt und bearbeitet werden.</string> 
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_UNINST_DATA_DELETE_ERROR">- Beim Löschen der Konfigurationsdaten ist ein Fehler aufgetreten.\n</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_UNINST_DATA_DELETE_SUCCESS">- Die vom Plugin angelegten Konfigurationsdaten wurden gelöscht.\n</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_UNINST_MENU_ITEM_ERROR">- Beim Löschen des Menüpunktes ist ein Fehler aufgetreten.\n</string>
@@ -47,4 +49,6 @@
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_UNINST_TABLE_DELETE_SUCCESS">- Die vom Plugin angelegte Tabelle "adm_plugin_preferences" wurde gelöscht.\n</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_UNINSTALLATION">Deinstallation</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_UNINSTALLATION_DESC">Über die Deinstallation können vom Plugin erzeugte Einträge gelöscht werden.</string> 
+    
+
 </resources>

@@ -54,7 +54,7 @@ try {
     }
 
     // create html form
-    $form = new FormPresenter('edit_profile_form', '../templates/profile.edit.plugin.declarationofmembership.tpl', SecurityUtils::encodeUrl(ADMIDIO_URL . FOLDER_PLUGINS . PLUGIN_FOLDER . '/system/declaration_save.php', array(
+    $form = new FormPresenter('main_view_form', '../templates/main.view.plugin.declarationofmembership.tpl', SecurityUtils::encodeUrl(ADMIDIO_URL . FOLDER_PLUGINS . PLUGIN_FOLDER . '/system/declaration_save.php', array(
         'headline' => $headline
     )), $page);
 
