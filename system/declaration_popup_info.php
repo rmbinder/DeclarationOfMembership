@@ -40,21 +40,6 @@ try {
             <div class="col-8">' . $pPreferences->config['Plugininformationen']['stand'] . '</div>
         </div>';
 
-    if (! $pPreferences->config['options']['kiosk_mode']) {
-        $docFile = 'documentation-en.pdf';
-        if ($gSettingsManager->getString('system_language') === 'de' || $gSettingsManager->getString('system_language') === 'de-DE') {
-            $docFile = 'documentation-de.pdf';
-        }
-        $docUrl = '<a class="icon-text-link" href="' . ADMIDIO_URL . FOLDER_PLUGINS . PLUGIN_FOLDER . '/docs/' . $docFile . '" target="_blank"><i class="bi bi-file-earmark-pdf"></i> ' . $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_DOCUMENTATION_OPEN') . '</a>';
-
-        $infoText .= '
-        <div class="row">
-            <div class="col-4"><strong>' . $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_DOCUMENTATION') . ':</strong></div>
-            <div class="col-8">' . $docUrl . '</div>
-        </div>
-        ';
-    }
-
     $gMessage->showInModalWindow();
     $gMessage->show($infoText, $headline);
 } catch (Exception $e) {

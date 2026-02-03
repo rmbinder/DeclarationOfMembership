@@ -102,6 +102,12 @@ class DeclarationOfMembershipPreferencesPresenter extends PagePresenter
                 'label' => $gL10n->get('SYS_SYSTEM'),
                 'panels' => array(
                     array(
+                        'id' => 'informations',
+                        'title' => $gL10n->get('SYS_INFORMATIONS'),
+                        'icon' => 'bi-info-circle',
+                        'subcards' => false
+                    ),
+                    array(
                         'id' => 'options',
                         'title' => $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_OPTIONS'),
                         'icon' => 'bi-gear',
@@ -278,6 +284,41 @@ class DeclarationOfMembershipPreferencesPresenter extends PagePresenter
         $formRequiredFields->addToSmarty($smarty);
         $gCurrentSession->addFormObject($formRequiredFields);
         return $smarty->fetch('../templates/preferences.requiredfields.plugin.declarationofmembership.tpl');
+    }
+
+    /**
+     * Generates the html of the form from the informations preferences and will return the complete html.
+     *
+     * @return string Returns the complete html of the form from the informations preferences.
+     * @throws Exception
+     * @throws \Smarty\Exception
+     */
+    public function createInformationsForm(): string
+    {
+        global $gL10n, $gSettingsManager, $gCurrentSession;
+
+        $pPreferences = new ConfigTable();
+        $pPreferences->read();
+
+        $formInformations = new FormPresenter('adm_preferences_form_options', '../templates/preferences.informations.plugin.declarationofmembership.tpl', '', null, array(
+            'class' => 'form-preferences'
+        ));
+
+        $formInformations->addCustomContent('plg_name', $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_PLUGIN_NAME'), $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_NAME') . ' (DeclarationOfMembership)');
+        $formInformations->addCustomContent('plg_version', $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_PLUGIN_VERSION'), $pPreferences->config['Plugininformationen']['version']);
+        $formInformations->addCustomContent('plg_date', $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_PLUGIN_DATE'), $pPreferences->config['Plugininformationen']['stand']);
+
+        $docFile = 'documentation-en.pdf';
+        if ($gSettingsManager->getString('system_language') === 'de' || $gSettingsManager->getString('system_language') === 'de-DE') {
+            $docFile = 'documentation-de.pdf';
+        }
+        $html = '<a class="btn btn-secondary" id="open_documentation" href="' . ADMIDIO_URL . FOLDER_PLUGINS . PLUGIN_FOLDER . '/docs/' . $docFile . '" target="_blank"><i class="bi bi-file-earmark-pdf"></i> ' . $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_DOCUMENTATION_OPEN') . '</a>';
+        $formInformations->addCustomContent('plg_doc', $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_DOCUMENTATION'), $html);
+
+        $smarty = $this->getSmartyTemplate();
+        $formInformations->addToSmarty($smarty);
+        $gCurrentSession->addFormObject($formInformations);
+        return $smarty->fetch('../templates/preferences.informations.plugin.declarationofmembership.tpl');
     }
 
     /**
