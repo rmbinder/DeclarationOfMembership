@@ -35,6 +35,7 @@ $config_default['emailnotification'] = array(
 );
 
 $config_default['options']['kiosk_mode'] = 0;
+$config_default['options']['auto_login_name'] = 0;
 
 $config_default['usr_login_name'] = array('displayed' => '0',
                                           'required'  => '0',

@@ -5,6 +5,8 @@
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_ACCESS_ROLES_STILL_PRESENT">- Zur Information: Beim Menüpunkt waren unter "Sichtbar für" Rollen eingetragen, die nicht vom Plugin angelegt worden sind. Diese Rollen wurden nicht entfernt.\n</string>   
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_ACCESS_TO_MODULE_AUTOREPLYMAIL">Zugriff auf das Modul "Automatische Antwortmail"</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_ACCESS_TO_MODULE_AUTOREPLYMAIL_DESC">Das Modul kann über diese Einstellung komplett deaktiviert werden (Standard: Deaktiviert).</string> 
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_AUTO_LOGIN_NAME">Automatischer Anmeldename</string> 
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_AUTO_LOGIN_NAME_DESC">Ist Automatischer Anmeldename aktiviert, wird zu jeder Beitrittserklärung ein zufälliger Anmeldename generiert. (Hinweis: Diese Funktion ist nur verfügbar, wenn unter Anzeigefelder "Anmeldename" nicht aktiviert ist.)</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_AUTOREPLYMAIL">Automatische Antwortmail</string> 
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_AUTOREPLYMAIL_DESC">Wenn das Modul "Automatische Antwortmail" aktiviert ist, wird bei jeder eingegangenen Beitrittserklärung die nachfolgende E-Mail an das neue Mitglied versendet. Folgende Variablen werden dabei ersetzt: #user_first_name#, #user_last_name#, #organization_name# und #organization_shortname#.</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_AUTOREPLYMAIL_INFO">Für eine "Automatische Antwortmail" müssen sowohl Sendeadresse ("Absender E-Mail" oder "Administrator E-Mail"), als auch Empfangsadresse (E-Mail des neu registrierten Mitglieds) vorhanden sein.</string>
@@ -49,6 +51,4 @@
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_UNINST_TABLE_DELETE_SUCCESS">- Die vom Plugin angelegte Tabelle "adm_plugin_preferences" wurde gelöscht.\n</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_UNINSTALLATION">Deinstallation</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_UNINSTALLATION_DESC">Über die Deinstallation können vom Plugin erzeugte Einträge gelöscht werden.</string> 
-    
-
 </resources>

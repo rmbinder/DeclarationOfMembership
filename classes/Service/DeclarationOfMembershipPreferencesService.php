@@ -48,6 +48,7 @@ class DeclarationOfMembershipPreferencesService
                 $pPreferences->updateOrgId();
 
                 $pPreferences->config['options']['kiosk_mode'] = $formData['kiosk_mode'];
+                $pPreferences->config['options']['auto_login_name'] = $formData['auto_login_name'];
                 break;
 
             case 'AutoreplyMail':

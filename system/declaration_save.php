@@ -160,6 +160,31 @@ try {
             }
         }
     }
+    elseif ($pPreferences->config['options']['auto_login_name'])
+    {
+        $strings='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        
+        // es sollte eigentlich nicht vorkommen, dass der mit dem Zufallsgenerator erzeugte User-Name bereits in der Datenbank vorhanden ist
+        // aber man kann ja nie wissen: deshalb zur Sicherheit überprüfen
+        do {
+        $auto_login_name = substr(str_shuffle($strings), 10, 30);
+       
+        // check if the username is already assigned
+        $sql = 'SELECT usr_uuid
+                      FROM ' . TBL_USERS . '
+                     WHERE usr_login_name = ?';
+        $pdoStatement = $gDb->queryPrepared($sql, array(
+            $auto_login_name
+        ));
+        
+        if ($pdoStatement->rowCount() === 0) {
+            $user->setValue('usr_login_name', $auto_login_name);
+            break;
+            // => EXIT
+        }
+        } while (true);
+        
+    }
 
     // At user registration with activated captcha check the captcha input
     if ($gSettingsManager->getBool('registration_enable_captcha')) {

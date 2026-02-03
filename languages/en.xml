@@ -4,7 +4,9 @@
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_ACCESS_PREFERENCES_DESC">Here, in addition to the role "Administrator", you can authorize additional roles for access to the "Preferences" module.</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_ACCESS_ROLES_STILL_PRESENT">- For your information: The menu item contained roles listed under "Visible for" that were not created by the plugin. These roles have not been removed.\n</string>   
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_ACCESS_TO_MODULE_AUTOREPLYMAIL">Access to the "Auto-reply mail" module</string>
-    <string name="PLG_DECLARATION_OF_MEMBERSHIP_ACCESS_TO_MODULE_AUTOREPLYMAIL_DESC">The module can be completely deactivated via this setting (default: deactivated).</string>    
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_ACCESS_TO_MODULE_AUTOREPLYMAIL_DESC">The module can be completely deactivated via this setting (default: deactivated).</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_AUTO_LOGIN_NAME">Automatic login name</string> 
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_AUTO_LOGIN_NAME_DESC">If automatic login name is enabled, a random login name will be generated for each application. (Note: This function is only available if "Login name" is not enabled under Display fields.)</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_AUTOREPLYMAIL">Auto-reply mail</string> 
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_AUTOREPLYMAIL_DESC">If the "Auto-reply mail" module is activated, the following e-mail will be sent to the new member for each incoming membership declaration. The following variables are replaced: #user_first_name#, #user_last_name#, #organization_name# and #organization_shortname#.</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_AUTOREPLYMAIL_INFO">For an "Auto-reply mail" both the sending address ("Sender email" or "Email Administrator") and the receiving address (email of the newly registered member) must be available.</string>
@@ -36,8 +38,8 @@
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_REQUIRED_FIELDS">Mandatory fields and info texts</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_REQUIRED_FIELDS_DESC">Here the displayed profile fields can be marked as mandatory fields. These fields must be filled in the declaration of membership. In addition, it is possible to define information texts.</string>    
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_SAVED">Your data has been saved.\n\nAfter processing and takeover, you will be notified by e-mail.\n\nChoose:</string>
-        <string name="PLG_DECLARATION_OF_MEMBERSHIP_SWITCH_TO_AUTOREPLYMAIL_KONFIGURATION">Switch to the "Automatic reply email" configuration.</string>
-        <string name="PLG_DECLARATION_OF_MEMBERSHIP_SWITCH_TO_AUTOREPLYMAIL_KONFIGURATION_DESC">Here you can create and edit the subject and content of the reply email.</string>     
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_SWITCH_TO_AUTOREPLYMAIL_KONFIGURATION">Switch to the "Automatic reply email" configuration.</string>
+    <string name="PLG_DECLARATION_OF_MEMBERSHIP_SWITCH_TO_AUTOREPLYMAIL_KONFIGURATION_DESC">Here you can create and edit the subject and content of the reply email.</string>     
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_UNINST_DATA_DELETE_ERROR">- An error occurred while deleting the configuration data.\n</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_UNINST_DATA_DELETE_SUCCESS">- The configuration data created by the plugin has been deleted.\n</string>
     <string name="PLG_DECLARATION_OF_MEMBERSHIP_UNINST_MENU_ITEM_ERROR">- An error occurred while deleting the menu item.\n</string>

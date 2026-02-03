@@ -304,8 +304,8 @@ class DeclarationOfMembershipPreferencesPresenter extends PagePresenter
         ));
 
         $sql = 'SELECT org_id, org_longname
-          FROM ' . TBL_ORGANIZATIONS . '
-      ORDER BY org_longname ASC, org_shortname ASC';
+                  FROM ' . TBL_ORGANIZATIONS . '
+              ORDER BY org_longname ASC, org_shortname ASC';
 
         $formOptions->addSelectBoxFromSql('org_id', $gL10n->get('SYS_ORGANIZATION'), $gDb, $sql, array(
             'defaultValue' => $pPreferences->config['registration_org']['org_id'],
@@ -321,11 +321,15 @@ class DeclarationOfMembershipPreferencesPresenter extends PagePresenter
             'helpTextId' => 'PLG_DECLARATION_OF_MEMBERSHIP_KIOSK_MODE_DESC'
         ));
 
-        $selectBoxEntries = array(
-            '0' => $gL10n->get('SYS_DISABLED'),
-            '1' => $gL10n->get('SYS_ENABLED')
-        );
-
+        $formOptions->addRadioButton('auto_login_name', $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_AUTO_LOGIN_NAME'), array(
+            0 => $gL10n->get('SYS_NO'),
+            1 => $gL10n->get('SYS_YES')
+        ), array(
+            'property' => ($pPreferences->config['usr_login_name']['displayed'] ? FormPresenter::FIELD_DISABLED : FormPresenter::FIELD_DEFAULT),
+            'defaultValue' => $pPreferences->config['options']['auto_login_name'],
+            'helpTextId' => 'PLG_DECLARATION_OF_MEMBERSHIP_AUTO_LOGIN_NAME_DESC'
+        ));
+        
         $formOptions->addSubmitButton('adm_button_save_options', $gL10n->get('SYS_SAVE'), array(
             'icon' => 'bi-check-lg',
             'class' => 'offset-sm-3'
