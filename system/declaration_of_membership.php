@@ -8,9 +8,9 @@
  * @license https://www.gnu.org/licenses/gpl-2.0.html GNU General Public License v2.0 only
  ***********************************************************************************************
  */
+use Admidio\Infrastructure\Exception;
 use Admidio\Infrastructure\Utils\SecurityUtils;
 use Admidio\Infrastructure\Utils\StringUtils;
-use Admidio\Infrastructure\Exception;
 use Admidio\UI\Presenter\FormPresenter;
 use Admidio\UI\Presenter\PagePresenter;
 use Admidio\Users\Entity\User;
@@ -176,11 +176,7 @@ try {
                 $fieldType = 'text';
 
                 if ($gProfileFields->getProperty($usfNameIntern, 'usf_type') === 'DATE') {
-                    if ($usfNameIntern === 'BIRTHDAY') {
-                        $fieldType = 'birthday';
-                    } else {
-                        $fieldType = 'date';
-                    }
+                    $fieldType = 'date';
                     $maxlength = '10';
                 } elseif ($gProfileFields->getProperty($usfNameIntern, 'usf_type') === 'EMAIL') {
                     // email could not be longer than 254 characters
