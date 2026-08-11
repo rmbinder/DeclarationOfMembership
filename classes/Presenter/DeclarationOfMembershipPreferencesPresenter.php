@@ -79,7 +79,7 @@ class DeclarationOfMembershipPreferencesPresenter extends PagePresenter
             // === 1) Configuration ===
             array(
                 'key' => 'configuration',
-                'label' => $gL10n->get('PLG_FORMFILLER_CONFIGURATIONS'),
+                'label' => $gL10n->get('PLG_DECLARATION_OF_MEMBERSHIP_CONFIGURATIONS'),
                 'panels' => array(
                     array(
                         'id' => 'displayed_fields',
