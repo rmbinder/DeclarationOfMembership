@@ -3,7 +3,7 @@
  ***********************************************************************************************
  * DeclarationOfMembership (ONLINE-Beitrittserklärung)
  *
- * Version 3.0.1
+ * Version 3.0.2
  *
  * This plugin creates an online - declaration of membership.
  * 
@@ -24,7 +24,7 @@ try {
     require_once (__DIR__ . '/system/common_function.php');
 
     $gNavigation->addStartUrl(CURRENT_URL);
-  
+
     $pPreferences = new ConfigTable();
 
     if (! $gValidLogin) {
